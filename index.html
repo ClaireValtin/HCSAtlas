@@ -1,0 +1,1315 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Atlas des blocs surrénaliens</title>
+<meta name="description" content="Aide au diagnostic des hyperplasies congénitales des surrénales et de leurs diagnostics différentiels">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout : atlas clinique — barre de navigation collante, carte de la stéroïdogenèse en ouverture, puis fiches et outils en sections pleine largeur sur une grille 12 col. */
+:root{
+  --paper:#F3F8FA; --surface:#FFFFFF; --surface-2:#EAF3F6; --ink:#0B2239; --muted:#56697A; --line:#D3E1E8;
+  --blue:#1E5BB8; --blue-soft:#DCE8F8; --teal:#0C9C97; --teal-soft:#D5F1EF; --green:#2C9A5A; --green-soft:#DCF2E4;
+  --up:#D9692A; --up-soft:#FBE6D9; --down:#93A3B1; --down-soft:#ECF1F4; --block:#CF3C57; --block-soft:#F9DDE3;
+  --sev-null:#B4233F; --sev-severe:#D9692A; --sev-mod:#C49A12; --sev-mild:#2C9A5A;
+  --shadow:0 1px 2px rgba(11,34,57,.06),0 6px 24px -12px rgba(11,34,57,.18);
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --r:10px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#071421; --surface:#0C1D2D; --surface-2:#10263A; --ink:#E4EEF4; --muted:#93A8B9; --line:#1D3449;
+  --blue:#76A8F2; --blue-soft:#15304F; --teal:#41CFC7; --teal-soft:#0F3536; --green:#5CCB8B; --green-soft:#12321F;
+  --up:#F39A5B; --up-soft:#3A2414; --down:#5B6E80; --down-soft:#142534; --block:#FF6E86; --block-soft:#3D1622;
+  --sev-null:#FF6E86; --sev-severe:#F39A5B; --sev-mod:#E5C04A; --sev-mild:#5CCB8B;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 28px -14px rgba(0,0,0,.6); color-scheme:dark }}
+:root[data-theme="dark"]{
+  --paper:#071421; --surface:#0C1D2D; --surface-2:#10263A; --ink:#E4EEF4; --muted:#93A8B9; --line:#1D3449;
+  --blue:#76A8F2; --blue-soft:#15304F; --teal:#41CFC7; --teal-soft:#0F3536; --green:#5CCB8B; --green-soft:#12321F;
+  --up:#F39A5B; --up-soft:#3A2414; --down:#5B6E80; --down-soft:#142534; --block:#FF6E86; --block-soft:#3D1622;
+  --sev-null:#FF6E86; --sev-severe:#F39A5B; --sev-mod:#E5C04A; --sev-mild:#5CCB8B;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 28px -14px rgba(0,0,0,.6); color-scheme:dark }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15.5px;line-height:1.58;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-underline-offset:2px}
+a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:6px}
+h1,h2,h3,h4{font-family:var(--f-display);line-height:1.12;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(1.6rem,3.2vw,2.25rem);font-weight:800}
+h3{font-size:1.22rem;font-weight:700}
+h4{font-size:1rem;font-weight:700}
+p{margin:0}
+.mono{font-family:var(--f-mono);font-size:.88em}
+.num{font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:clamp(16px,3vw,32px)}
+
+/* top bar */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:18px;height:58px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800;font-size:1.05rem;white-space:nowrap;color:var(--ink);text-decoration:none}
+.brand svg{flex:none}
+.nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;min-width:0;flex:1}
+.nav::-webkit-scrollbar{display:none}
+.nav a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:.86rem;font-weight:500;padding:7px 10px;border-radius:999px}
+.nav a:hover,.nav a.on{color:var(--ink);background:var(--surface-2)}
+.themebtn{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;width:34px;height:34px;display:grid;place-items:center;cursor:pointer}
+
+section{padding-block:clamp(44px,7vw,84px);border-bottom:1px solid var(--line)}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-weight:500}
+.sechead{display:grid;gap:10px;margin-bottom:28px;max-width:72ch}
+.sechead p{color:var(--muted)}
+
+/* hero */
+.hero{padding-block:clamp(28px,4vw,48px) clamp(40px,6vw,72px)}
+.hero-top{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;align-items:end;margin-bottom:22px}
+.hero h1{font-size:clamp(2.1rem,5.4vw,3.9rem);font-weight:800;letter-spacing:-.025em}
+.hero h1 em{font-style:normal;color:var(--teal)}
+.hero .lede{color:var(--muted);max-width:60ch;font-size:1.02rem}
+@media (max-width:820px){.hero-top{grid-template-columns:1fr}}
+
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:500 .84rem var(--f-body);padding:7px 12px;border-radius:999px;cursor:pointer;display:inline-flex;gap:7px;align-items:center}
+.pill .g{font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+.pill:hover{border-color:var(--teal)}
+.pill[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.pill[aria-pressed="true"] .g{color:color-mix(in srgb,var(--paper) 70%,transparent)}
+
+.mapgrid>*,.grid2>*,.grid3>*,.orient>*,.calc>*,.hero-top>*,.risk>*{min-width:0}
+.mapgrid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:18px;margin-top:16px}
+@media (max-width:980px){.mapgrid{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+.mapbox{padding:10px 8px 6px;overflow-x:auto}
+.mapbox svg{display:block;min-width:620px;width:100%;height:auto}
+.legend{display:flex;flex-wrap:wrap;gap:14px;padding:8px 14px 12px;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:14px;height:10px;border-radius:3px;display:inline-block;border:1.5px solid}
+
+/* map svg */
+.zone-lbl{font:600 11px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;fill:var(--muted)}
+.zone-bg{fill:var(--surface-2)}
+.node rect{fill:var(--surface);stroke:var(--line);stroke-width:1.5;transition:fill .25s,stroke .25s,opacity .25s}
+.node text{font:600 13px var(--f-body);fill:var(--ink);transition:opacity .25s}
+.node .badge{font:700 13px var(--f-mono)}
+.node.up rect{fill:var(--up-soft);stroke:var(--up);stroke-width:2.2}
+.node.up .badge{fill:var(--up)}
+.node.down rect{fill:var(--down-soft);stroke:var(--down);stroke-dasharray:4 3}
+.node.down text{opacity:.55}
+.node.down .badge{fill:var(--down);opacity:1}
+.node.var rect{fill:var(--surface);stroke:var(--up);stroke-dasharray:2 3;stroke-width:1.8}
+.node.var .badge{fill:var(--up)}
+.node{cursor:pointer}
+.node:hover rect{stroke:var(--teal)}
+.edge{stroke:var(--muted);stroke-width:1.6;fill:none;opacity:.7}
+.edge.weak{stroke-dasharray:3 4}
+.edge.blocked{stroke:var(--block);opacity:1;stroke-width:2.2}
+.edge.partial{stroke:var(--block);opacity:.85;stroke-dasharray:6 4}
+.enz{cursor:pointer}
+.enz rect{fill:var(--paper);stroke:var(--teal);stroke-width:1.2}
+.enz text{font:500 10.5px var(--f-mono);fill:var(--teal)}
+.enz.blocked rect{fill:var(--block);stroke:var(--block)}
+.enz.blocked text{fill:#fff}
+.enz.partial rect{fill:var(--block-soft);stroke:var(--block)}
+.enz.partial text{fill:var(--block)}
+.xmark{stroke:var(--block);stroke-width:3;stroke-linecap:round}
+
+.conseq{padding:18px 18px 16px;display:grid;gap:14px;align-content:start}
+.conseq h3{font-size:1.35rem}
+.conseq .gene{font-family:var(--f-mono);font-size:.82rem;color:var(--teal)}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.fact{background:var(--surface-2);border-radius:9px;padding:9px 11px;min-width:0}
+.fact b{display:block;font:600 .7rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.fact span{font-size:.9rem;font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{font:500 .78rem var(--f-body);padding:3px 9px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.chip.up{background:var(--up-soft);border-color:transparent;color:var(--up)}
+.chip.down{background:var(--down-soft);border-color:transparent;color:var(--muted)}
+.chip.ok{background:var(--green-soft);border-color:transparent;color:var(--green)}
+.chip.key{background:var(--teal-soft);border-color:transparent;color:var(--teal);font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--paper);border:0;border-radius:999px;padding:9px 16px;font:600 .86rem var(--f-body);cursor:pointer;text-decoration:none}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.note{font-size:.82rem;color:var(--muted)}
+.flag{border-left:3px solid var(--up);background:var(--up-soft);padding:9px 12px;border-radius:0 8px 8px 0;font-size:.86rem}
+.flag b{color:var(--up)}
+.info{border-left:3px solid var(--teal);background:var(--teal-soft);padding:9px 12px;border-radius:0 8px 8px 0;font-size:.88rem}
+
+/* frequency table */
+.freq{width:100%;border-collapse:collapse;font-size:.92rem}
+.freq th{font:600 .72rem var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
+.freq td{padding:13px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.freq tr:hover td{background:var(--surface-2)}
+.rank{font:800 1.4rem var(--f-display);color:var(--teal);width:44px}
+.bar{height:8px;border-radius:5px;background:var(--surface-2);overflow:hidden;width:140px;margin-top:6px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--teal))}
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.tablebox table{min-width:760px}
+
+/* fiches */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.fiche{display:grid;gap:18px}
+.fiche-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:start;padding:22px;border-radius:14px;background:linear-gradient(135deg,var(--blue-soft),var(--teal-soft));border:1px solid var(--line)}
+.fiche-head h3{font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:800}
+.fiche-head .sub{color:var(--muted);margin-top:6px;max-width:70ch}
+.idcard{display:grid;gap:3px;font-size:.82rem;text-align:right;font-family:var(--f-mono);color:var(--muted)}
+.idcard b{color:var(--ink);font-weight:500}
+@media (max-width:700px){.fiche-head{grid-template-columns:1fr}.idcard{text-align:left}}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+@media (max-width:900px){.grid3{grid-template-columns:1fr}}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;min-width:0;display:grid;gap:10px;align-content:start}
+.card h4{display:flex;align-items:center;gap:8px}
+.card h4 .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);flex:none}
+.card ul{margin:0;padding-left:18px;display:grid;gap:5px}
+.card li{padding-left:2px}
+.mk{display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;align-items:baseline;font-size:.92rem}
+.mk .ar{font:700 .95rem var(--f-mono);text-align:center}
+.mk.up .ar{color:var(--up)} .mk.down .ar{color:var(--down)} .mk.n .ar{color:var(--green)} .mk.var .ar{color:var(--sev-mod)}
+.mklist{display:grid;gap:6px}
+.check{display:grid;gap:7px;list-style:none;padding:0!important}
+.check li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:8px;padding:0!important}
+.check li::before{content:"";width:13px;height:13px;border:1.6px solid var(--teal);border-radius:4px;margin-top:4px}
+.genebox{overflow-x:auto;padding:6px 0}
+.genebox svg{display:block;min-width:640px;width:100%;height:auto}
+.gtxt{font:500 10.5px var(--f-mono);fill:var(--muted)}
+.glbl{font:600 11px var(--f-body);fill:var(--ink)}
+.vtab{width:100%;border-collapse:collapse;font-size:.86rem}
+.vtab th{font:600 .7rem var(--f-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+.vtab td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.vtab td.mono{white-space:nowrap}
+.sev{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;font-weight:600;white-space:nowrap}
+.sev i{width:9px;height:9px;border-radius:50%}
+.sev.null i{background:var(--sev-null)} .sev.severe i{background:var(--sev-severe)} .sev.mod i{background:var(--sev-mod)} .sev.mild i{background:var(--sev-mild)}
+.sanger{font:600 .7rem var(--f-mono);padding:2px 7px;border-radius:5px;white-space:nowrap}
+.sanger.y{background:var(--green-soft);color:var(--green)} .sanger.n{background:var(--block-soft);color:var(--block)}
+.src{font-size:.8rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 12px}
+.src a{color:var(--muted)}
+
+/* orientation */
+.orient{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+@media (max-width:900px){.orient{grid-template-columns:1fr}}
+.q{display:grid;gap:7px}
+.q > span{font:600 .74rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.seg{display:flex;flex-wrap:wrap;gap:5px}
+.seg button{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:500 .84rem var(--f-body);padding:6px 11px;border-radius:8px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
+.tog{display:flex;align-items:center;gap:9px;font-size:.9rem;cursor:pointer}
+.tog input{width:17px;height:17px;flex:none;accent-color:var(--teal)}
+.vtab td:first-child{min-width:150px}
+.result{display:grid;gap:10px}
+.res{border:1px solid var(--line);border-radius:11px;padding:13px 14px;display:grid;gap:7px;background:var(--surface)}
+.res.top{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
+.res-h{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.res-h b{font-family:var(--f-display);font-size:1.05rem}
+.meter{height:7px;border-radius:5px;background:var(--surface-2);overflow:hidden}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--teal));transition:width .35s}
+.why{font-size:.84rem;color:var(--muted)}
+
+/* 17-OHP */
+.calc{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:18px}
+@media (max-width:860px){.calc{grid-template-columns:1fr}}
+.field{display:grid;gap:5px}
+.field label{font:600 .74rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.field input,.field select{font:500 1rem var(--f-body);padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);width:100%}
+.verdict{font-family:var(--f-display);font-size:1.45rem;font-weight:800}
+.gauge svg{width:100%;height:auto;display:block}
+.gz{font:600 10.5px var(--f-mono)}
+.conv{width:100%;border-collapse:collapse;font-size:.88rem}
+.conv td,.conv th{padding:7px 9px;border-bottom:1px solid var(--line);text-align:right}
+.conv th{font:600 .7rem var(--f-mono);color:var(--muted);text-transform:uppercase}
+.conv td:first-child,.conv th:first-child{text-align:left}
+
+/* molecular */
+.flow{display:grid;gap:0;counter-reset:st}
+.step{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;position:relative;padding-bottom:20px}
+.step::before{counter-increment:st;content:counter(st);width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font:700 .95rem var(--f-display);z-index:1}
+.step::after{content:"";position:absolute;left:16px;top:34px;bottom:0;width:2px;background:var(--line)}
+.step:last-child::after{display:none}
+.step .body{display:grid;gap:6px;padding-top:5px}
+.step .body p{color:var(--muted);font-size:.93rem}
+.tag{font:600 .7rem var(--f-mono);padding:2px 8px;border-radius:5px;background:var(--blue-soft);color:var(--blue);justify-self:start}
+.rccx svg{width:100%;height:auto;display:block;min-width:620px}
+.rccx{overflow-x:auto}
+.pit{display:grid;gap:10px}
+.pit div{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:start;font-size:.92rem}
+.pit div::before{content:"!";width:24px;height:24px;border-radius:7px;background:var(--up-soft);color:var(--up);font:800 .9rem var(--f-display);display:grid;place-items:center}
+
+/* treatment table */
+.tt{width:100%;border-collapse:collapse;font-size:.88rem}
+.tt th{font:600 .7rem var(--f-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:bottom}
+.tt td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+.tt td:first-child{font-weight:600;white-space:nowrap}
+.yes{color:var(--green);font-weight:600}.no{color:var(--muted)}
+
+.risk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:820px){.risk{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rk{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:4px}
+.rk b{font:800 1.9rem var(--f-display);color:var(--blue);font-variant-numeric:tabular-nums}
+.rk span{font-size:.85rem;color:var(--muted)}
+
+.refs{columns:2 360px;column-gap:32px;font-size:.86rem;padding-left:20px;margin:0}
+.refs li{break-inside:avoid;margin-bottom:9px;color:var(--muted)}
+.refs li b{color:var(--ink);font-weight:600}
+footer{padding-block:34px 50px;color:var(--muted);font-size:.84rem}
+.tip{position:fixed;z-index:30;max-width:280px;background:var(--ink);color:var(--paper);font-size:.82rem;padding:9px 11px;border-radius:9px;pointer-events:none;box-shadow:var(--shadow)}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#carte" aria-label="Atlas des blocs surrénaliens, retour en haut">
+      <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><path d="M13 2c5 4 9 7 9 12a9 9 0 0 1-18 0c0-5 4-8 9-12z" fill="none" stroke="var(--teal)" stroke-width="2"/><path d="M8.5 15.5h9M13 11v9" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"/></svg>
+      Blocs surrénaliens
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#carte">Stéroïdogenèse</a>
+      <a href="#frequences">Par fréquence</a>
+      <a href="#fiches">Fiches</a>
+      <a href="#orientation">Orientation</a>
+      <a href="#ohp">17-OHP</a>
+      <a href="#moleculaire">Sanger · MLPA</a>
+      <a href="#traitement">Traitement</a>
+      <a href="#conseil">Conseil génétique</a>
+      <a href="#differentiels">Hors HSC</a>
+      <a href="#references">Sources</a>
+    </nav>
+    <button class="themebtn" id="themeBtn" type="button" aria-label="Changer de thème">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 2a7 7 0 0 1 0 14z" fill="currentColor"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+<!-- ============ HERO + CARTE ============ -->
+<section class="hero" id="carte">
+  <div class="wrap">
+    <div class="hero-top">
+      <div style="display:grid;gap:14px">
+        <span class="eyebrow">Hyperplasie congénitale des surrénales · aide au diagnostic</span>
+        <h1>Où se situe le <em>bloc</em>, et qu'est-ce qui s'accumule en amont&nbsp;?</h1>
+      </div>
+      <p class="lede">Choisissez un déficit enzymatique&nbsp;: la carte montre les précurseurs qui s'accumulent, les hormones qui manquent et les conséquences cliniques. Cliquez sur une enzyme ou une hormone pour le détail. Les fiches plus bas reprennent clinique, biologie, gène, variants fréquents, stratégie moléculaire, traitement et conseil génétique.</p>
+    </div>
+    <div class="pills" id="blockPills" role="group" aria-label="Choisir un bloc enzymatique"></div>
+    <div class="mapgrid">
+      <div class="panel">
+        <div class="mapbox" id="mapBox"></div>
+        <div class="legend">
+          <span><i class="sw" style="background:var(--up-soft);border-color:var(--up)"></i>Accumulé (amont du bloc)</span>
+          <span><i class="sw" style="background:var(--down-soft);border-color:var(--down);border-style:dashed"></i>Diminué / absent</span>
+          <span><i class="sw" style="background:var(--surface);border-color:var(--up);border-style:dotted"></i>Variable</span>
+          <span><i class="sw" style="background:var(--block);border-color:var(--block)"></i>Enzyme déficitaire</span>
+          <span><svg width="26" height="8" aria-hidden="true"><line x1="0" y1="4" x2="26" y2="4" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="3 4"/></svg>Voie faible chez l'humain</span>
+        </div>
+      </div>
+      <aside class="panel conseq" id="conseq" aria-live="polite"></aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FRÉQUENCES ============ -->
+<section id="frequences">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow">Classement</span>
+      <h2>Les blocs par ordre de fréquence</h2>
+      <p>Le séquençage Sanger de <span class="mono">CYP21A2</span> passe en premier parce que le déficit en 21-hydroxylase domine largement. Quand le profil hormonal ne colle pas (HTA, 17-OHP seulement modérée, Δ5-stéroïdes élevés, 46,XY sous-virilisé), on descend dans ce tableau.</p>
+    </div>
+    <div class="tablebox"><table class="freq" id="freqTable"></table></div>
+    <p class="note" style="margin-top:12px">Colonne Maroc&nbsp;: cohorte monocentrique de 184 enfants suivis à Casablanca (Bouarab 2024), diagnostic confirmé en biologie moléculaire selon les auteurs. La part du déficit en 3β-HSD2 (3,2&nbsp;%) y est nettement plus élevée que dans les séries internationales (&lt;0,5&nbsp;%)&nbsp;: biais de recrutement d'un centre de référence ou effet de la consanguinité (54,4&nbsp;% dans cette cohorte), on ne peut pas trancher avec ces seules données.</p>
+  </div>
+</section>
+
+<!-- ============ FICHES ============ -->
+<section id="fiches">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow">Fiches diagnostiques</span>
+      <h2>Clinique, biologie, gène et variants</h2>
+      <p>Une fiche par déficit. Les schémas de gènes sont dessinés à partir de la structure exonique du transcrit canonique (Ensembl / RefSeq MANE)&nbsp;; la position des variants est placée par codon. Introns compressés (échelle log), exons à l'échelle racine carrée.</p>
+    </div>
+    <div class="tabs" id="ficheTabs" role="tablist" aria-label="Choisir une fiche"></div>
+    <div id="fiche"></div>
+  </div>
+</section>
+
+<!-- ============ ORIENTATION ============ -->
+<section id="orientation">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow">Outil</span>
+      <h2>Orientation à partir du profil du patient</h2>
+      <p>Renseignez ce que vous avez. L'outil classe les hypothèses par cohérence avec le profil et propose le dosage qui discrimine le mieux. C'est une aide au raisonnement à partir de signatures typiques, pas un diagnostic&nbsp;: les formes partielles et les formes non classiques s'en écartent souvent.</p>
+    </div>
+    <div class="orient">
+      <div class="panel" style="padding:18px;display:grid;gap:16px;align-content:start" id="orientForm"></div>
+      <div class="result" id="orientOut" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 17-OHP ============ -->
+<section id="ohp">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow">Interprétation</span>
+      <h2>17-hydroxyprogestérone basale et après Synacthène</h2>
+      <p>Seuils de la recommandation Endocrine Society et de GeneReviews, valables après la période néonatale, prélèvement avant 8&nbsp;h et, chez la femme réglée, en phase folliculaire. Le nouveau-né a ses propres normes (âge gestationnel, poids, méthode). Préférez la LC-MS/MS&nbsp;: l'immunodosage surestime la 17-OHP, notamment par réaction croisée avec la 17-OH-prégnénolone sulfate.</p>
+    </div>
+    <div class="calc">
+      <div class="panel" style="padding:18px;display:grid;gap:14px;align-content:start">
+        <div class="field"><label for="ohpUnit">Unité</label>
+          <select id="ohpUnit"><option value="ngml">ng/mL</option><option value="nmol">nmol/L</option><option value="ngdl">ng/dL</option></select></div>
+        <div class="grid2" style="gap:12px">
+          <div class="field"><label for="ohpBase">17-OHP basale (8 h)</label><input id="ohpBase" type="number" step="any" min="0" inputmode="decimal" value="4.2"></div>
+          <div class="field"><label for="ohpStim">À 60 min post-Synacthène</label><input id="ohpStim" type="number" step="any" min="0" inputmode="decimal" value="18"></div>
+        </div>
+        <p class="note">Valeurs pré-remplies à titre d'exemple. Synacthène (tétracosactide) 250&nbsp;µg IV, dosage à T0 et T60.</p>
+        <table class="conv num" aria-label="Seuils de 17-OHP dans les trois unités">
+          <thead><tr><th>Seuil</th><th>ng/dL</th><th>ng/mL</th><th>nmol/L</th></tr></thead>
+          <tbody>
+            <tr><td>Basale normale</td><td>&lt; 200</td><td>&lt; 2</td><td>&lt; 6</td></tr>
+            <tr><td>Stimulée, non atteint</td><td>&lt; 1 000</td><td>&lt; 10</td><td>&lt; 30</td></tr>
+            <tr><td>Forme non classique</td><td>1 000–10 000</td><td>10–100</td><td>30–300</td></tr>
+            <tr><td>Forme classique</td><td>&gt; 10 000</td><td>&gt; 100</td><td>&gt; 300</td></tr>
+          </tbody>
+        </table>
+        <p class="note">Conversion&nbsp;: 1&nbsp;ng/mL = 3,03&nbsp;nmol/L (masse molaire 330,5&nbsp;g/mol).</p>
+      </div>
+      <div class="panel" style="padding:18px;display:grid;gap:14px;align-content:start" id="ohpOut"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MOLÉCULAIRE ============ -->
+<section id="moleculaire">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow">Biologie moléculaire de CYP21A2</span>
+      <h2>Pourquoi le Sanger seul ne suffit pas</h2>
+      <p><span class="mono">CYP21A2</span> se trouve dans le module RCCX (6p21.33) à environ 30&nbsp;kb de son pseudogène <span class="mono">CYP21A1P</span>, avec 98&nbsp;% d'identité dans les exons et 96&nbsp;% dans les introns. Environ 20 à 30&nbsp;% des allèles pathogènes sont des délétions ou des grandes conversions (gènes chimères) invisibles en séquençage. La recommandation EMQN associe séquençage locus-spécifique et MLPA.</p>
+    </div>
+    <div class="panel rccx" style="padding:14px" id="rccxBox"></div>
+    <div class="grid2" style="margin-top:18px">
+      <div class="card">
+        <h4><span class="dot"></span>Stratégie au laboratoire</h4>
+        <div class="flow">
+          <div class="step"><div class="body"><h4>Confirmer le profil hormonal</h4><p>17-OHP (± Synacthène), 21-désoxycortisol si disponible, Δ4-androstènedione, rénine, ionogramme. Un profil atypique oriente vers un autre gène avant tout séquençage.</p></div></div>
+          <div class="step"><div class="body"><h4>PCR longue locus-spécifique puis Sanger</h4><p>Amplicon long spécifique de <span class="mono">CYP21A2</span> (amorces dans les régions qui diffèrent du pseudogène), puis séquençage des 10 exons et jonctions introniques sur cet amplicon. Une PCR courte non spécifique co-amplifie <span class="mono">CYP21A1P</span> et produit de faux variants.</p><span class="tag">≈ 70–80 % des allèles</span></div></div>
+          <div class="step"><div class="body"><h4>MLPA si 0 ou 1 allèle trouvé, ou homozygotie apparente</h4><p>Délétion de 30&nbsp;kb, chimères <span class="mono">CYP21A1P/CYP21A2</span>, duplications. Une homozygotie apparente peut cacher une délétion sur l'autre allèle (hémizygotie).</p><span class="tag">≈ 20–30 % des allèles</span></div></div>
+          <div class="step"><div class="body"><h4>Ségrégation parentale</h4><p>Indispensable pour établir cis ou trans quand plusieurs variants sont trouvés (une conversion peut en apporter plusieurs sur le même allèle) et pour repérer un variant de novo (≈ 1–2&nbsp;% des allèles).</p></div></div>
+          <div class="step"><div class="body"><h4>Interpréter par le génotype le moins sévère</h4><p>Le phénotype suit l'allèle le plus fonctionnel. Corrélation génotype-phénotype directe dans environ la moitié des génotypes seulement (New 2013), surtout imprécise pour les formes virilisantes simples.</p></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h4><span class="dot" style="background:var(--up)"></span>Pièges d'interprétation</h4>
+        <div class="pit">
+          <div><span><b>Duplication avec p.Gln319*.</b> L'haplotype dupliqué le plus courant porte p.Gln319* sur une copie et un <span class="mono">CYP21A2</span> normal sur l'autre, en cis. Le porteur n'est pas hétérozygote au sens fonctionnel. Risque de faux diagnostic de porteur et d'erreur en diagnostic prénatal&nbsp;: vérifier le nombre de copies en MLPA. Dans une série (Parajes 2008), 7&nbsp;% des allèles étaient des duplications.</span></div>
+          <div><span><b>Plusieurs variants « pseudogéniques » ensemble.</b> P30L + c.293-13 + délétion de 8&nbsp;pb peuvent venir d'une seule conversion sur un allèle. Sans les parents, on peut conclure à tort à une hétérozygotie composite.</span></div>
+          <div><span><b>c.293-13A/C&gt;G.</b> La position −13 est polymorphe (A ou C) à l'état normal&nbsp;; c'est le G qui est pathogène. Certains tests par PCR spécifique d'allèle ont rendu des homozygotes là où le Sanger montrait une hétérozygotie&nbsp;: privilégier le séquençage.</span></div>
+          <div><span><b>CAH-X.</b> Si la délétion s'étend à <span class="mono">TNXB</span> (chimère <span class="mono">TNXA/TNXB</span>), le patient peut avoir un syndrome d'Ehlers-Danlos hypermobile associé. Environ 15&nbsp;% des patients 21-OHD portent au moins une chimère TNXA/TNXB selon le NIH (Merke). La MLPA <span class="mono">CYP21A2</span> courante inclut des sondes <span class="mono">TNXB</span> selon le kit&nbsp;: à vérifier sur votre lot.</span></div>
+          <div><span><b>Pseudo-homozygotie.</b> Variant « homozygote » + parent non porteur = délétion, de novo ou erreur d'échantillon. MLPA en trio.</span></div>
+          <div><span><b>Nomenclature.</b> Les noms historiques (I172N, V281L, Q318X…) ont un codon de moins que la nomenclature HGVS sur <span class="mono">NM_000500.9</span> (p.Ile173Asn, p.Val282Leu, p.Gln319*), parce que la séquence de référence actuelle inclut p.Leu9dup.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRAITEMENT ============ -->
+<section id="traitement">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow">Prise en charge</span>
+      <h2>Traitement à instaurer</h2>
+      <p>Repères issus de la recommandation Endocrine Society 2018 pour le déficit en 21-hydroxylase, et des séries publiées pour les formes rares. Les doses s'ajustent en équipe d'endocrinologie pédiatrique&nbsp;; la génétique n'est qu'un des intervenants.</p>
+    </div>
+    <div class="grid3">
+      <div class="card"><h4><span class="dot"></span>Glucocorticoïdes</h4>
+        <ul><li>Enfant en croissance&nbsp;: <b>hydrocortisone</b> comprimés, 10–15&nbsp;mg/m²/j en 3 prises. Éviter la suspension orale et les glucocorticoïdes puissants au long cours.</li>
+        <li>Adulte&nbsp;: hydrocortisone 15–25&nbsp;mg/j en 2–3 prises, ou prednisolone / dexaméthasone une fois la croissance terminée.</li>
+        <li>Au-delà de 20&nbsp;mg/m²/j chez le nourrisson ou 15–17&nbsp;mg/m²/j à l'adolescence, la taille finale baisse.</li>
+        <li>Objectif 21-OHD&nbsp;: une 17-OHP <i>normale</i> signe un surtraitement&nbsp;; on vise des androgènes adaptés à l'âge.</li></ul></div>
+      <div class="card"><h4><span class="dot" style="background:var(--blue)"></span>Minéralocorticoïdes et sel</h4>
+        <ul><li><b>Fludrocortisone</b> 0,05–0,2&nbsp;mg/j en 1–2 prises, chez <i>tous</i> les nourrissons à forme classique (perte de sel ou non).</li>
+        <li><b>NaCl</b> 1–2&nbsp;g/j chez le nourrisson, souvent arrêté après la première année.</li>
+        <li>Suivi par rénine (cible normale basse) et pression artérielle.</li>
+        <li>Pas de fludrocortisone dans les blocs hypertensifs (11β, 17α).</li></ul></div>
+      <div class="card"><h4><span class="dot" style="background:var(--block)"></span>Stress et urgence</h4>
+        <ul><li>Fièvre, vomissements, chirurgie, traumatisme&nbsp;: doubler ou tripler la dose orale&nbsp;; hydrocortisone IM/IV si la voie orale est impossible.</li>
+        <li>Carte d'urgence et kit injectable pour la famille.</li>
+        <li>Forme non classique&nbsp;: couverture de stress seulement si le cortisol sous Synacthène est insuffisant (&lt; 14–18&nbsp;µg/dL, soit &lt; 400–500&nbsp;nmol/L selon le dosage).</li></ul></div>
+    </div>
+    <div class="tablebox" style="margin-top:18px">
+      <table class="tt" id="treatTable"></table>
+    </div>
+    <div class="grid2" style="margin-top:18px">
+      <div class="card"><h4><span class="dot" style="background:var(--green)"></span>Nouveautés</h4>
+        <p><b>Crinécerfont</b> (antagoniste du récepteur CRF1)&nbsp;: approuvé par la FDA le 13 décembre 2024, en <i>complément</i> des glucocorticoïdes, pour contrôler les androgènes dans la forme classique du déficit en 21-hydroxylase, à partir de 4 ans. Il permet de réduire les doses de glucocorticoïdes&nbsp;; ce n'est pas un substitut.</p>
+        <p class="flag"><b>À vérifier&nbsp;:</b> je n'ai pas trouvé d'information sur sa disponibilité au Maroc ni sur un avis de l'EMA.</p></div>
+      <div class="card"><h4><span class="dot" style="background:var(--up)"></span>Dexaméthasone prénatale</h4>
+        <p>Destinée à limiter la virilisation d'un fœtus 46,XX atteint. GeneReviews et la recommandation Endocrine Society la considèrent comme <b>expérimentale</b>&nbsp;: uniquement dans un protocole de recherche approuvé. Le diagnostic prénatal non invasif sur ADN fœtal libre (sexe et haplotype) a été développé pour éviter de traiter inutilement garçons et filles non atteintes.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONSEIL ============ -->
+<section id="conseil">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow">Conseil génétique</span>
+      <h2>Ce qu'il faut dire à la famille</h2>
+      <p>Toutes les HSC sont autosomiques récessives. L'hypoplasie surrénale congénitale (NR0B1), diagnostic différentiel majeur chez le garçon, est liée à l'X. Le contexte de consanguinité, fréquent au Maroc (54,4&nbsp;% à Casablanca, 46,5&nbsp;% dans la série DSD du CHU Hassan II de Fès), augmente la probabilité d'homozygotie.</p>
+    </div>
+    <div class="risk">
+      <div class="rk"><b>25 %</b><span>Risque d'enfant atteint pour un couple de deux porteurs, à chaque grossesse</span></div>
+      <div class="rk"><b>2,5 %</b><span>Enfant à forme classique né d'une mère 21-OHD non classique (4/162 naissances, IC 95&nbsp;% 0,7–6,2)</span></div>
+      <div class="rk"><b>≥ 14,8 %</b><span>Enfants de ces mères ayant eux-mêmes une forme non classique</span></div>
+      <div class="rk"><b>≈ 1/61</b><span>Porteurs d'allèle classique attendus si incidence 1/15&nbsp;000 et panmixie (Hardy-Weinberg)</span></div>
+    </div>
+    <div class="grid2" style="margin-top:18px">
+      <div class="card"><h4><span class="dot"></span>Points clés</h4>
+        <ul>
+          <li>Tester les deux parents&nbsp;: phase cis/trans, variant de novo (≈ 1&nbsp;% des probands n'ont qu'un parent porteur), et dépistage d'un parent lui-même atteint d'une forme non classique méconnue.</li>
+          <li>Fratrie&nbsp;: dosage de 17-OHP chez tout nouveau-né à risque, même avec un dépistage néonatal (il n'existe pas de dépistage national au Maroc).</li>
+          <li>Patient atteint ou femme à forme non classique&nbsp;: proposer le génotypage du conjoint. Si le conjoint est porteur, le risque d'enfant atteint passe à 50&nbsp;%.</li>
+          <li>Oncles et tantes du proband, frères et sœurs des parents porteurs&nbsp;: 50&nbsp;% de risque d'être porteurs.</li>
+          <li>Le dosage hormonal ne permet pas de détecter fiablement les hétérozygotes&nbsp;: le test de porteur est moléculaire et suppose les variants familiaux connus.</li>
+        </ul></div>
+      <div class="card"><h4><span class="dot" style="background:var(--blue)"></span>Options reproductives</h4>
+        <ul>
+          <li>Le bon moment pour préciser les statuts de porteur et discuter des options est <b>avant</b> la grossesse.</li>
+          <li>Diagnostic prénatal sur villosités choriales ou amniocentèse, et diagnostic préimplantatoire, une fois les deux variants familiaux identifiés.</li>
+          <li>Pour 21-OHD, contrôler le nombre de copies (MLPA) chez les parents avant tout DPN&nbsp;: une duplication méconnue a déjà conduit à un DPN erroné.</li>
+          <li>Prédire la sévérité chez un futur enfant est fiable quand le proband est une fille virilisée, moins quand le proband est un garçon.</li>
+          <li>Conserver l'ADN des patients sans diagnostic moléculaire.</li>
+        </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIFFÉRENTIELS ============ -->
+<section id="differentiels">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow">Diagnostics proches</span>
+      <h2>Quand ce n'est pas une HSC</h2>
+      <p>Trois tableaux se confondent régulièrement avec un bloc&nbsp;: la perte de sel du nourrisson sans anomalie génitale, l'insuffisance surrénale du garçon, et l'hyperandrogénie de la fille ou de la femme.</p>
+    </div>
+    <div class="grid3" id="diffCards"></div>
+  </div>
+</section>
+
+<!-- ============ RÉFÉRENCES ============ -->
+<section id="references" style="border-bottom:0">
+  <div class="wrap">
+    <div class="sechead"><span class="eyebrow">Sources</span><h2>Références</h2>
+      <p>Chaque chiffre du site renvoie à l'une de ces sources. Les points non vérifiés sont signalés dans le texte par un encadré orange.</p></div>
+    <ol class="refs" id="refList"></ol>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">Outil pédagogique d'aide au raisonnement, à destination des professionnels de santé. Il ne remplace ni l'avis d'un endocrinologue pédiatre ni la validation du laboratoire. Structures géniques&nbsp;: Ensembl REST (transcrits canoniques = RefSeq MANE Select), consulté le 3 octobre 2026.</div></footer>
+<div class="tip" id="tip" hidden></div>
+<script>
+const GENE_STRUCT={"CYP21A2":{"nm":"NM_000500.9","enst":"ENST00000644719","aa":495,"ex":[210,90,155,102,102,87,201,179,104,776],"intr":[97,282,107,88,101,169,200,83,97],"cds":[202,90,155,102,102,87,201,179,104,266]},"CYP11B1":{"nm":"NM_000497.4","enst":"ENST00000292427","aa":503,"ex":[251,156,200,204,155,167,79,198,2130],"intr":[387,1809,137,286,362,399,79,470],"cds":[239,156,200,204,155,167,79,198,114]},"HSD3B2":{"nm":"NM_000198.4","enst":"ENST00000369416","aa":372,"ex":[53,231,165,1226],"intr":[128,3856,2226],"cds":[0,142,165,812]},"CYP17A1":{"nm":"NM_000102.4","enst":"ENST00000369887","aa":508,"ex":[349,139,230,87,216,170,104,455],"intr":[1672,239,662,827,312,899,522],"cds":[297,139,230,87,216,170,104,284]},"POR":{"nm":"NM_001382655.3","enst":"ENST00000461988","aa":677,"ex":[25,192,49,129,150,125,90,99,117,119,182,150,271,146,83,519],"intr":[38809,18232,6989,759,559,344,617,1197,101,920,99,371,73,90,95],"cds":[0,179,49,129,150,125,90,99,117,119,182,150,271,146,83,145]},"STAR":{"nm":"NM_000349.3","enst":"ENST00000276449","aa":285,"ex":[198,114,128,159,185,94,1687],"intr":[2000,313,1752,141,647,835],"cds":[64,114,128,159,185,94,114]},"CYP11A1":{"nm":"NM_000781.3","enst":"ENST00000268053","aa":521,"ex":[330,156,200,204,161,167,79,198,342],"intr":[19261,2656,1051,651,3223,271,468,467],"cds":[269,156,200,204,161,167,79,198,132]},"CYP11B2":{"nm":"NM_000498.3","enst":"ENST00000323110","aa":503,"ex":[242,156,200,204,155,167,79,198,1535],"intr":[387,1813,137,286,812,399,79,436],"cds":[239,156,200,204,155,167,79,198,114]},"NR0B1":{"nm":"NM_000475.5","enst":"ENST00000378970","aa":470,"ex":[1195,618],"intr":[3372],"cds":[1168,245]}};
+/* ===================== RÉFÉRENCES ===================== */
+const REFS = {
+  gr21:{t:"Nimkarn S, Gangishetti PK, Yau M, New MI. 21-Hydroxylase-Deficient Congenital Adrenal Hyperplasia. GeneReviews®, mise à jour 2016.",u:"https://www.ncbi.nlm.nih.gov/books/NBK1171/"},
+  es18:{t:"Speiser PW et al. Congenital Adrenal Hyperplasia Due to Steroid 21-Hydroxylase Deficiency: An Endocrine Society Clinical Practice Guideline. J Clin Endocrinol Metab 2018;103:4043-88.",u:"https://doi.org/10.1210/jc.2018-01865"},
+  emqn:{t:"Baumgartner-Parzer S et al. EMQN best practice guidelines for molecular genetic testing and reporting of 21-hydroxylase deficiency. Eur J Hum Genet 2020;28:1341-67.",u:"https://doi.org/10.1038/s41431-020-0653-5"},
+  new13:{t:"New MI et al. Genotype–phenotype correlation in 1,507 families with CAH owing to 21-hydroxylase deficiency. PNAS 2013;110:2611-6.",u:"https://doi.org/10.1073/pnas.1300057110"},
+  new06:{t:"New MI. Extensive clinical experience: nonclassical 21-hydroxylase deficiency. J Clin Endocrinol Metab 2006;91:4205-14.",u:"https://doi.org/10.1210/jc.2006-1645"},
+  abid:{t:"Abid F et al. CYP21A2 gene mutation analysis in Moroccan patients with classic form of 21-hydroxylase deficiency: high regional prevalence of p.Q318X. Clin Chem Lab Med 2008;46:1707-13.",u:"https://doi.org/10.1515/CCLM.2008.339"},
+  bouarab:{t:"Bouarab I, Yakine F, Slaoui B. A Cross-Sectional Study of Congenital Adrenal Hyperplasia (184 enfants, Casablanca). Cureus 2024;16:e63520.",u:"https://doi.org/10.7759/cureus.63520"},
+  hssaini:{t:"Hssaini M et al. In-depth exploration of differences of sex development: 5-year experience in a tertiary center (CHU Hassan II, Fès). Endocr Connect 2024;13:e240236.",u:"https://doi.org/10.1530/EC-24-0236"},
+  moran:{t:"Moran C et al. Reproductive outcome of women with 21-hydroxylase-deficient nonclassic adrenal hyperplasia. J Clin Endocrinol Metab 2006;91:3451-6.",u:"https://academic.oup.com/jcem/article-abstract/91/9/3451/2656572"},
+  kleinle:{t:"Kleinle S et al. Duplications of the functional CYP21A2 gene are primarily restricted to Q318X alleles: evidence for a founder effect. J Clin Endocrinol Metab 2009;94:3954-8.",u:"https://pubmed.ncbi.nlm.nih.gov/19773403/"},
+  merke:{t:"NICHD Annual Report 2024 — Merke DP. Pathophysiology, Genetics, and Treatment of Congenital Adrenal Disorders (CAH-X).",u:"https://annualreport.nichd.nih.gov/2024/merke.html"},
+  fda:{t:"FDA. FDA Approves New Treatment for Congenital Adrenal Hyperplasia (crinecerfont), 13 décembre 2024.",u:"https://www.fda.gov/news-events/press-announcements/fda-approves-new-treatment-congenital-adrenal-hyperplasia"},
+  white91:{t:"White PC et al. A mutation in CYP11B1 (Arg-448→His) associated with steroid 11β-hydroxylase deficiency in Jews of Moroccan origin. J Clin Invest 1991.",u:"https://pubmed.ncbi.nlm.nih.gov/2022736/"},
+  paperna:{t:"Paperna T et al. Mutations in CYP11B1 and congenital adrenal hyperplasia in Moroccan Jews. J Clin Endocrinol Metab 2005.",u:"https://pubmed.ncbi.nlm.nih.gov/16030166/"},
+  hetR448:{t:"Absence of steroid biosynthetic defects in heterozygote individuals for classic 11β-hydroxylase deficiency due to a R448H mutation in CYP11B1.",u:"https://pubmed.ncbi.nlm.nih.gov/8530633/"},
+  tunis11:{t:"Two novel CYP11B1 mutations in CAH due to 11β-hydroxylase deficiency in a Tunisian family. Gen Comp Endocrinol 2011.",u:"https://www.sciencedirect.com/science/article/abs/pii/S0016648011004977"},
+  medsc11:{t:"Medscape. C-11 Hydroxylase Deficiency — Practice Essentials, Pathophysiology.",u:"https://emedicine.medscape.com/article/117012-overview"},
+  abouchiba:{t:"Abouchiba S et al. Incidental discovery of neglected 11β-hydroxylase deficiency causing 46,XX DSD in a 35-year-old adult (CHU Hassan II, Fès). Radiol Case Rep 2026;21:5617-23.",u:"https://doi.org/10.1016/j.radcr.2026.07.094"},
+  elhaddar:{t:"El Haddar Z et al. A rare case of steroid 11β-hydroxylase deficiency in a child revealed by acute pulmonary edema (Oujda). Oxf Med Case Reports 2024.",u:"https://doi.org/10.1093/omcr/omae042"},
+  hsd3del:{t:"Delayed Diagnosis of CAH Due to 3β-Hydroxysteroid Dehydrogenase Type 2 Deficiency. J Endocr Soc / PMC 2025.",u:"https://pmc.ncbi.nlm.nih.gov/articles/PMC12510320/"},
+  hsd3chap:{t:"3β-Hydroxysteroid dehydrogenase deficiency (chapitre, 75 mutations dans 139 familles). Elsevier 2023.",u:"https://www.sciencedirect.com/science/chapter/edited-volume/abs/pii/B9780128214244000058"},
+  nicola:{t:"Nicola AG et al. Approach of Heterogeneous Spectrum Involving 3β-HSD2 Deficiency. Diagnostics 2022;12:2168.",u:"https://doi.org/10.3390/diagnostics12092168"},
+  mellone:{t:"Mellone S et al. Co-occurrence of a pathogenic HSD3B2 variant and a 10q22.3-q23.2 duplication in Moroccan newborn twins with salt-wasting CAH. Genes 2022;13:2190.",u:"https://doi.org/10.3390/genes13122190"},
+  scaramuzzo:{t:"Scaramuzzo RT et al. Two Moroccan sisters with severe salt-wasting CAH but normal female genitalia (HSD3B2). Sex Dev 2017;11:82-5.",u:"https://doi.org/10.1159/000456023"},
+  p222q:{t:"3β-hydroxysteroid dehydrogenase type II deficiency on newborn screening test (p.P222Q).",u:"https://pubmed.ncbi.nlm.nih.gov/25211449/"},
+  meta17:{t:"17α-Hydroxylase/17,20-lyase Deficiency (17-OHD): A Meta-analysis of Reported Cases. J Clin Endocrinol Metab 2025;110:e1261.",u:"https://academic.oup.com/jcem/article/110/4/e1261/7876482"},
+  medsc17:{t:"Medscape. 17-Hydroxylase Deficiency Syndrome — Background, Etiology.",u:"https://emedicine.medscape.com/article/920532-overview"},
+  china17:{t:"Prevalence of CYP17A1 gene mutations in 17α-hydroxylase deficiency in the Chinese Han population.",u:"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6792268/"},
+  huang05:{t:"Huang N et al. Diversity and function of mutations in P450 oxidoreductase in patients with Antley-Bixler syndrome and disordered steroidogenesis. Am J Hum Genet 2005.",u:"https://www.sciencedirect.com/science/article/pii/S0002929707607216"},
+  fukami05:{t:"Fukami M et al. Cytochrome P450 oxidoreductase gene mutations and Antley-Bixler syndrome: 10 patients. J Clin Endocrinol Metab 2005;90:414.",u:"https://pubmed.ncbi.nlm.nih.gov/15483095/"},
+  fukami14:{t:"Fukami M, Ogata T. Cytochrome P450 oxidoreductase deficiency: rare congenital disorder leading to skeletal malformations and steroidogenic defects. Pediatr Int 2014.",u:"https://doi.org/10.1111/ped.12518"},
+  porchina:{t:"Novel phenotypes and genotypes in Antley-Bixler syndrome caused by POR deficiency: first cohort of Chinese children. Orphanet J Rare Dis 2019.",u:"https://ojrd.biomedcentral.com/articles/10.1186/s13023-019-1283-2"},
+  lipoid:{t:"OMIM #201710 — Lipoid congenital adrenal hyperplasia (STAR).",u:"https://omim.org/entry/201710"},
+  apem:{t:"Clinical and molecular review of atypical congenital adrenal hyperplasia. Ann Pediatr Endocrinol Metab.",u:"https://e-apem.org/journal/view.php?number=572"},
+  kimstar:{t:"Kang E et al. Mutation spectrum of STAR and the founder effect of p.Q258* in Korean patients with congenital lipoid adrenal hyperplasia. Mol Med 2017.",u:"https://pmc.ncbi.nlm.nih.gov/articles/PMC5522967/"},
+  apemlipoid:{t:"Congenital lipoid adrenal hyperplasia (StAR et P450scc). Ann Pediatr Endocrinol Metab.",u:"https://e-apem.org/m/journal/view.php?number=547"},
+  pascoe:{t:"Pascoe L et al. Mutations in the human CYP11B2 (aldosterone synthase) gene causing corticosterone methyloxidase II deficiency. PNAS 1992;89:4996-5000.",u:"https://doi.org/10.1073/pnas.89.11.4996"},
+  grnr0b1:{t:"NR0B1-Related Adrenal Hypoplasia Congenita. GeneReviews®.",u:"https://www.ncbi.nlm.nih.gov/books/NBK1431/"},
+  rowlands:{t:"Rowlands A et al. Access to fludrocortisone and hydrocortisone in children with CAH in the WHO Eastern Mediterranean Region. BMJ Glob Health 2021.",u:"https://doi.org/10.1136/bmjgh-2021-007195"},
+  ensembl:{t:"Ensembl REST API — structures exoniques des transcrits canoniques (MANE Select), consulté le 3 octobre 2026.",u:"https://rest.ensembl.org"}
+};
+
+/* ===================== HORMONES (carte) ===================== */
+const NODES = {
+  chol:{l:"Cholestérol",x:450,y:42,d:"Substrat de départ, importé dans la mitochondrie par StAR puis clivé par CYP11A1 (P450scc). S'accumule sous forme d'esters lipidiques dans le déficit en StAR (surrénales hypertrophiées, « lipoïdes »)."},
+  preg:{l:"Prégnénolone",x:150,y:150,d:"Premier stéroïde. ↑ dans les déficits en 3β-HSD2, 17α-hydroxylase et POR."},
+  ohpreg:{l:"17-OH-prégnénolone",x:450,y:150,d:"Meilleur marqueur du déficit en 3β-HSD2 (rapport 17-OH-Preg/cortisol). Sa forme sulfatée interfère avec les immunodosages de 17-OHP."},
+  dhea:{l:"DHEA / DHEAS",x:750,y:150,d:"Androgène Δ5 surrénalien. ↑ dans 3β-HSD2 (et 21-OHD), effondré dans 17α-OHD, StAR, CYP11A1."},
+  prog:{l:"Progestérone",x:150,y:268,d:"↑ dans 21-OHD, 17α-OHD et POR."},
+  ohp:{l:"17-OH-progestérone",x:450,y:268,d:"Marqueur du dépistage néonatal. ↑↑↑ dans 21-OHD ; ↑ modérée dans 11β-OHD et POR ; parfois ↑ dans 3β-HSD2 (conversion périphérique par HSD3B1 et réaction croisée en immunodosage) ; basse dans 17α-OHD."},
+  a4:{l:"Δ4-androstènedione",x:750,y:268,d:"Androgène de suivi thérapeutique du 21-OHD. Chez l'humain, la lyase convertit mal la 17-OHP : l'essentiel passe par DHEA."},
+  doc:{l:"DOC",x:150,y:386,d:"11-désoxycorticostérone, minéralocorticoïde puissant. ↑ dans 11β-OHD et 17α-OHD → HTA, hypokaliémie, rénine supprimée."},
+  s:{l:"11-désoxycortisol",x:450,y:386,d:"Composé S. Marqueur clé du déficit en 11β-hydroxylase (↑↑). Bas dans 21-OHD."},
+  t:{l:"Testostérone",x:750,y:386,d:"Via 17β-HSD (AKR1C3 dans la surrénale, HSD17B3 dans le testicule). Virilise le fœtus 46,XX dans 21-OHD et 11β-OHD."},
+  df21:{l:"21-désoxycortisol",x:612,y:345,w:150,d:"Produit par CYP11B1 à partir de la 17-OHP. Marqueur spécifique du déficit en 21-hydroxylase, utilisé en 2e intention au dépistage néonatal (LC-MS/MS)."},
+  b:{l:"Corticostérone",x:150,y:504,d:"Glucocorticoïde faible. ↑↑ dans 17α-OHD, ce qui évite la crise surrénale malgré le cortisol bas."},
+  f:{l:"Cortisol",x:450,y:504,d:"Produit final de la zone fasciculée. Bas dans toutes les HSC (parfois seulement en réponse au Synacthène, dans les formes partielles et POR)."},
+  e2:{l:"Œstradiol",x:750,y:504,d:"Aromatase (CYP19A1), enzyme microsomale dépendante de POR."},
+  ohb:{l:"18-OH-corticostérone",x:150,y:614,d:"Intermédiaire de CYP11B2. Rapport 18-OH-B/aldostérone ↑ dans le déficit en aldostérone synthase de type II (CMO II)."},
+  aldo:{l:"Aldostérone",x:150,y:718,d:"Minéralocorticoïde de la zone glomérulée. Basse avec rénine haute = perte de sel."}
+};
+/* arêtes : [de, vers, enzyme, style] */
+const EDGES = [
+  ["chol","preg","star","",{via:[[300,42],[150,42]]}],
+  ["preg","ohpreg","c17h"],["ohpreg","dhea","c17l"],
+  ["prog","ohp","c17h"],["ohp","a4","c17l","weak"],
+  ["preg","prog","h3b"],["ohpreg","ohp","h3b"],["dhea","a4","h3b"],
+  ["prog","doc","c21"],["ohp","s","c21"],
+  ["a4","t","h17"],
+  ["doc","b","c11b"],["s","f","c11b1"],["ohp","df21","c11b1x"],
+  ["t","e2","c19"],
+  ["b","ohb","c11b2"],["ohb","aldo","c11b2b"]
+];
+const ENZ = {
+  star:{l:"StAR · CYP11A1",x:300,y:42,info:"StAR transporte le cholestérol vers la membrane mitochondriale interne ; CYP11A1 (P450scc) le clive en prégnénolone. Un bloc ici supprime tous les stéroïdes surrénaliens et gonadiques."},
+  c17h:{l:"CYP17A1 · 17α-OH",x:300,info:"Activité 17α-hydroxylase de CYP17A1 (microsomale, dépendante de POR)."},
+  c17l:{l:"CYP17A1 · lyase",x:600,info:"Activité 17,20-lyase de CYP17A1, stimulée par le cytochrome b5. Préfère nettement la 17-OH-prégnénolone à la 17-OHP chez l'humain."},
+  h3b:{l:"HSD3B2",info:"3β-hydroxystéroïde déshydrogénase de type 2 (surrénale et gonades). L'isoenzyme de type 1 (HSD3B1, placenta et tissus périphériques) n'est pas touchée."},
+  c21:{l:"CYP21A2",info:"21-hydroxylase (microsomale, dépendante de POR). Bloc de loin le plus fréquent."},
+  h17:{l:"17β-HSD",info:"AKR1C3 dans la surrénale, HSD17B3 dans le testicule (déficit en HSD17B3 = DSD 46,XY sans atteinte surrénalienne)."},
+  c11b:{l:"CYP11B1 / B2",info:"DOC → corticostérone : réalisé par CYP11B1 (fasciculée) et CYP11B2 (glomérulée)."},
+  c11b1:{l:"CYP11B1",info:"11β-hydroxylase : 11-désoxycortisol → cortisol."},
+  c11b1x:{l:"CYP11B1",info:"La 11β-hydroxylation de la 17-OHP donne le 21-désoxycortisol, marqueur du 21-OHD."},
+  c19:{l:"CYP19A1",info:"Aromatase (microsomale, dépendante de POR)."},
+  c11b2:{l:"CYP11B2",info:"Aldostérone synthase : 18-hydroxylation (étape CMO I)."},
+  c11b2b:{l:"CYP11B2",info:"Aldostérone synthase : 18-oxydation (étape CMO II)."}
+};
+
+/* ===================== BLOCS (carte) ===================== */
+const BLOCKS = {
+  normal:{tab:"Normal",g:"",title:"Stéroïdogenèse surrénalienne normale",gene:"",nodes:{},enz:{},
+    text:"Trois zones, trois produits : aldostérone (glomérulée), cortisol (fasciculée), androgènes surrénaliens (réticulée). Le cortisol rétrocontrôle l'ACTH : tout bloc sur la voie du cortisol lève ce frein, l'ACTH monte et pousse les précurseurs vers les voies restées ouvertes. C'est l'hyperplasie.",
+    facts:[["Principe","Amont du bloc ↑, aval ↓"],["Moteur","ACTH ↑ par défaut de cortisol"],["Androgènes","↑ si le bloc est après CYP17A1"],["Minéralo","↑ si DOC s'accumule, ↓ si bloc avant"]]},
+  cyp21:{tab:"21-hydroxylase",g:"CYP21A2",fiche:"cyp21",title:"Déficit en 21-hydroxylase",gene:"CYP21A2 · 6p21.33",
+    nodes:{prog:"up",ohp:"up",df21:"up",a4:"up",t:"up",ohpreg:"up",dhea:"up",doc:"down",b:"down",ohb:"down",aldo:"down",s:"down",f:"down"},
+    enz:{c21:"blocked"},
+    text:"La 17-OHP s'accumule et part vers les androgènes. Dans la forme avec perte de sel, l'aldostérone manque aussi. 90 à 95 % des HSC.",
+    facts:[["TA","Normale ou basse"],["Na / K","↓ / ↑ si perte de sel"],["46,XX","Virilisée (forme classique)"],["46,XY","OGE normaux, crise à 1–4 sem."],["Crise surrénale","Oui (≈75 % de perte de sel)"],["Marqueur","17-OHP ↑↑↑, 21-désoxycortisol"]],
+    key:["17-OHP ↑↑↑","21-désoxycortisol ↑","Δ4 ↑","Rénine ↑"]},
+  cyp11b1:{tab:"11β-hydroxylase",g:"CYP11B1",fiche:"cyp11b1",title:"Déficit en 11β-hydroxylase",gene:"CYP11B1 · 8q24.3",
+    nodes:{doc:"up",s:"up",ohp:"up",a4:"up",t:"up",dhea:"up",b:"down",f:"down",ohb:"down",aldo:"down"},
+    enz:{c11b1:"blocked",c11b1x:"blocked",c11b:"partial"},
+    text:"DOC et 11-désoxycortisol s'accumulent. Le DOC, minéralocorticoïde, freine la rénine et donne HTA et hypokaliémie ; les androgènes virilisent comme dans le 21-OHD. La 17-OHP monte un peu et peut tromper.",
+    facts:[["TA","HTA (≈ 2/3 des formes classiques)"],["Na / K","K ↓ variable, rénine ↓"],["46,XX","Virilisée"],["46,XY","OGE normaux, puberté précoce"],["Crise surrénale","Rare"],["Marqueur","11-désoxycortisol ↑↑, DOC ↑"]],
+    key:["11-désoxycortisol ↑↑","DOC ↑","Rénine ↓","17-OHP ↑ modérée"]},
+  hsd3b2:{tab:"3β-HSD2",g:"HSD3B2",fiche:"hsd3b2",title:"Déficit en 3β-HSD de type 2",gene:"HSD3B2 · 1p13.1",
+    nodes:{preg:"up",ohpreg:"up",dhea:"up",ohp:"var",a4:"var",t:"var",prog:"down",doc:"down",b:"down",ohb:"down",aldo:"down",s:"down",f:"down",e2:"down",df21:"down"},
+    enz:{h3b:"blocked"},
+    text:"Les Δ5-stéroïdes s'accumulent. Le testicule est touché aussi : le garçon est sous-virilisé. Chez la fille, la DHEA convertie en périphérie (HSD3B1) peut viriliser modérément. Perte de sel fréquente.",
+    facts:[["TA","Basse si perte de sel"],["Na / K","↓ / ↑"],["46,XX","Normaux ou clitoromégalie modérée"],["46,XY","Sous-virilisé (hypospade, micropénis)"],["Crise surrénale","Oui, souvent"],["Marqueur","17-OH-prégnénolone ↑↑, Δ5/Δ4 ↑"]],
+    key:["17-OH-Preg ↑↑","DHEA ↑","Δ5/Δ4 ↑","17-OHP N ou ↑"]},
+  cyp17:{tab:"17α-hydroxylase",g:"CYP17A1",fiche:"cyp17",title:"Déficit en 17α-hydroxylase / 17,20-lyase",gene:"CYP17A1 · 10q24.32",
+    nodes:{preg:"up",prog:"up",doc:"up",b:"up",ohb:"up",aldo:"var",ohpreg:"down",ohp:"down",dhea:"down",a4:"down",t:"down",s:"down",f:"down",e2:"down",df21:"down"},
+    enz:{c17h:"blocked",c17l:"blocked"},
+    text:"Tout part vers la voie minéralocorticoïde : DOC et corticostérone ↑↑. HTA et hypokaliémie, mais pas de crise surrénale (la corticostérone suffit). Plus d'androgènes ni d'œstrogènes : impubérisme, et 46,XY d'aspect féminin.",
+    facts:[["TA","HTA (57 %)"],["Na / K","K ↓ (≈ 45 %), rénine ↓"],["46,XX","OGE normaux, impubérisme"],["46,XY","Féminin ou ambigu, cryptorchidie"],["Crise surrénale","Non en règle"],["Marqueur","Corticostérone ↑↑, 17-OHP ↓"]],
+    key:["Corticostérone ↑↑","DOC ↑","17-OHP ↓","LH/FSH ↑"]},
+  por:{tab:"POR",g:"POR",fiche:"por",title:"Déficit en P450 oxydoréductase",gene:"POR · 7q11.23",
+    nodes:{preg:"up",prog:"up",ohp:"up",b:"up",doc:"var",f:"var",dhea:"down",a4:"down",t:"down",e2:"down"},
+    enz:{c17h:"partial",c17l:"partial",c21:"partial",c19:"partial"},
+    text:"POR donne les électrons à toutes les P450 microsomales : déficit partiel combiné de CYP17A1 et CYP21A2 (et de l'aromatase, de CYP51A1). DSD dans les deux sexes, malformations squelettiques de type Antley-Bixler, virilisation maternelle possible.",
+    facts:[["TA","En général normale"],["Na / K","En général normaux"],["46,XX","Virilisée, non évolutive après la naissance"],["46,XY","Sous-virilisé"],["Crise surrénale","Possible ; réponse au Synacthène souvent insuffisante"],["Indice","Squelette + virilisation maternelle"]],
+    key:["17-OHP ↑ modérée","Prégnénolone/corticostérone ↑","Androgènes ↓","Profil urinaire GC-MS"]},
+  star:{tab:"StAR",g:"STAR",fiche:"star",title:"HSC lipoïde (déficit en StAR)",gene:"STAR · 8p11.23",
+    nodes:{chol:"up",preg:"down",ohpreg:"down",dhea:"down",prog:"down",ohp:"down",a4:"down",doc:"down",s:"down",t:"down",df21:"down",b:"down",f:"down",e2:"down",ohb:"down",aldo:"down"},
+    enz:{star:"blocked"},
+    text:"Le cholestérol ne rentre plus dans la mitochondrie : aucun stéroïde. Les surrénales se remplissent de lipides et grossissent. 46,XY d'aspect féminin, perte de sel sévère précoce.",
+    facts:[["TA","Basse, choc"],["Na / K","↓ / ↑ sévères"],["46,XX","OGE normaux"],["46,XY","Phénotype féminin"],["Crise surrénale","Oui, précoce et sévère"],["Imagerie","Surrénales hypertrophiées"]],
+    key:["Tous stéroïdes ↓↓","ACTH ↑↑","Rénine ↑↑","Grosses surrénales"]},
+  cyp11a1:{tab:"P450scc",g:"CYP11A1",fiche:"cyp11a1",title:"Déficit en P450scc (CYP11A1)",gene:"CYP11A1 · 15q24.1",
+    nodes:{preg:"down",ohpreg:"down",dhea:"down",prog:"down",ohp:"down",a4:"down",doc:"down",s:"down",t:"down",df21:"down",b:"down",f:"down",e2:"down",ohb:"down",aldo:"down"},
+    enz:{star:"blocked"},
+    text:"Même profil hormonal que le déficit en StAR, mais les surrénales ne sont pas hypertrophiées. C'est l'imagerie qui oriente vers l'un ou l'autre gène.",
+    facts:[["TA","Basse"],["Na / K","↓ / ↑"],["46,XX","OGE normaux"],["46,XY","Phénotype féminin à sous-virilisé"],["Crise surrénale","Oui"],["Imagerie","Surrénales non hypertrophiées"]],
+    key:["Tous stéroïdes ↓↓","ACTH ↑↑","Surrénales normales"]},
+  cyp11b2:{tab:"Aldostérone synthase",g:"CYP11B2",fiche:"cyp11b2",title:"Déficit en aldostérone synthase",gene:"CYP11B2 · 8q24.3",
+    nodes:{b:"up",ohb:"var",aldo:"down"},
+    enz:{c11b2b:"blocked",c11b2:"partial"},
+    text:"Ce n'est pas une HSC : le cortisol est normal, il n'y a ni hyperplasie ni anomalie génitale. Perte de sel isolée du nourrisson. La 18-OH-corticostérone distingue le type I (basse) du type II (haute).",
+    facts:[["TA","Basse si perte de sel"],["Na / K","↓ / ↑"],["46,XX","Normaux"],["46,XY","Normaux"],["Cortisol","Normal"],["Marqueur","Aldo ↓, rénine ↑↑, 18-OH-B/aldo"]],
+    key:["Aldostérone ↓","Rénine ↑↑","Cortisol normal","17-OHP normale"]}
+};
+
+/* ===================== FRÉQUENCES ===================== */
+const FREQ = [
+  {r:1,id:"cyp21",n:"21-hydroxylase",g:"CYP21A2",glob:"90–95 %",glNote:"GeneReviews : > 90 %",ma:91.8,sig:"17-OHP ↑↑↑, 21-désoxycortisol ↑, Δ4 ↑",clue:"Fille virilisée ; garçon en perte de sel à 1–4 semaines"},
+  {r:2,id:"cyp11b1",n:"11β-hydroxylase",g:"CYP11B1",glob:"≈ 5 %",glNote:"0,2–8 % selon les séries",ma:4.9,sig:"11-désoxycortisol ↑↑, DOC ↑, rénine ↓",clue:"Virilisation + HTA ± hypokaliémie"},
+  {r:3,id:"cyp17",n:"17α-hydroxylase",g:"CYP17A1",glob:"≈ 1 %",glNote:"Brésil, Chine : plus fréquent",ma:null,sig:"Corticostérone/DOC ↑↑, 17-OHP ↓, androgènes ↓",clue:"HTA + impubérisme ; 46,XY d'aspect féminin"},
+  {r:4,id:"hsd3b2",n:"3β-HSD type 2",g:"HSD3B2",glob:"< 0,5 %",glNote:"< 1/1 000 000 naissances",ma:3.2,sig:"17-OH-prégnénolone ↑↑, Δ5/Δ4 ↑",clue:"Garçon sous-virilisé + perte de sel"},
+  {r:5,id:"por",n:"P450 oxydoréductase",g:"POR",glob:"Rare",glNote:"Incidence inconnue",ma:null,sig:"17-OHP ↑ modérée, prégnénolone/corticostérone ↑, androgènes ↓",clue:"DSD des deux sexes + squelette + virilisation maternelle"},
+  {r:6,id:"star",n:"StAR (HSC lipoïde)",g:"STAR",glob:"Rare",glNote:"Japon, Corée, Palestine",ma:null,sig:"Tous les stéroïdes ↓↓, ACTH ↑↑",clue:"46,XY d'aspect féminin + perte de sel ; grosses surrénales"},
+  {r:7,id:"cyp11a1",n:"P450scc",g:"CYP11A1",glob:"Très rare",glNote:"",ma:null,sig:"Comme StAR",clue:"Idem StAR, surrénales non hypertrophiées"}
+];
+
+/* ===================== FICHES ===================== */
+/* bio : s = up | down | n | var */
+const FICHES = {
+cyp21:{tab:"21-OH",name:"Déficit en 21-hydroxylase",gene:"CYP21A2",locus:"6p21.33 (module RCCX)",omim:"201910",inh:"Autosomique récessive",
+  sum:"Plus de 90 % des HSC. Incidence de la forme classique ≈ 1/15 000 naissances (6,5 millions de nouveau-nés dépistés) ; 1/5 000 en Arabie saoudite. La forme classique se divise en perte de sel (≥ 75 %) et virilisante simple (≈ 25 %). La forme non classique est bien plus fréquente : ≈ 1/100 dans la population de New York, 1/27 chez les Juifs ashkénazes.",
+  xx:["<b>Classique</b> : virilisation prénatale (hypertrophie clitoridienne, fusion des bourrelets, sinus urogénital). Utérus et ovaires normaux.","<b>Non classique</b> : OGE normaux. Hirsutisme seul chez ≈ 60 % des femmes, hirsutisme + troubles des règles ≈ 10 %, troubles des règles seuls ≈ 10 %. Retrouvée chez 2,2 à 10 % des femmes hyperandrogéniques.","Dans la série DSD du CHU Hassan II de Fès, les 31 patients 46,XX étaient tous des HSC, et 11 étaient élevés en garçons."],
+  xy:["OGE normaux : sans dépistage, le diagnostic est souvent manqué jusqu'à la crise de perte de sel, entre 1 et 4 semaines de vie.","Plus tard : pseudo-puberté précoce, verge développée avec petits testicules.","Inclusions surrénaliennes testiculaires (TART) : principale cause d'hypofertilité. Échographie testiculaire après la puberté, tous les 3 à 5 ans."],
+  gen:["Crise de perte de sel : mauvaise prise alimentaire, vomissements, déshydratation, hyponatrémie, hyperkaliémie, acidose, choc.","Croissance accélérée et âge osseux avancé, puis petite taille finale par soudure épiphysaire précoce.","Une puberté précoce centrale peut se déclencher à l'instauration du traitement."],
+  bio:[["up","<b>17-OHP</b> ↑↑↑ : forme classique > 300 nmol/L (> 10 000 ng/dL)"],["up","<b>21-désoxycortisol</b> ↑ : marqueur spécifique, 2e intention au dépistage (LC-MS/MS)"],["up","Δ4-androstènedione, testostérone (fille, garçon prépubère), progestérone"],["up","ACTH ; rénine dans la perte de sel"],["down","Cortisol bas ou inadapté"],["down","Aldostérone basse pour la rénine (rapport aldo/rénine ↓ = perte de sel)"],["down","DOC, 11-désoxycortisol"],["var","Androgènes 11-oxygénés (11-cétotestostérone) : décrits comme dominants dans la forme classique, marqueurs de suivi émergents"]],
+  bilan:["17-OHP à 8 h (LC-MS/MS), ± test au Synacthène 250 µg (T0, T60)","Ionogramme, rénine, aldostérone, cortisol, ACTH","Δ4-androstènedione, testostérone ; 21-désoxycortisol si disponible","OGE atypiques : caryotype ou FISH SRY, échographie pelvienne (utérus)","Âge osseux après la petite enfance","CYP21A2 : PCR longue spécifique + Sanger, MLPA, puis les deux parents"],
+  traps:["Prélèvement avant 24 h de vie, prématurité ou petit poids : faux positifs. Dexaméthasone néonatale : faux négatifs.","Une 17-OHP aléatoire peut être normale dans la forme non classique : prélever le matin, en phase folliculaire.","17-OHP modérément élevée + HTA ou hypokaliémie : doser le 11-désoxycortisol avant de séquencer CYP21A2.","Chez le garçon d'apparence normale avec cryptorchidie bilatérale : caryotype."],
+  molec:"Sanger sur amplicon long spécifique, puis MLPA si 0 ou 1 allèle trouvé ou homozygotie apparente. Environ 70–80 % des allèles sont visibles en séquençage, 20–30 % ne le sont qu'en analyse de nombre de copies. Les 9 variants issus du pseudogène, avec les délétions et grandes conversions, représentent environ 95 % des allèles.",
+  ma:"Maroc (Rabat, 20 patients à forme classique, Abid 2008) : c.293-13A/C>G sur 47 % des chromosomes, p.Gln319* (Q318X) 19,4 %, p.Ile173Asn 11 %. p.Gln319* était concentré chez les patients de la région de Fès (75 %). Les 4 anomalies les plus fréquentes (dont les grandes lésions) couvraient 94 % des allèles. Cohorte petite, formes classiques uniquement.",
+  vars:[
+    {lbl:"Délétion 30 kb / chimère",region:[1,3],hg:"—",p:"Gène chimère CYP21A1P/CYP21A2",ex:"Région 5′",act:"0 %",cls:"null",ph:"PS",fr:"≈ 20 % (délétions) ; 20–30 % avec conversions",sg:false,nt:"Jonction variable (chimères CH-1 à CH-9). Peut emporter TNXB → CAH-X."},
+    {lbl:"I2G",intron:2,hg:"c.293-13A>G / C>G",p:"Épissage aberrant",ex:"Intron 2",act:"< 1 %",cls:"severe",ph:"PS (> 90 % des homozygotes) ; parfois VS",fr:"20–30 % ; Maroc 47 %",sg:true,nt:"Position −13 polymorphe A/C à l'état normal."},
+    {lbl:"8 pb del",codon:111,hg:"c.332_339del",p:"p.Gly111Valfs*21",ex:"Exon 3",act:"0 %",cls:"null",ph:"PS",fr:"Rare",sg:true,nt:"Alias G110Δ8nt."},
+    {lbl:"I172N",codon:173,hg:"c.518T>A",p:"p.Ile173Asn",ex:"Exon 4",act:"2–11 %",cls:"mod",ph:"VS (76 %) ; PS (23 %) avec un allèle sévère",fr:"≈ 10 % ; Maroc 11 %",sg:true,nt:"Allèle typique de la forme virilisante simple."},
+    {lbl:"Cluster E6",codon:238,hg:"c.[710T>A;713T>A;719T>A]",p:"p.[Ile237Asn;Val238Glu;Met240Lys]",ex:"Exon 6",act:"0 %",cls:"null",ph:"PS",fr:"Rare",sg:true,nt:"GeneReviews écrit c.701T>A pour le premier : le codon 237 correspond à c.709-711, donc c.710T>A (orthographe EMQN)."},
+    {lbl:"V281L",codon:282,hg:"c.844G>T",p:"p.Val282Leu",ex:"Exon 7",act:"20–50 %",cls:"mild",ph:"NC",fr:"Allèle NC le plus fréquent ; ashkénazes",sg:true,nt:"Associé exclusivement à la forme non classique dans New 2013."},
+    {lbl:"F306+T",codon:308,hg:"c.923dupT",p:"p.Leu308Phefs*6",ex:"Exon 7",act:"0 %",cls:"null",ph:"PS",fr:"Rare",sg:true,nt:""},
+    {lbl:"Q318X",codon:319,hg:"c.955C>T",p:"p.Gln319*",ex:"Exon 8",act:"0 %",cls:"null",ph:"PS",fr:"Maroc 19,4 % (Fès +++) ; Tunisie ≈ 40 %",sg:true,nt:"Souvent en cis d'une duplication de CYP21A2 normale : vérifier le nombre de copies."},
+    {lbl:"L353R",codon:354,hg:"non précisé",p:"p.L353R (nom d'origine)",ex:"Exon 8",act:"?",cls:"mod",ph:"Décrit à l'état homozygote, en cis de V281L",fr:"Nouveau, Maroc (1 patient)",sg:true,nt:"Nomenclature historique ou HGVS : non vérifiable dans le résumé, à contrôler dans l'article."},
+    {lbl:"R356W",codon:357,hg:"c.1069C>T",p:"p.Arg357Trp",ex:"Exon 8",act:"0 %",cls:"null",ph:"PS / VS",fr:"Variable",sg:true,nt:""},
+    {lbl:"P30L",codon:31,hg:"c.92C>T",p:"p.Pro31Leu",ex:"Exon 1",act:"20–50 %",cls:"mild",ph:"NC (parfois VS)",fr:"Variable",sg:true,nt:"< 3 % des patients P30L ou V281L + allèle sévère ont une forme classique."},
+    {lbl:"P453S",codon:454,hg:"c.1360C>T",p:"p.Pro454Ser",ex:"Exon 10",act:"20–50 %",cls:"mild",ph:"NC",fr:"Variable",sg:true,nt:""}
+  ],
+  tx:["Hydrocortisone 10–15 mg/m²/j en 3 prises chez l'enfant ; fludrocortisone 0,05–0,2 mg/j et NaCl 1–2 g/j chez tous les nourrissons à forme classique.","Viser des androgènes adaptés à l'âge, pas une 17-OHP normale (zone acceptable sous traitement ≈ 100–1 000 ng/dL selon GeneReviews).","Forme non classique : traiter seulement si symptômes (avance osseuse, pubarche précoce, hirsutisme, infertilité). Arrêt possible quand les symptômes disparaissent.","Crinécerfont (FDA 2024) en adjuvant ≥ 4 ans, forme classique."],
+  gc:["Autosomique récessive ; ≈ 1 % des probands n'ont qu'un parent porteur (de novo).","Femme à forme non classique : 2,5 % d'enfants à forme classique et ≥ 14,8 % à forme non classique (Moran 2006) → génotyper le conjoint.","Faux porteurs par duplication de CYP21A2 portant p.Gln319* en cis : MLPA avant tout DPN.","Chercher un CAH-X si délétion étendue (hyperlaxité, luxations, anomalies cardiaques)."],
+  refs:["gr21","es18","emqn","new13","new06","abid","hssaini","moran","kleinle","merke","fda"]},
+
+cyp11b1:{tab:"11β-OH",name:"Déficit en 11β-hydroxylase",gene:"CYP11B1",locus:"8q24.3 (en tandem avec CYP11B2)",omim:"202010",inh:"Autosomique récessive",
+  sum:"Deuxième cause d'HSC : ≈ 5 % des cas (0,2–8 % selon les séries), ≈ 1/100 000 naissances. Fréquence élevée chez les Juifs d'origine marocaine (1/5 000 à 1/7 000, Israël). 4,9 % des HSC dans la cohorte de Casablanca.",
+  xx:["Virilisation des OGE comparable au 21-OHD, jusqu'à Prader 5.","Fès 2026 : patient 46,XX élevé en garçon, découvert à 35 ans par des myélolipomes surrénaliens géants et un utérus en IRM (DOC ≈ 140 × la normale)."],
+  xy:["OGE normaux à la naissance.","Pseudo-puberté précoce périphérique, avance staturale et osseuse."],
+  gen:["HTA dans environ deux tiers des formes classiques ; sa sévérité ne suit pas le taux de DOC.","Hypokaliémie inconstante.","Crise surrénale rare (le DOC assure l'effet minéralocorticoïde).","Oujda 2024 : garçon de 5 ans révélé par un œdème aigu du poumon sur HTA sévère, avec DSD."],
+  bio:[["up","<b>11-désoxycortisol</b> (composé S) ↑↑ : marqueur clé"],["up","<b>DOC</b> ↑"],["up","17-OHP ↑ modérée : peut positiver le dépistage du 21-OHD"],["up","Δ4-androstènedione, testostérone, ACTH"],["down","Cortisol, corticostérone"],["down","Rénine supprimée, aldostérone basse"],["var","Kaliémie basse ou normale"]],
+  bilan:["11-désoxycortisol et DOC (± Synacthène), 17-OHP en LC-MS/MS","Rénine, aldostérone, kaliémie","Pression artérielle avec brassard adapté à l'âge, à chaque consultation","Androgènes, âge osseux","Profil stéroïdien urinaire (métabolites du 11-désoxycortisol) si disponible","CYP11B1 : Sanger avec amorces spécifiques (ne pas co-amplifier CYP11B2)"],
+  traps:["Diagnostic de 21-OHD posé sur la seule 17-OHP, Sanger CYP21A2 négatif : revenir au 11-désoxycortisol.","HTA souvent absente chez le nourrisson ou non mesurée : prendre la tension chez tout enfant virilisé.","Forte homologie CYP11B1/CYP11B2 : les amorces doivent être spécifiques (c'est ainsi que R448H a été identifié)."],
+  molec:"Séquençage des 9 exons de CYP11B1 avec amorces spécifiques. Pas de pseudogène, mais le gène voisin CYP11B2 est très homologue. Les hétérozygotes R448H n'ont aucune anomalie hormonale sous ACTH : le dépistage des porteurs est moléculaire.",
+  ma:"p.Arg448His a été décrit comme fondateur chez les Juifs d'origine marocaine (11 allèles sur 12 dans six familles). Un dépistage de 236 sujets sains n'a trouvé que 2 porteurs : R448H n'explique qu'en partie la fréquence dans cette population. Des variants nouveaux ont aussi été rapportés chez des patients marocains (Chabraoui et al.), non détaillés ici.",
+  vars:[
+    {lbl:"Q356X",codon:356,hg:"—",p:"p.Gln356*",ex:"Exon 6",act:"0",cls:"null",ph:"Classique",fr:"Tunisie (effet fondateur)",sg:true,nt:""},
+    {lbl:"G379V",codon:379,hg:"—",p:"p.Gly379Val",ex:"Exon 7",act:"—",cls:"severe",ph:"Classique",fr:"Tunisie",sg:true,nt:""},
+    {lbl:"R448H",codon:448,hg:"—",p:"p.Arg448His",ex:"Exon 8",act:"Abolie",cls:"null",ph:"Classique",fr:"Juifs marocains ; aussi chez des Caucasiens",sg:true,nt:"Codon CGC→CAC dans le domaine de liaison de l'hème."},
+    {lbl:"R448C",codon:448,hg:"—",p:"p.Arg448Cys",ex:"Exon 8",act:"—",cls:"severe",ph:"Classique (avec R448H)",fr:"Privé (une famille)",sg:true,nt:"",hidePin:true}
+  ],
+  tx:["Glucocorticoïdes (hydrocortisone chez l'enfant) : freinent l'ACTH, donc le DOC ; ils ont normalisé la kaliémie et amélioré la TA dans le cas fassi de 2026.","Antihypertenseur (spironolactone, inhibiteur calcique) si l'HTA persiste.","Pas de fludrocortisone.","Suivi : TA, rénine (remonte sous traitement), 11-désoxycortisol, androgènes, âge osseux."],
+  gc:["Autosomique récessive, 25 % de risque pour la fratrie.","Porteurs asymptomatiques et biologiquement normaux : test moléculaire uniquement.","Antécédent familial juif marocain : rechercher R448H en premier."],
+  refs:["white91","paperna","hetR448","tunis11","medsc11","bouarab","abouchiba","elhaddar","gr21"]},
+
+hsd3b2:{tab:"3β-HSD2",name:"Déficit en 3β-hydroxystéroïde déshydrogénase de type 2",gene:"HSD3B2",locus:"1p13.1",omim:"201810",inh:"Autosomique récessive",
+  sum:"Forme rare : < 0,5 % des HSC, prévalence < 1/1 000 000 naissances dans les séries internationales, mais 3,2 % des HSC à Casablanca. Comme le déficit en POR, il sous-virilise le garçon et peut viriliser modérément la fille. Deux cas marocains publiés (deux sœurs ; des jumeaux).",
+  xx:["OGE normaux, ou clitoromégalie modérée (DHEA convertie en périphérie par HSD3B1).","Les deux sœurs marocaines rapportées avaient des OGE normaux et une crise de perte de sel sévère avant 2 semaines."],
+  xy:["Sous-virilisation : hypospade (parfois périnéal), micropénis, scrotum bifide, cryptorchidie. Le testicule utilise la même enzyme."],
+  gen:["Perte de sel dans la majorité des cas publiés.","Puberté précoce, TART, plus rarement OART décrites.","Aucune mutation HSD3B2 n'a été trouvée dans la forme dite « non classique » (hyperandrogénie avec Δ5 un peu élevés)."],
+  bio:[["up","<b>17-OH-prégnénolone</b> ↑↑ : meilleur marqueur (≥ 90 nmol/L dans un chapitre de référence)"],["up","Rapports 17-OH-Preg/cortisol et Δ5/Δ4 ↑"],["up","DHEA, DHEAS, prégnénolone"],["var","17-OHP normale ou ↑ (HSD3B1 périphérique ; réaction croisée en immunodosage)"],["var","Δ4 et testostérone normales ou basses en LC-MS/MS"],["down","Cortisol, aldostérone"],["up","Rénine, ACTH ; Na ↓ K ↑"]],
+  bilan:["17-OH-prégnénolone, DHEA(S), 17-OHP, Δ4 en LC-MS/MS, basal et post-Synacthène","Profil stéroïdien urinaire (métabolites Δ5)","Ionogramme, rénine, aldostérone, cortisol","Caryotype, hCG si besoin d'évaluer le testicule","HSD3B2 : Sanger des exons 2 à 4 (codants) avec amorces spécifiques vs HSD3B1"],
+  traps:["Dépistage néonatal positif « 21-OHD » par immunodosage, puis confirmation LC-MS/MS négative : penser 3β.","17-OHP élevée + Sanger CYP21A2 négatif chez un garçon hypospade : penser 3β.","Seuils diagnostiques de la 17-OH-prégnénolone différents selon les séries et les méthodes : comparer aux normes du laboratoire."],
+  molec:"Gène court (4 exons, 3 codants, 372 aa). HSD3B1 (93,5 % d'identité) est à proximité sur 1p13.1 : amorces spécifiques. Plus de 95 variants rapportés, sans variant fondateur majeur. Plusieurs familles consanguines : une région d'homozygotie sur 1p13 en SNP-array oriente vers le gène.",
+  ma:"Jumeaux marocains (Mellone 2022) : homozygotie p.Asn323Lys (c.969T>G) dans une région d'homozygotie de 8,36 Mb en 1p13.2-p11.2. Deux sœurs marocaines de parents consanguins (Scaramuzzo 2017).",
+  vars:[
+    {lbl:"P222Q",codon:222,hg:"—",p:"p.Pro222Gln",ex:"Exon 4",act:"—",cls:"severe",ph:"46,XY ambigu + crise à 3 mois",fr:"Rapporté (dépistage néonatal positif)",sg:true,nt:""},
+    {lbl:"N323K",codon:323,hg:"c.969T>G",p:"p.Asn323Lys",ex:"Exon 4",act:"—",cls:"severe",ph:"Perte de sel ; XY sous-virilisé",fr:"Jumeaux marocains",sg:true,nt:"Classé probablement pathogène par les auteurs."}
+  ],
+  tx:["Hydrocortisone + fludrocortisone + NaCl dans les formes avec perte de sel.","Stéroïdes sexuels à la puberté selon la fonction gonadique.","Surveillance des TART chez le garçon."],
+  gc:["Autosomique récessive. Consanguinité fréquente dans les cas publiés."],
+  refs:["hsd3del","hsd3chap","nicola","mellone","scaramuzzo","p222q","bouarab"]},
+
+cyp17:{tab:"17α-OH",name:"Déficit en 17α-hydroxylase / 17,20-lyase",gene:"CYP17A1",locus:"10q24.32",omim:"202110",inh:"Autosomique récessive",
+  sum:"≈ 1 % des HSC. Plus fréquent au Brésil (deux effets fondateurs), en Chine, chez les mennonites canadiens et en Frise néerlandaise. Bloc hypertensif et hypogonadique, souvent découvert à l'adolescence.",
+  xx:["OGE normaux à la naissance.","Impubérisme et aménorrhée primaire (38 % des cas de la méta-analyse), hypogonadisme hypergonadotrope."],
+  xy:["OGE féminins ou atypiques (14 %), cryptorchidie (15 %), absence d'utérus.","Souvent élevés en filles et découverts devant une aménorrhée primaire."],
+  gen:["HTA 57 %, hypokaliémie ≈ 45 % (méta-analyse).","Pas de crise surrénale en règle : la corticostérone a une activité glucocorticoïde suffisante.","Retard d'âge osseux, grande taille possible faute de stéroïdes sexuels."],
+  bio:[["up","<b>Corticostérone</b> ↑↑, <b>DOC</b> ↑, progestérone ↑, 18-OH-corticostérone ↑"],["down","<b>17-OHP</b> basse, 11-désoxycortisol, cortisol"],["down","DHEA, Δ4, testostérone, œstradiol"],["up","LH, FSH, ACTH"],["down","Rénine supprimée"],["var","Aldostérone basse ou normale"],["down","Kaliémie"]],
+  bilan:["Progestérone, corticostérone, DOC, 17-OHP, cortisol (± Synacthène)","DHEAS, Δ4, testostérone, œstradiol, LH, FSH","Rénine, aldostérone, kaliémie","Caryotype, échographie pelvienne","CYP17A1 : Sanger des 8 exons (pas de pseudogène)"],
+  traps:["HTA + hypokaliémie de l'adolescente, aldostérone basse : ce n'est pas un hyperaldostéronisme.","Le déficit isolé en 17,20-lyase (certains variants) donne un hypogonadisme sans HTA, avec cortisol normal.","46,XY élevé en fille : discuter la gonadectomie et l'annonce en équipe DSD."],
+  molec:"8 exons, 508 aa. Pas de pseudogène : Sanger exon par exon, plus recherche de CNV si un seul allèle (des délétions multi-exoniques sont décrites).",
+  ma:"Aucune donnée marocaine retrouvée. p.Arg96Gln a été décrit chez une patiente arabe puis chez une patiente asiatique.",
+  vars:[
+    {lbl:"R96Q",codon:96,hg:"—",p:"p.Arg96Gln",ex:"Exon 1",act:"—",cls:"severe",ph:"Combiné",fr:"Patiente arabe, puis asiatique",sg:true,nt:""},
+    {lbl:"Y329Kfs",codon:329,hg:"c.985_987delinsAA",p:"p.Tyr329Lysfs",ex:"Exon 6",act:"0",cls:"null",ph:"Combiné",fr:"Chine ; le plus fréquent de la méta-analyse",sg:true,nt:""},
+    {lbl:"R362C",codon:362,hg:"—",p:"p.Arg362Cys",ex:"Exon 6",act:"—",cls:"severe",ph:"Combiné",fr:"Brésil 32 % (ascendance portugaise)",sg:true,nt:""},
+    {lbl:"H373L",codon:373,hg:"—",p:"p.His373Leu",ex:"Exon 6",act:"—",cls:"severe",ph:"Combiné",fr:"Fréquent dans la méta-analyse",sg:true,nt:""},
+    {lbl:"W406R",codon:406,hg:"—",p:"p.Trp406Arg",ex:"Exon 7",act:"—",cls:"severe",ph:"Combiné",fr:"Brésil 50 % (ascendance espagnole)",sg:true,nt:""},
+    {lbl:"P428L",codon:428,hg:"—",p:"p.Pro428Leu",ex:"Exon 8",act:"Trace",cls:"mod",ph:"HTA et hypokaliémie sévères malgré tout",fr:"Brésil",sg:true,nt:""},
+    {lbl:"D487_F489del",codon:488,hg:"—",p:"p.Asp487_Phe489del",ex:"Exon 8",act:"—",cls:"severe",ph:"Combiné",fr:"Chine, Asie (≈ 28 % des allèles asiatiques)",sg:true,nt:""}
+  ],
+  tx:["Glucocorticoïdes (hydrocortisone, ou dexaméthasone chez l'adulte) : corrigent HTA et hypokaliémie en freinant l'ACTH.","Spironolactone ou autre antihypertenseur si l'HTA persiste.","Induction pubertaire : œstrogènes, + progestatif s'il y a un utérus.","46,XY : sexe d'élevage et gonadectomie décidés en réunion DSD, au cas par cas."],
+  gc:["Autosomique récessive.","Annonce du caryotype 46,XY : accompagnement psychologique."],
+  refs:["meta17","medsc17","china17"]},
+
+por:{tab:"POR",name:"Déficit en P450 oxydoréductase",gene:"POR",locus:"7q11.23",omim:"201750",inh:"Autosomique récessive",
+  sum:"Rare, incidence inconnue. POR transfère les électrons du NADPH à toutes les P450 microsomales : déficit partiel combiné en 17α-hydroxylase et 21-hydroxylase, avec atteinte de l'aromatase (CYP19A1) et de CYP51A1 (synthèse du cholestérol), d'où le squelette. Spectre continu de l'anomalie stéroïdienne isolée au syndrome d'Antley-Bixler.",
+  xx:["Virilisation à la naissance (clitoromégalie, fusion des petites lèvres) qui ne progresse pas après la naissance.","Puberté pauvre, kystes ovariens ; peut ressembler à un SOPK."],
+  xy:["Sous-virilisation : micropénis, cryptorchidie."],
+  gen:["Squelette (Antley-Bixler) : craniosynostose, sténose ou atrésie choanale, synostose radio-humérale, fractures néonatales, incurvation des os longs, camptodactylie, arachnodactylie.","Virilisation maternelle pendant la grossesse, surtout avec R457H.","Insuffisance en cortisol de cliniquement silencieuse à menaçante."],
+  bio:[["up","17-OHP ↑ modérée (dépistage néonatal parfois positif)"],["up","Prégnénolone, progestérone, corticostérone et leurs métabolites urinaires"],["down","Androgènes bas après la naissance"],["var","Cortisol basal souvent normal, réponse au Synacthène insuffisante"],["n","Minéralocorticoïdes en général préservés"]],
+  bilan:["Profil stéroïdien urinaire en GC-MS : signature combinée 17α + 21 (examen clé)","Test au Synacthène (cortisol)","Radiographies du squelette, avis ORL (choanes), imagerie crânienne","Interroger la mère sur une virilisation pendant la grossesse","POR : séquençage des exons codants + CNV ; diagnostic différentiel FGFR2 si craniosynostose isolée"],
+  traps:["Fille virilisée + 17-OHP ↑ : fausse piste 21-OHD. Indices : virilisation non évolutive, androgènes postnatals bas, squelette, virilisation maternelle.","Virilisation maternelle sans squelette : penser aussi au déficit en aromatase (CYP19A1).","POR alimente aussi les CYP hépatiques : métabolisme de certains médicaments possiblement modifié."],
+  molec:"Transcrit MANE NM_001382655.3 (16 exons, le premier non codant). La numérotation historique des variants (A287P, R457H) repose sur une protéine de 680 aa ; sur le transcrit MANE de 677 aa, ces codons sont décalés de −3 (p.Ala284Pro, p.Arg454His). À vérifier avant de rédiger un compte rendu en HGVS.",
+  ma:"Aucune donnée marocaine retrouvée. R457H a été trouvé hors d'Asie, notamment chez un patient sénégalais.",
+  vars:[
+    {lbl:"A287P",codon:284,hg:"c.859G>C (hist.)",p:"p.Ala287Pro (hist.)",ex:"Exon 9 (MANE) / 8 (hist.)",act:"20–40 %",cls:"mod",ph:"Moins sévère ; virilisation maternelle rare",fr:"Européens (10/34 allèles faux-sens chez Huang)",sg:true,nt:"Perte de 60–80 % d'activité in vitro."},
+    {lbl:"R457H",codon:454,hg:"c.1370G>A (hist.)",p:"p.Arg457His (hist.)",ex:"Exon 12 (MANE) / 11 (hist.)",act:"—",cls:"severe",ph:"Squelette sévère, virilisation maternelle fréquente",fr:"Japon (fondateur), Chine (8/16 allèles), Afrique",sg:true,nt:"Domaine de liaison du FAD."}
+  ],
+  tx:["Glucocorticoïdes en substitution ou seulement en couverture de stress selon la réponse au Synacthène.","Stéroïdes sexuels pour l'induction pubertaire si nécessaire.","Prise en charge multidisciplinaire : neurochirurgie, ORL, orthopédie."],
+  gc:["Autosomique récessive.","Grossesse suivante : la virilisation maternelle peut réapparaître si le fœtus est atteint."],
+  refs:["gr21","huang05","fukami05","fukami14","porchina"]},
+
+star:{tab:"StAR",name:"HSC lipoïde (déficit en StAR)",gene:"STAR",locus:"8p11.23",omim:"201710",inh:"Autosomique récessive",
+  sum:"La forme la plus sévère d'HSC : ni la surrénale ni les gonades ne produisent de stéroïdes. Rare en général, fréquente au Japon et en Corée (porteurs ≈ 1/300) et chez les Arabes palestiniens.",
+  xx:["OGE normaux à la naissance.","Une puberté spontanée peut survenir puis une insuffisance ovarienne (modèle « à deux coups » décrit dans la littérature, non détaillé ici)."],
+  xy:["Phénotype féminin, pas d'utérus : DSD 46,XY.","Différence avec l'hypoplasie surrénale liée à l'X (NR0B1) : là, le garçon a des OGE masculins."],
+  gen:["Insuffisance surrénale avec perte de sel sévère dans les premières semaines ou premiers mois.","Mélanodermie.","Surrénales hypertrophiées, gorgées de lipides.","Formes non classiques : révélation tardive, OGE masculins normaux."],
+  bio:[["down","Tous les stéroïdes ↓↓ : cortisol, aldostérone, 17-OHP, DHEA, testostérone"],["up","ACTH ↑↑, rénine ↑↑"],["down","Pas de réponse au Synacthène"],["down","Na ↓"],["up","K ↑"]],
+  bilan:["Cortisol, ACTH, aldostérone, rénine, ionogramme","17-OHP, DHEAS, testostérone (± test à l'hCG chez 46,XY)","Échographie ou IRM des surrénales : la taille oriente vers STAR (grosses) ou CYP11A1 (normales)","Caryotype","STAR : Sanger des 7 exons"],
+  traps:["46,XY d'aspect féminin en insuffisance surrénale : penser StAR, CYP11A1, mais aussi NR5A1 (SF-1).","Grosses surrénales chez un nourrisson en perte de sel : ne pas conclure trop vite à un 21-OHD sans 17-OHP."],
+  molec:"7 exons, 285 aa. Les faux-sens se concentrent dans les 40 % C-terminaux de la protéine.",
+  ma:"Aucune donnée marocaine retrouvée. Variants fondateurs connus au Japon/Corée et en Palestine.",
+  vars:[
+    {lbl:"R182L",codon:182,hg:"—",p:"p.Arg182Leu",ex:"Exon 5",act:"—",cls:"null",ph:"Classique",fr:"Arabes palestiniens (78 % des allèles)",sg:true,nt:""},
+    {lbl:"Q258X",codon:258,hg:"c.722C>T",p:"p.Gln258*",ex:"Exon 7",act:"0",cls:"null",ph:"Classique",fr:"Japon, Corée, Chine (≈ 70–80 % des allèles)",sg:true,nt:"Effet fondateur confirmé en Corée."},
+    {lbl:"L260P",codon:260,hg:"—",p:"p.Leu260Pro",ex:"Exon 7",act:"—",cls:"null",ph:"Classique",fr:"Suisse",sg:true,nt:""}
+  ],
+  tx:["Hydrocortisone + fludrocortisone + NaCl.","Stéroïdes sexuels à la puberté.","46,XY : sexe d'élevage le plus souvent féminin, gonadectomie discutée en équipe DSD."],
+  gc:["Autosomique récessive."],
+  refs:["lipoid","apemlipoid","kimstar","apem"]},
+
+cyp11a1:{tab:"P450scc",name:"Déficit en P450scc",gene:"CYP11A1",locus:"15q24.1",omim:"—",inh:"Autosomique récessive",
+  sum:"Très rare. Même tableau hormonal et clinique que le déficit en StAR, sauf la taille des surrénales : aucune hypertrophie n'a été rapportée dans les déficits en P450scc.",
+  xx:["OGE normaux."],
+  xy:["Phénotype féminin à sous-virilisé selon l'activité résiduelle."],
+  gen:["Insuffisance surrénale avec perte de sel.","Surrénales de taille normale ou petites à l'imagerie."],
+  bio:[["down","Tous les stéroïdes ↓↓"],["up","ACTH ↑↑, rénine ↑↑"]],
+  bilan:["Même bilan que pour StAR","L'imagerie surrénalienne fait le tri entre les deux gènes","CYP11A1 : Sanger des 9 exons"],
+  traps:["Penser CYP11A1 quand le tableau évoque un StAR mais que les surrénales ne sont pas grosses et que STAR est normal."],
+  molec:"9 exons, 521 aa. Pas de variant fondateur établi dans les sources consultées.",
+  ma:"Aucune donnée marocaine retrouvée.",
+  vars:[],
+  tx:["Comme le déficit en StAR : glucocorticoïdes, minéralocorticoïdes, sel, stéroïdes sexuels."],
+  gc:["Autosomique récessive."],
+  refs:["apemlipoid","apem"]},
+
+cyp11b2:{tab:"Aldo synthase",name:"Déficit en aldostérone synthase (CMO I / CMO II)",gene:"CYP11B2",locus:"8q24.3",omim:"610600",inh:"Autosomique récessive",
+  sum:"Diagnostic différentiel, pas une HSC : la voie du cortisol est intacte, il n'y a ni hyperplasie ni anomalie génitale. Perte de sel isolée du nourrisson. Type II (CMO II) fréquent chez les Juifs d'origine iranienne.",
+  xx:["OGE normaux."],xy:["OGE normaux."],
+  gen:["Perte de sel, déshydratation, retard de croissance chez le nourrisson."],
+  bio:[["down","Aldostérone basse ou inadaptée"],["up","Rénine ↑↑"],["up","Corticostérone ↑"],["var","18-OH-corticostérone : basse (type I) ou haute avec rapport 18-OH-B/aldostérone ↑ (type II)"],["n","Cortisol et 17-OHP normaux"],["down","Na ↓"],["up","K ↑"]],
+  bilan:["Aldostérone, rénine, 18-OH-corticostérone, corticostérone","17-OHP et cortisol pour écarter une HSC","CYP11B2 : Sanger des 9 exons avec amorces spécifiques vs CYP11B1"],
+  traps:["Perte de sel + 17-OHP normale + cortisol normal : penser aldostérone synthase, pseudo-hypoaldostéronisme (aldostérone haute) ou hypoplasie surrénale (cortisol bas)."],
+  molec:"Chez les Juifs iraniens, tous les patients étaient homozygotes pour deux variants en cis, p.Arg181Trp et p.Val386Ala ; l'un ou l'autre seul à l'état homozygote ne donnait pas de maladie.",
+  ma:"Aucune donnée marocaine retrouvée.",
+  vars:[
+    {lbl:"R181W",codon:181,hg:"—",p:"p.Arg181Trp",ex:"Exon 3",act:"18-oxydase abolie",cls:"severe",ph:"CMO II (avec V386A en cis)",fr:"Juifs iraniens",sg:true,nt:""},
+    {lbl:"V386A",codon:386,hg:"—",p:"p.Val386Ala",ex:"Exon 7",act:"Légère baisse",cls:"mild",ph:"Seul : asymptomatique",fr:"Juifs iraniens",sg:true,nt:""}
+  ],
+  tx:["Fludrocortisone et NaCl. Pas de glucocorticoïdes."],
+  gc:["Autosomique récessive. Interpréter l'haplotype complet (deux variants en cis)."],
+  refs:["pascoe"]},
+
+nr0b1:{tab:"NR0B1 (AHC)",name:"Hypoplasie surrénale congénitale liée à l'X",gene:"NR0B1 (DAX1)",locus:"Xp21.2",omim:"300200",inh:"Liée à l'X",
+  sum:"Diagnostic différentiel majeur chez le garçon en insuffisance surrénale avec OGE normaux. Pas d'hyperplasie : surrénales hypoplasiques. Hypogonadisme hypogonadotrope à l'âge pubertaire.",
+  xx:["Les femmes conductrices sont en règle asymptomatiques."],
+  xy:["≈ 60 % : insuffisance surrénale aiguë vers 3 semaines de vie, avec perte de sel.","≈ 40 % : révélation dans l'enfance (1 à 9 ans).","Puberté absente ou arrêtée (Tanner 3), azoospermie et infertilité habituelles."],
+  gen:["Délétion contiguë Xp21 possible : déficit en glycérol kinase (GK), myopathie de Duchenne (DMD), déficience intellectuelle (IL1RAPL1)."],
+  bio:[["up","ACTH ↑"],["down","Cortisol bas ou normal"],["up","Rénine ↑"],["down","Aldostérone basse"],["n","17-OHP non élevée"],["down","LH, FSH, testostérone basses à l'âge pubertaire"]],
+  bilan:["Cortisol, ACTH, rénine, aldostérone, 17-OHP (non élevée)","Ionogramme","Si délétion : CPK (DMD), glycérol","NR0B1 : Sanger des 2 exons + recherche de délétion (≈ 25 % des cas)"],
+  traps:["Garçon en perte de sel avec 17-OHP normale : ne pas s'arrêter au Sanger CYP21A2."],
+  molec:"2 exons. ≈ 75 % de variants ponctuels (faux-sens groupés dans le domaine de liaison du ligand), ≈ 25 % de délétions.",
+  ma:"Aucune donnée marocaine retrouvée.",
+  vars:[{lbl:"Délétions",region:[1,2],hg:"—",p:"Délétion partielle ou totale",ex:"Gène entier ou contiguë Xp21",act:"0",cls:"null",ph:"AHC ± GK ± DMD",fr:"≈ 25 %",sg:false,nt:"Array-CGH ou MLPA"}],
+  tx:["Hydrocortisone + fludrocortisone + sel ; doses de stress.","Testostérone à partir d'environ 12 ans, augmentée sur 2 à 3 ans."],
+  gc:["Liée à l'X : mère conductrice → 50 % de risque pour chaque garçon.","≈ 40 % des garçons atteints sont asymptomatiques jusque dans l'enfance : tester les garçons à risque avant les symptômes."],
+  refs:["grnr0b1"]}
+};
+
+/* ===================== TRAITEMENT (tableau) ===================== */
+const TREAT = [
+  ["21-OH classique","Oui","Oui (tous les nourrissons) + NaCl","Non","Non","Chirurgie génitale discutée (Prader III–V) ; crinécerfont adjuvant ≥ 4 ans"],
+  ["21-OH non classique","Si symptômes","Non","Non","Selon la clinique","Couverture de stress si cortisol post-Synacthène insuffisant"],
+  ["11β-OH","Oui","Non","Si HTA persistante","Non","Suivre TA et rénine"],
+  ["3β-HSD2","Oui","Oui + NaCl","Non","Selon fonction gonadique","Surveiller les TART"],
+  ["17α-OH","Oui","Non","Si HTA persistante","Oui (puberté)","46,XY : gonadectomie discutée"],
+  ["POR","Selon Synacthène","Rarement","Non","Souvent (puberté)","Squelette ; métabolisme des médicaments"],
+  ["StAR / P450scc","Oui","Oui + NaCl","Non","Oui (puberté)","46,XY : sexe d'élevage, gonadectomie discutée"],
+  ["Aldostérone synthase","Non","Oui + NaCl","Non","Non","—"],
+  ["NR0B1 (AHC)","Oui","Oui + NaCl","Non","Testostérone vers 12 ans","Fertilité très compromise"]
+];
+
+/* ===================== HORS HSC ===================== */
+const DIFFS = [
+  {t:"Perte de sel du nourrisson",c:"var(--blue)",rows:[
+    ["21-OH (garçon)","17-OHP ↑↑↑, cortisol ↓"],["3β-HSD2","17-OH-Preg ↑↑ ; garçon sous-virilisé"],["StAR / P450scc","Tous stéroïdes ↓↓"],["NR0B1 (AHC)","17-OHP normale, cortisol ↓, surrénales petites"],["Aldostérone synthase","Cortisol normal, aldo ↓, rénine ↑↑"],["Pseudo-hypoaldostéronisme 1","Aldostérone ↑↑ et rénine ↑↑ : résistance, pas déficit"]],
+    n:"La 17-OHP, le cortisol et l'aldostérone rapportée à la rénine trient ces six situations."},
+  {t:"Hyperandrogénie de la fille ou de la femme",c:"var(--teal)",rows:[
+    ["21-OH non classique","17-OHP à 8 h en phase folliculaire, Synacthène si > 6 nmol/L"],["SOPK","17-OHP normale ; diagnostic d'exclusion. Beaucoup de femmes NC ont des ovaires polykystiques"],["Adrénarche prématurée","DHEAS ↑ modéré, 17-OHP stimulée normale"],["Tumeur surrénalienne ou ovarienne","Androgènes très élevés, évolution rapide : imagerie"],["11β-OH non classique","11-désoxycortisol stimulé"]],
+    n:"La forme non classique est retrouvée chez 1 à 10 % des femmes hyperandrogéniques selon les séries."},
+  {t:"DSD sans HSC",c:"var(--green)",rows:[
+    ["46,XX + virilisation maternelle","Déficit en aromatase (CYP19A1), POR"],["46,XX virilisée, 17-OHP normale","Exposition androgénique maternelle, DSD ovotesticulaire"],["46,XY sous-virilisé, surrénales normales","17β-HSD3, 5α-réductase 2, insensibilité aux androgènes, dysgénésie gonadique (NR5A1)"],["46,XY + insuffisance surrénale","StAR, CYP11A1, 3β-HSD2, POR, NR5A1"]],
+    n:"Orientation seulement : ces entités ne sont pas détaillées dans ce site."}
+];
+
+/* ===================== ORIENTATION ===================== */
+const DX = {
+  d21c:{n:"21-OH, forme classique",f:"cyp21",next:"17-OHP (> 300 nmol/L), 21-désoxycortisol, rénine"},
+  d21nc:{n:"21-OH, forme non classique",f:"cyp21",next:"17-OHP à 8 h puis Synacthène (30–300 nmol/L à T60)"},
+  d11b:{n:"11β-hydroxylase",f:"cyp11b1",next:"11-désoxycortisol et DOC, rénine, kaliémie"},
+  d3b:{n:"3β-HSD2",f:"hsd3b2",next:"17-OH-prégnénolone et DHEA en LC-MS/MS, rapport Δ5/Δ4"},
+  d17:{n:"17α-hydroxylase",f:"cyp17",next:"Corticostérone, DOC, progestérone, LH/FSH"},
+  dpor:{n:"P450 oxydoréductase",f:"por",next:"Profil stéroïdien urinaire GC-MS, radiographies"},
+  dstar:{n:"StAR (HSC lipoïde)",f:"star",next:"Cortisol, aldostérone, ACTH ; taille des surrénales"},
+  dscc:{n:"P450scc (CYP11A1)",f:"cyp11a1",next:"Comme StAR ; surrénales non hypertrophiées"},
+  dcmo:{n:"Aldostérone synthase",f:"cyp11b2",next:"Aldostérone, rénine, 18-OH-corticostérone"},
+  dahc:{n:"Hypoplasie surrénale liée à l'X",f:"nr0b1",next:"Cortisol, ACTH, 17-OHP (non élevée), NR0B1"}
+};
+const PRIOR = {d21c:2,d21nc:1,d11b:1,d3b:0,d17:0,dpor:0,dstar:0,dscc:0,dcmo:0,dahc:0};
+const QUESTIONS = [
+  {id:"k",l:"Caryotype",o:[["xx","46,XX"],["xy","46,XY"],["na","Inconnu"]],
+    s:{xx:{dahc:-6,d21nc:1},xy:{d21nc:0},na:{}}},
+  {id:"g",l:"Organes génitaux externes",o:[["vir","Virilisés"],["under","Sous-virilisés / féminins"],["norm","Typiques du caryotype"]],
+    s:{vir:{d21c:3,d11b:3,dpor:2,d3b:1,d21nc:-1,dahc:-3,dcmo:-3,d17:-3,dstar:-3,dscc:-3},
+       under:{d3b:3,d17:3,dpor:2,dstar:3,dscc:3,d21c:-3,d11b:-3,d21nc:-3,dcmo:-3,dahc:-3},
+       norm:{d21nc:2,dahc:2,dcmo:2,d17:1,d21c:0,d11b:0}}},
+  {id:"bp",l:"Pression artérielle",o:[["hta","HTA"],["norm","Normale"],["low","Basse / choc"]],
+    s:{hta:{d11b:4,d17:4,d21c:-3,d3b:-3,dstar:-3,dscc:-3,dcmo:-3,dahc:-3},norm:{d21nc:1,dpor:1},low:{d21c:2,d3b:2,dstar:2,dscc:2,dcmo:2,dahc:2,d11b:-3,d17:-4}}},
+  {id:"na",l:"Perte de sel (Na ↓, K ↑)",o:[["yes","Oui"],["no","Non"],["na","Non évaluée"]],
+    s:{yes:{d21c:3,d3b:3,dstar:3,dscc:3,dcmo:3,dahc:3,d11b:-3,d17:-4,d21nc:-3,dpor:-1},no:{d11b:1,d17:1,d21nc:2,dpor:1,dcmo:-3},na:{}}},
+  {id:"kal",l:"Kaliémie",o:[["hi","Haute"],["n","Normale"],["lo","Basse"],["na","Non dosée"]],
+    s:{hi:{d21c:2,d3b:2,dstar:2,dscc:2,dcmo:2,dahc:2,d11b:-3,d17:-3},n:{d21nc:1,dpor:1},lo:{d17:4,d11b:3,d21c:-3,d3b:-3,dstar:-3,dscc:-3,dcmo:-3,dahc:-3},na:{}}},
+  {id:"ohp",l:"17-OHP",o:[["vh","Très élevée"],["mod","Modérément élevée"],["n","Normale"],["lo","Basse"],["na","Non dosée"]],
+    s:{vh:{d21c:5,d11b:1,d3b:0,dpor:0,d21nc:0,d17:-5,dstar:-5,dscc:-5,dcmo:-3,dahc:-3},
+       mod:{d21nc:3,d11b:3,d3b:2,dpor:3,d21c:0,d17:-4,dstar:-4,dscc:-4,dcmo:-2,dahc:-2},
+       n:{dcmo:3,dahc:2,d21nc:1,d21c:-4,d11b:-2,d3b:0},
+       lo:{d17:4,dstar:3,dscc:3,dahc:1,d21c:-5,d21nc:-4,d11b:-4,dpor:-3},na:{}}}
+];
+const EXTRAS = [
+  {id:"skel",l:"Malformations squelettiques (craniosynostose, synostose radio-humérale…)",s:{dpor:7}},
+  {id:"mat",l:"Virilisation maternelle pendant la grossesse",s:{dpor:5}},
+  {id:"pub",l:"Impubérisme ou aménorrhée primaire",s:{d17:4,dstar:2,dscc:2,dahc:2,dpor:1,d21c:-2,d11b:-2}},
+  {id:"andro",l:"Hyperandrogénie post-natale (pubarche précoce, hirsutisme, avance osseuse)",s:{d21nc:4,d21c:2,d11b:2,d3b:1,d17:-4,dstar:-4,dscc:-4,dahc:-2,dcmo:-2}},
+  {id:"big",l:"Surrénales hypertrophiées à l'imagerie",s:{dstar:4,d21c:1,d11b:1,dscc:-3,dahc:-4}},
+  {id:"small",l:"Surrénales petites ou non visibles",s:{dahc:3,dscc:2,dstar:-4,d21c:-2}}
+];
+(function(){
+"use strict";
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const SVGNS="http://www.w3.org/2000/svg";
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+
+/* ---------- thème ---------- */
+const root=document.documentElement;
+const savedTheme=store.get("hsc-theme"); if(savedTheme) root.setAttribute("data-theme",savedTheme);
+$("#themeBtn").addEventListener("click",()=>{
+  const cur=root.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+  const nx=cur==="dark"?"light":"dark"; root.setAttribute("data-theme",nx); store.set("hsc-theme",nx);
+});
+
+/* ---------- tooltip ---------- */
+const tip=$("#tip");
+function showTip(html,ev){tip.innerHTML=html;tip.hidden=false;moveTip(ev)}
+function moveTip(ev){if(tip.hidden)return;const x=Math.min(ev.clientX+14,innerWidth-tip.offsetWidth-10);const y=Math.min(ev.clientY+14,innerHeight-tip.offsetHeight-10);tip.style.left=x+"px";tip.style.top=y+"px"}
+function hideTip(){tip.hidden=true}
+
+/* =====================================================
+   CARTE DE LA STÉROÏDOGENÈSE
+   ===================================================== */
+const NW=170,NH=40;
+function nodeBox(id){const n=NODES[id];const w=n.w||NW;return{x:n.x-w/2,y:n.y-NH/2,w,h:NH,cx:n.x,cy:n.y}}
+function edgePts(a,b){
+  const A=nodeBox(a),B=nodeBox(b);
+  if(Math.abs(A.cy-B.cy)<2){ // horizontal
+    const dir=B.cx>A.cx?1:-1; return [[A.cx+dir*A.w/2,A.cy],[B.cx-dir*B.w/2,B.cy]];
+  }
+  if(Math.abs(A.cx-B.cx)<2){ return [[A.cx,A.cy+NH/2],[B.cx,B.cy-NH/2]]; }
+  return [[A.cx+A.w/2-28,A.cy+NH/2],[B.cx-B.w/2+20,B.cy-NH/2]];
+}
+function buildMap(){
+  const W=900,H=760;
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Schéma de la stéroïdogenèse surrénalienne">
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker>
+  <marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--block)"/></marker></defs>`;
+  const zones=[[150,"Minéralocorticoïdes","zone glomérulée"],[450,"Glucocorticoïdes","zone fasciculée"],[750,"Androgènes","zone réticulée"]];
+  zones.forEach(([x,a,b])=>{s+=`<rect class="zone-bg" x="${x-112}" y="92" width="224" height="${H-98}" rx="16" opacity=".55"/>
+  <text class="zone-lbl" x="${x}" y="113" text-anchor="middle">${a}</text><text class="zone-lbl" x="${x}" y="127" text-anchor="middle" style="letter-spacing:.04em;text-transform:none;font-weight:400">${b}</text>`});
+  // edges
+  EDGES.forEach((e,i)=>{
+    const [a,b,enz,style,opt]=e;
+    let d;
+    if(opt&&opt.via){const A=nodeBox(a),B=nodeBox(b);d=`M${A.x},${A.cy} L30,${A.cy} L30,${B.cy} L${B.x-2},${B.cy}`}
+    else{const [p,q]=edgePts(a,b);d=`M${p[0]},${p[1]} L${q[0]},${q[1]-(Math.abs(p[0]-q[0])<2?2:0)}`}
+    s+=`<path id="edge${i}" class="edge ${style||""}" data-enz="${enz}" d="${d}" marker-end="url(#ah)"/>`;
+  });
+  // enzyme chips
+  EDGES.forEach((e,i)=>{
+    const [a,b,enz,,opt]=e; const E=ENZ[enz]; let mx,my;
+    if(opt&&opt.via){mx=230;my=42}
+    else{const [p,q]=edgePts(a,b);mx=(p[0]+q[0])/2;my=(p[1]+q[1])/2}
+    const w=E.l.length*6.4+14;
+    s+=`<g class="enz" data-enz="${enz}" tabindex="0" role="button" aria-label="${esc(E.l)}"><rect x="${mx-w/2}" y="${my-10}" width="${w}" height="20" rx="10"/><text x="${mx}" y="${my+3.6}" text-anchor="middle">${esc(E.l)}</text></g>`;
+  });
+  // nodes
+  Object.keys(NODES).forEach(id=>{
+    const B=nodeBox(id),n=NODES[id];
+    s+=`<g class="node" id="n-${id}" data-node="${id}" tabindex="0" role="button" aria-label="${esc(n.l)}"><rect x="${B.x}" y="${B.y}" width="${B.w}" height="${B.h}" rx="10"/>
+    <text x="${B.cx-(B.w/2)+12}" y="${B.cy+4.5}">${esc(n.l)}</text><text class="badge" x="${B.x+B.w-12}" y="${B.cy+5}" text-anchor="end"></text></g>`;
+  });
+  s+=`</svg>`;
+  $("#mapBox").innerHTML=s;
+  const svg=$("#mapBox svg");
+  svg.querySelectorAll(".node").forEach(g=>{
+    const id=g.dataset.node;
+    g.addEventListener("mouseenter",ev=>showTip(`<b>${esc(NODES[id].l)}</b><br>${esc(NODES[id].d)}`,ev));
+    g.addEventListener("mousemove",moveTip);g.addEventListener("mouseleave",hideTip);
+    g.addEventListener("click",()=>showNodeDetail(id));
+    g.addEventListener("keydown",ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();showNodeDetail(id)}});
+  });
+  const ENZ2BLOCK={c21:"cyp21",c11b1:"cyp11b1",c11b1x:"cyp11b1",c11b:"cyp11b1",h3b:"hsd3b2",c17h:"cyp17",c17l:"cyp17",star:"star",c11b2:"cyp11b2",c11b2b:"cyp11b2",c19:"por"};
+  svg.querySelectorAll(".enz").forEach(g=>{
+    const k=g.dataset.enz;
+    g.addEventListener("mouseenter",ev=>showTip(`<b>${esc(ENZ[k].l)}</b><br>${esc(ENZ[k].info)}`,ev));
+    g.addEventListener("mousemove",moveTip);g.addEventListener("mouseleave",hideTip);
+    const act=()=>{if(ENZ2BLOCK[k])setBlock(ENZ2BLOCK[k])};
+    g.addEventListener("click",act);
+    g.addEventListener("keydown",ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();act()}});
+  });
+}
+let curBlock="cyp21",lastNode=null;
+function setBlock(id){
+  curBlock=id; const B=BLOCKS[id];
+  document.querySelectorAll("#blockPills .pill").forEach(p=>p.setAttribute("aria-pressed",p.dataset.b===id?"true":"false"));
+  const svg=$("#mapBox svg");
+  svg.querySelectorAll(".node").forEach(g=>{
+    const st=B.nodes[g.dataset.node]||""; g.classList.remove("up","down","var"); if(st)g.classList.add(st);
+    g.querySelector(".badge").textContent=st==="up"?"↑":st==="down"?"↓":st==="var"?"±":"";
+  });
+  svg.querySelectorAll(".enz").forEach(g=>{const st=B.enz[g.dataset.enz]||"";g.classList.remove("blocked","partial");if(st)g.classList.add(st)});
+  svg.querySelectorAll(".edge").forEach(p=>{const st=B.enz[p.dataset.enz]||"";p.classList.remove("blocked","partial");if(st)p.classList.add(st);p.setAttribute("marker-end",st?"url(#ahr)":"url(#ah)")});
+  renderConseq(); store.set("hsc-block",id);
+}
+function renderConseq(){
+  const B=BLOCKS[curBlock];
+  let h=`<div style="display:grid;gap:4px"><span class="gene">${esc(B.gene||"Vue d'ensemble")}</span><h3>${esc(B.title)}</h3></div><p>${esc(B.text)}</p>
+  <div class="facts">${B.facts.map(f=>`<div class="fact"><b>${esc(f[0])}</b><span>${esc(f[1])}</span></div>`).join("")}</div>`;
+  if(B.key)h+=`<div class="chips">${B.key.map(k=>`<span class="chip ${/↓/.test(k)?"down":/↑/.test(k)?"up":"key"}">${esc(k)}</span>`).join("")}</div>`;
+  if(B.fiche)h+=`<div style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn" href="#fiches" data-open="${B.fiche}">Ouvrir la fiche complète →</a></div>`;
+  h+=`<div id="nodeDetail"></div>`;
+  $("#conseq").innerHTML=h;
+  const a=$("#conseq [data-open]"); if(a)a.addEventListener("click",()=>setFiche(a.dataset.open));
+  if(lastNode)showNodeDetail(lastNode,true);
+}
+function showNodeDetail(id,quiet){
+  lastNode=id; const st=BLOCKS[curBlock].nodes[id]||"n";
+  const lab={up:"accumulé",down:"diminué",var:"variable",n:"non modifié"}[st];
+  const box=$("#nodeDetail"); if(!box)return;
+  box.innerHTML=`<div class="info"><b>${esc(NODES[id].l)}</b> · <span class="chip ${st==="n"?"ok":st}">${lab} dans ce bloc</span><p style="margin-top:6px">${esc(NODES[id].d)}</p></div>`;
+}
+function buildPills(){
+  $("#blockPills").innerHTML=Object.entries(BLOCKS).map(([k,b])=>`<button type="button" class="pill" data-b="${k}" aria-pressed="false">${esc(b.tab)}${b.g?` <span class="g">${esc(b.g)}</span>`:""}</button>`).join("");
+  document.querySelectorAll("#blockPills .pill").forEach(p=>p.addEventListener("click",()=>setBlock(p.dataset.b)));
+}
+
+/* =====================================================
+   FRÉQUENCES
+   ===================================================== */
+function buildFreq(){
+  let h=`<thead><tr><th>#</th><th>Bloc</th><th>Part des HSC</th><th>Maroc (Casablanca)</th><th>Signature hormonale</th><th>Contexte évocateur</th><th></th></tr></thead><tbody>`;
+  FREQ.forEach(r=>{
+    h+=`<tr><td class="rank num">${r.r}</td><td><b>${esc(r.n)}</b><br><span class="mono" style="color:var(--teal)">${esc(r.g)}</span></td>
+    <td><b class="num">${esc(r.glob)}</b><br><span class="note">${esc(r.glNote)}</span></td>
+    <td>${r.ma!=null?`<b class="num">${String(r.ma).replace(".",",")} %</b><div class="bar"><i style="width:${Math.max(2,r.ma)}%"></i></div>`:`<span class="note">non rapporté</span>`}</td>
+    <td>${esc(r.sig)}</td><td>${esc(r.clue)}</td><td><a href="#fiches" data-open="${r.id}">Fiche</a></td></tr>`;
+  });
+  $("#freqTable").innerHTML=h+"</tbody>";
+  document.querySelectorAll("#freqTable [data-open]").forEach(a=>a.addEventListener("click",()=>setFiche(a.dataset.open)));
+}
+
+/* =====================================================
+   SCHÉMA DE GÈNE
+   ===================================================== */
+const SEVC={null:"var(--sev-null)",severe:"var(--sev-severe)",mod:"var(--sev-mod)",mild:"var(--sev-mild)"};
+function geneSVG(sym,vars){
+  const G=GENE_STRUCT[sym]; if(!G)return "";
+  const n=G.ex.length;
+  const exW=G.ex.map(l=>Math.max(16,Math.sqrt(l)*2.0));
+  const inW=G.intr.map(l=>14+Math.log10(Math.max(l,10))*10);
+  const total=exW.reduce((a,b)=>a+b,0)+inW.reduce((a,b)=>a+b,0);
+  const W=900,padL=34,padR=34,avail=W-padL-padR,k=avail/total;
+  const i0=G.cds.findIndex(c=>c>0); let i1=-1; G.cds.forEach((c,i)=>{if(c>0)i1=i});
+  let x=padL; const ex=[]; let cum=0;
+  for(let i=0;i<n;i++){
+    const w=exW[i]*k,len=G.ex[i],cds=G.cds[i];
+    let utr5=0,utr3=0;
+    if(cds===0){utr5=len}else{ if(i===i0&&i!==i1)utr5=len-cds; else if(i===i1&&i!==i0)utr3=len-cds; else if(i===i0&&i===i1){utr5=Math.min(len-cds,30);utr3=len-cds-utr5} }
+    ex.push({x,w,len,cds,utr5,utr3,cumStart:cum}); cum+=cds; x+=w;
+    if(i<n-1){ex[i].intronEnd=x+inW[i]*k; x+=inW[i]*k}
+  }
+  // pins
+  const pins=[];
+  (vars||[]).forEach(v=>{
+    if(v.hidePin)return;
+    let px=null,kind="pt";
+    if(v.codon){const nt=(v.codon-1)*3+2;for(const e of ex){if(e.cds>0&&nt>e.cumStart&&nt<=e.cumStart+e.cds){const cw=e.w*(e.cds/e.len),uw=e.w*(e.utr5/e.len);px=e.x+uw+((nt-e.cumStart)/e.cds)*cw;break}}}
+    else if(v.intron){const e=ex[v.intron-1];px=e.intronEnd-5;kind="intron"}
+    else if(v.region){kind="region"}
+    if(kind==="region"){pins.push({v,kind,x1:ex[v.region[0]-1].x,x2:ex[v.region[1]-1].x+ex[v.region[1]-1].w});return}
+    if(px!=null)pins.push({v,kind,x:px});
+  });
+  const pts=pins.filter(p=>p.kind!=="region").sort((a,b)=>a.x-b.x);
+  const levels=[]; pts.forEach(p=>{const w=p.v.lbl.length*6.6+12;let L=0;while(levels[L]!==undefined&&levels[L]>p.x-w/2-4)L++;levels[L]=p.x+w/2;p.L=L;p.w=w});
+  const nL=Math.max(1,levels.length); const hasReg=pins.some(p=>p.kind==="region");
+  const top=18+(hasReg?26:0); const lineY=top+nL*24+26; const H=lineY+62;
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Structure du gène ${esc(sym)} et position des variants">`;
+  s+=`<line x1="${padL-14}" x2="${W-padR+14}" y1="${lineY}" y2="${lineY}" stroke="var(--muted)" stroke-width="1.5"/>`;
+  s+=`<text class="gtxt" x="${padL-18}" y="${lineY+4}" text-anchor="end">5′</text><text class="gtxt" x="${W-padR+18}" y="${lineY+4}">3′</text>`;
+  ex.forEach((e,i)=>{
+    const uw5=e.w*(e.utr5/e.len),uw3=e.w*(e.utr3/e.len),cw=e.w-uw5-uw3;
+    if(uw5>0)s+=`<rect x="${e.x}" y="${lineY-8}" width="${uw5}" height="16" fill="var(--surface)" stroke="var(--blue)" stroke-width="1.2"/>`;
+    if(cw>0)s+=`<rect x="${e.x+uw5}" y="${lineY-14}" width="${cw}" height="28" fill="var(--blue)" rx="2"/>`;
+    if(uw3>0)s+=`<rect x="${e.x+uw5+cw}" y="${lineY-8}" width="${uw3}" height="16" fill="var(--surface)" stroke="var(--blue)" stroke-width="1.2"/>`;
+    s+=`<text class="gtxt" x="${e.x+e.w/2}" y="${lineY+30}" text-anchor="middle">${i+1}</text>`;
+  });
+  s+=`<text class="gtxt" x="${padL}" y="${lineY+50}">Exons (numérotation du transcrit ${esc(G.nm)}) · plein = codant, contour = UTR</text>`;
+  pins.forEach(p=>{
+    const col=SEVC[p.v.cls]||"var(--muted)";
+    if(p.kind==="region"){const y=18;
+      s+=`<path d="M${p.x1},${lineY-18} L${p.x1},${y+8} L${p.x2},${y+8} L${p.x2},${lineY-18}" fill="none" stroke="${col}" stroke-width="2" stroke-dasharray="5 4"/>
+      <text class="glbl" x="${(p.x1+p.x2)/2}" y="${y+2}" text-anchor="middle" fill="${col}">${esc(p.v.lbl)} · non vu en Sanger</text>`;return}
+    const ly=top+(nL-1-p.L)*24+10;
+    s+=`<line x1="${p.x}" x2="${p.x}" y1="${ly+8}" y2="${lineY-15}" stroke="${col}" stroke-width="1.6"/>
+    <circle cx="${p.x}" cy="${lineY-15}" r="3" fill="${col}"/>
+    <rect x="${p.x-p.w/2}" y="${ly-9}" width="${p.w}" height="18" rx="9" fill="var(--surface)" stroke="${col}" stroke-width="1.4"/>
+    <text class="glbl" x="${p.x}" y="${ly+4}" text-anchor="middle">${esc(p.v.lbl)}</text>`;
+  });
+  return s+`</svg>`;
+}
+
+/* =====================================================
+   FICHES
+   ===================================================== */
+let curFiche="cyp21";
+const SEVL={null:"Nul",severe:"Sévère",mod:"Modéré",mild:"Léger"};
+function setFiche(id){
+  curFiche=id; const F=FICHES[id]; const G=GENE_STRUCT[F.gene.split(" ")[0]];
+  document.querySelectorAll("#ficheTabs .pill").forEach(p=>p.setAttribute("aria-pressed",p.dataset.f===id?"true":"false"));
+  const arrow={up:"↑",down:"↓",n:"=",var:"±"};
+  const mk=b=>`<div class="mk ${b[0]}"><span class="ar">${arrow[b[0]]}</span><span>${b[1]}</span></div>`;
+  const ul=a=>`<ul>${a.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+  let vt="";
+  if(F.vars.length){
+    vt=`<div class="tablebox" style="border-radius:10px"><table class="vtab"><thead><tr><th>Nom usuel</th><th>HGVS c.</th><th>HGVS p.</th><th>Région</th><th>Activité</th><th>Sévérité</th><th>Phénotype</th><th>Fréquence / population</th><th>Sanger</th></tr></thead><tbody>`+
+    F.vars.map(v=>`<tr><td><b>${esc(v.lbl)}</b>${v.nt?`<div class="note" style="margin-top:3px;max-width:34ch">${esc(v.nt)}</div>`:""}</td><td class="mono">${esc(v.hg)}</td><td class="mono">${esc(v.p)}</td><td>${esc(v.ex)}</td><td class="num">${esc(v.act)}</td>
+    <td><span class="sev ${v.cls}"><i></i>${SEVL[v.cls]}</span></td><td>${esc(v.ph)}</td><td>${esc(v.fr)}</td><td><span class="sanger ${v.sg?"y":"n"}">${v.sg?"visible":"MLPA"}</span></td></tr>`).join("")+`</tbody></table></div>
+    <p class="note">PS = perte de sel, VS = virilisante simple, NC = non classique. HGVS c. affiché seulement quand il est donné par la source ; « — » sinon. Activité résiduelle in vitro.</p>`;
+  }
+  const html=`<div class="fiche">
+  <div class="fiche-head"><div><span class="eyebrow">${esc(F.inh)}</span><h3 style="margin-top:6px">${esc(F.name)}</h3><p class="sub">${esc(F.sum)}</p></div>
+    <div class="idcard"><span>Gène <b>${esc(F.gene)}</b></span><span>Locus <b>${esc(F.locus)}</b></span>${G?`<span>Transcrit <b>${esc(G.nm)}</b></span><span><b>${G.ex.length}</b> exons · <b>${G.aa}</b> aa</span>`:""}<span>OMIM <b>${esc(F.omim)}</b></span></div></div>
+  <div class="grid3">
+    <div class="card"><h4><span class="dot" style="background:var(--up)"></span>46,XX</h4>${ul(F.xx)}</div>
+    <div class="card"><h4><span class="dot" style="background:var(--blue)"></span>46,XY</h4>${ul(F.xy)}</div>
+    <div class="card"><h4><span class="dot"></span>Commun aux deux sexes</h4>${ul(F.gen)}</div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h4><span class="dot" style="background:var(--up)"></span>Biologie attendue</h4><div class="mklist">${F.bio.map(mk).join("")}</div></div>
+    <div class="card"><h4><span class="dot" style="background:var(--green)"></span>Bilan à demander</h4><ul class="check">${F.bilan.map(x=>`<li><span>${x}</span></li>`).join("")}</ul>
+      <h4 style="margin-top:8px"><span class="dot" style="background:var(--block)"></span>Pièges</h4>${ul(F.traps)}</div>
+  </div>
+  <div class="card"><h4><span class="dot" style="background:var(--blue)"></span>Gène ${esc(F.gene)} et variants fréquents</h4>
+    ${G?`<div class="genebox">${geneSVG(F.gene.split(" ")[0],F.vars)}</div>`:""}
+    <div class="chips" style="font-size:.8rem"><span class="sev null"><i></i>Nul</span><span class="sev severe"><i></i>Sévère</span><span class="sev mod"><i></i>Modéré</span><span class="sev mild"><i></i>Léger (forme non classique)</span></div>
+    <p>${esc(F.molec)}</p>
+    ${F.ma?`<div class="info"><b>Données marocaines et régionales.</b> ${esc(F.ma)}</div>`:""}
+    ${vt}
+  </div>
+  <div class="grid2">
+    <div class="card"><h4><span class="dot" style="background:var(--green)"></span>Traitement</h4>${ul(F.tx.map(esc))}</div>
+    <div class="card"><h4><span class="dot"></span>Conseil génétique</h4>${ul(F.gc.map(esc))}</div>
+  </div>
+  <div class="src"><span>Sources&nbsp;:</span>${F.refs.map(r=>`<a href="${REFS[r].u}" target="_blank" rel="noopener">${esc(REFS[r].t.split(".")[0])}</a>`).join("")}</div>
+  </div>`;
+  $("#fiche").innerHTML=html; store.set("hsc-fiche",id);
+}
+function buildFicheTabs(){
+  $("#ficheTabs").innerHTML=Object.entries(FICHES).map(([k,f])=>`<button type="button" class="pill" data-f="${k}" aria-pressed="false">${esc(f.tab)} <span class="g">${esc(f.gene.split(" ")[0])}</span></button>`).join("");
+  document.querySelectorAll("#ficheTabs .pill").forEach(p=>p.addEventListener("click",()=>setFiche(p.dataset.f)));
+}
+
+/* =====================================================
+   ORIENTATION
+   ===================================================== */
+const answers={k:"xx",g:"vir",bp:"low",na:"yes",kal:"hi",ohp:"vh"}; const extras={};
+function buildOrient(){
+  let h=`<div class="note" style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><span>Profil pré-rempli à titre d'exemple : nouveau-né 46,XX virilisé en perte de sel.</span><button type="button" class="btn ghost" id="orReset" style="padding:5px 12px">Tout effacer</button></div>`;
+  QUESTIONS.forEach(q=>{h+=`<div class="q"><span>${esc(q.l)}</span><div class="seg" data-q="${q.id}">${q.o.map(o=>`<button type="button" data-v="${o[0]}" aria-pressed="false">${esc(o[1])}</button>`).join("")}</div></div>`});
+  h+=`<div class="q"><span>Éléments associés</span>${EXTRAS.map(x=>`<label class="tog"><input type="checkbox" id="ex-${x.id}" data-x="${x.id}"> ${esc(x.l)}</label>`).join("")}</div>`;
+  $("#orientForm").innerHTML=h;
+  document.querySelectorAll("#orientForm .seg").forEach(sg=>{
+    sg.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{const q=sg.dataset.q;answers[q]=answers[q]===b.dataset.v?undefined:b.dataset.v;syncOrient()}));
+  });
+  document.querySelectorAll("#orientForm input[data-x]").forEach(c=>c.addEventListener("change",()=>{extras[c.dataset.x]=c.checked;syncOrient()}));
+  $("#orReset").addEventListener("click",()=>{Object.keys(answers).forEach(k=>delete answers[k]);Object.keys(extras).forEach(k=>extras[k]=false);document.querySelectorAll("#orientForm input[data-x]").forEach(c=>c.checked=false);syncOrient()});
+  syncOrient();
+}
+function syncOrient(){
+  document.querySelectorAll("#orientForm .seg").forEach(sg=>sg.querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",answers[sg.dataset.q]===b.dataset.v?"true":"false")));
+  const score={},pro={},con={};
+  Object.keys(DX).forEach(d=>{score[d]=PRIOR[d];pro[d]=[];con[d]=[]});
+  let filled=0;
+  QUESTIONS.forEach(q=>{const v=answers[q.id];if(!v||v==="na")return;filled++;const lbl=q.o.find(o=>o[0]===v)[1];const w=q.s[v]||{};
+    Object.keys(DX).forEach(d=>{const x=w[d]||0;score[d]+=x;if(x>=2)pro[d].push(`${q.l} : ${lbl}`);if(x<=-2)con[d].push(`${q.l} : ${lbl}`)})});
+  EXTRAS.forEach(x=>{if(!extras[x.id])return;filled++;Object.keys(DX).forEach(d=>{const v=x.s[d]||0;score[d]+=v;if(v>=2)pro[d].push(x.l.split(" (")[0]);if(v<=-2)con[d].push(x.l.split(" (")[0])})});
+  const ranked=Object.keys(DX).sort((a,b)=>score[b]-score[a]);
+  const top=score[ranked[0]],bottom=Math.min(...ranked.map(d=>score[d]));
+  let h=`<div class="sechead" style="margin:0"><h3>Hypothèses classées</h3><p class="note">${filled?`${filled} élément${filled>1?"s":""} renseigné${filled>1?"s":""}. Barre = cohérence relative avec le profil, pas une probabilité.`:"Aucun élément renseigné : classement par fréquence seule."}</p></div>`;
+  ranked.slice(0,4).forEach((d,i)=>{
+    const pct=top===bottom?100:Math.round(100*(score[d]-bottom)/(top-bottom));
+    h+=`<div class="res ${i===0?"top":""}"><div class="res-h"><b>${esc(DX[d].n)}</b><a href="#fiches" data-open="${DX[d].f}" style="font-size:.84rem">Fiche</a></div>
+    <div class="meter"><i style="width:${Math.max(4,pct)}%"></i></div>
+    ${pro[d].length?`<div class="why"><span style="color:var(--green)">Concorde :</span> ${esc(pro[d].slice(0,3).join(" · "))}</div>`:""}
+    ${con[d].length?`<div class="why"><span style="color:var(--block)">Discorde :</span> ${esc(con[d].slice(0,3).join(" · "))}</div>`:""}
+    <div class="why"><b style="color:var(--ink)">Dosage discriminant :</b> ${esc(DX[d].next)}</div></div>`;
+  });
+  if(answers.ohp==="mod"||answers.ohp==="vh")h+=`<div class="flag"><b>Rappel :</b> une 17-OHP élevée ne suffit pas à affirmer un 21-OHD. 11β, 3β (immunodosage) et POR l'élèvent aussi.</div>`;
+  $("#orientOut").innerHTML=h;
+  document.querySelectorAll("#orientOut [data-open]").forEach(a=>a.addEventListener("click",()=>setFiche(a.dataset.open)));
+}
+
+/* =====================================================
+   17-OHP
+   ===================================================== */
+function toNmol(v,u){return u==="ngml"?v*3.03:u==="ngdl"?v*0.0303:v}
+function fmt(v,d){return v.toLocaleString("fr-FR",{maximumFractionDigits:d})}
+function calcOHP(){
+  const u=$("#ohpUnit").value,b=parseFloat($("#ohpBase").value),st=parseFloat($("#ohpStim").value);
+  const bn=isFinite(b)?toNmol(b,u):null,sn=isFinite(st)?toNmol(st,u):null;
+  let verdict="—",col="var(--muted)",exp="Entrez au moins une valeur.";
+  if(sn!=null){
+    if(sn>300){verdict="Compatible avec une forme classique";col="var(--block)";exp="17-OHP stimulée > 300 nmol/L (> 10 000 ng/dL)."}
+    else if(sn>=30){verdict="Compatible avec une forme non classique";col="var(--up)";exp="17-OHP stimulée entre 30 et 300 nmol/L (1 000–10 000 ng/dL). Génotyper CYP21A2 pour confirmer : d'autres blocs peuvent produire ce profil."}
+    else{verdict="21-OHD peu probable";col="var(--green)";exp="17-OHP stimulée < 30 nmol/L. Les hétérozygotes ont parfois une réponse un peu plus haute que les non-porteurs, avec chevauchement : le dosage ne permet pas de dépister les porteurs."}
+  }else if(bn!=null){
+    if(bn>300){verdict="Évocateur d'une forme classique";col="var(--block)";exp="17-OHP basale > 300 nmol/L."}
+    else if(bn>=6){verdict="Zone intermédiaire : faire un Synacthène";col="var(--up)";exp="17-OHP basale entre 6 et 300 nmol/L : compatible avec une forme non classique, à confirmer par le test au Synacthène. Le seuil basal varie de 200 à 400 ng/dL (6–12 nmol/L) selon la méthode."}
+    else{verdict="Basale normale";col="var(--green)";exp="< 6 nmol/L le matin rend une forme non classique peu probable, sans l'exclure si le prélèvement n'était pas à 8 h ou en phase folliculaire."}
+  }
+  // gauge (log)
+  const W=600,H=96,x0=20,x1=W-20,lo=Math.log10(0.5),hi=Math.log10(3000);
+  const X=v=>x0+(Math.log10(Math.max(0.5,Math.min(3000,v)))-lo)/(hi-lo)*(x1-x0);
+  const zones=[[0.5,30,"var(--green-soft)","non atteint (stimulé)"],[30,300,"var(--up-soft)","non classique"],[300,3000,"var(--block-soft)","classique"]];
+  let g=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Position des valeurs sur l'échelle des seuils, en nmol/L">`;
+  zones.forEach(z=>{g+=`<rect x="${X(z[0])}" y="30" width="${X(z[1])-X(z[0])}" height="22" fill="${z[2]}"/><text class="gz" x="${(X(z[0])+X(z[1]))/2}" y="44.5" text-anchor="middle" fill="var(--muted)">${z[3]}</text>`});
+  [1,6,30,300,3000].forEach(t=>{g+=`<line x1="${X(t)}" x2="${X(t)}" y1="52" y2="58" stroke="var(--muted)"/><text class="gz" x="${X(t)}" y="70" text-anchor="middle" fill="var(--muted)">${t}</text>`});
+  g+=`<text class="gz" x="${x1}" y="88" text-anchor="end" fill="var(--muted)">nmol/L, échelle log</text>`;
+  g+=`<line x1="${X(6)}" x2="${X(6)}" y1="26" y2="56" stroke="var(--muted)" stroke-dasharray="2 3"/><text class="gz" x="${X(6)+4}" y="24" fill="var(--muted)">seuil basal 6</text>`;
+  if(bn!=null)g+=`<g><circle cx="${X(bn)}" cy="41" r="7" fill="var(--blue)" stroke="var(--surface)" stroke-width="2"/><text class="gz" x="${X(bn)}" y="88" text-anchor="middle" fill="var(--blue)">T0</text></g>`;
+  if(sn!=null)g+=`<g><circle cx="${X(sn)}" cy="41" r="7" fill="var(--teal)" stroke="var(--surface)" stroke-width="2"/><text class="gz" x="${X(sn)}" y="18" text-anchor="middle" fill="var(--teal)">T60</text></g>`;
+  g+=`</svg>`;
+  const row=(lbl,v)=>v==null?"":`<tr><td>${lbl}</td><td class="num">${fmt(v/0.0303,0)}</td><td class="num">${fmt(v/3.03,2)}</td><td class="num">${fmt(v,1)}</td></tr>`;
+  $("#ohpOut").innerHTML=`<span class="eyebrow">Lecture</span><div class="verdict" style="color:${col}">${esc(verdict)}</div><p>${esc(exp)}</p>
+  <div class="gauge">${g}</div>
+  <table class="conv"><thead><tr><th>Valeur saisie</th><th>ng/dL</th><th>ng/mL</th><th>nmol/L</th></tr></thead><tbody>${row("Basale",bn)}${row("Stimulée",sn)}</tbody></table>
+  <div class="flag"><b>Incohérence dans la source :</b> le tableau de GeneReviews donne « &lt; 1 000 ng/dL ou 50 nmol/L » pour le stimulé normal ; 1 000 ng/dL font 30 nmol/L. La guideline 2018 écrit 33 nmol/L pour 1 000 ng/dL. Ici, 30 nmol/L.</div>
+  <p class="note">Ces seuils concernent le 21-OHD. Une 17-OHP modérée avec HTA, hypokaliémie, sous-virilisation ou malformations oriente vers un autre bloc.</p>`;
+}
+
+/* =====================================================
+   RCCX
+   ===================================================== */
+function buildRCCX(){
+  const W=920;
+  const G={RP:{c:"var(--surface-2)",s:"var(--muted)",t:"var(--ink)"},C4:{c:"var(--surface-2)",s:"var(--muted)",t:"var(--ink)"},
+    CYP:{c:"var(--blue)",s:"var(--blue)",t:"#fff"},PSE:{c:"var(--down-soft)",s:"var(--down)",t:"var(--muted)",d:"4 3"},
+    TNX:{c:"var(--teal)",s:"var(--teal)",t:"#fff"},TNXA:{c:"var(--down-soft)",s:"var(--down)",t:"var(--muted)",d:"4 3"},
+    CHI:{c:"url(#chi)",s:"var(--block)",t:"var(--ink)"},CHT:{c:"url(#cht)",s:"var(--block)",t:"var(--ink)"},MUT:{c:"var(--blue)",s:"var(--block)",t:"#fff"}};
+  const rows=[
+    {y:46,lbl:"Haplotype normal (bimodulaire)",genes:[["RP1","RP",62],["C4A","C4",58],["CYP21A1P","PSE",96],["TNXA","TNXA",60],["RP2","RP",56],["C4B","C4",58],["CYP21A2","CYP",92],["TNXB","TNX",120]]},
+    {y:136,lbl:"Délétion 30 kb : gène chimère CYP21A1P/CYP21A2 (non fonctionnel)",genes:[["RP1","RP",62],["C4A","C4",58],["CYP21A1P/A2","CHI",120],["TNXB","TNX",120]]},
+    {y:226,lbl:"Délétion étendue à TNXB : CAH-X (chimère TNXA/TNXB)",genes:[["RP1","RP",62],["C4A","C4",58],["CYP21A1P","PSE",96],["TNXA/TNXB","CHT",120]]},
+    {y:316,lbl:"Duplication (trimodulaire) : p.Gln319* en cis d'une copie normale",genes:[["RP1","RP",62],["C4A","C4",58],["CYP21A1P","PSE",96],["TNXA","TNXA",60],["RP2","RP",56],["C4B","C4",58],["CYP21A2*","MUT",92],["TNXA","TNXA",60],["RP2","RP",56],["C4B","C4",58],["CYP21A2","CYP",92],["TNXB","TNX",120]]}
+  ];
+  let s=`<svg viewBox="0 0 ${W} 372" role="img" aria-label="Module RCCX et principales anomalies de structure du locus CYP21A2">
+  <defs><linearGradient id="chi" x1="0" x2="1"><stop offset=".5" stop-color="var(--down-soft)"/><stop offset=".5" stop-color="var(--blue-soft)"/></linearGradient>
+  <linearGradient id="cht" x1="0" x2="1"><stop offset=".5" stop-color="var(--down-soft)"/><stop offset=".5" stop-color="var(--teal-soft)"/></linearGradient></defs>`;
+  rows.forEach(r=>{
+    s+=`<text class="glbl" x="10" y="${r.y-14}">${esc(r.lbl)}</text>`;
+    let x=10; const tot=r.genes.reduce((a,g)=>a+g[2]+6,0); const k=Math.min(1,(W-20)/tot);
+    s+=`<line x1="10" x2="${10+tot*k}" y1="${r.y+12}" y2="${r.y+12}" stroke="var(--line)" stroke-width="2"/>`;
+    r.genes.forEach(g=>{const st=G[g[1]],w=g[2]*k;
+      s+=`<rect x="${x}" y="${r.y}" width="${w}" height="24" rx="5" fill="${st.c}" stroke="${st.s}" stroke-width="1.4" ${st.d?`stroke-dasharray="${st.d}"`:""}/>
+      <text x="${x+w/2}" y="${r.y+16}" text-anchor="middle" style="font:600 ${w<64?9.5:11}px var(--f-mono)" fill="${st.t}">${esc(g[0])}</text>`;x+=w+6*k});
+  });
+  s+=`<text class="gtxt" x="10" y="364">Schéma non à l'échelle. Pointillés = pseudogène. RP : STK19 ; C4 : complément ; TNX : ténascine-X. * = copie portant p.Gln319*.</text></svg>`;
+  $("#rccxBox").innerHTML=s;
+}
+
+/* =====================================================
+   TRAITEMENT, DIFFÉRENTIELS, RÉFÉRENCES
+   ===================================================== */
+function buildTreat(){
+  const head=["Bloc","Glucocorticoïdes","Minéralocorticoïdes","Antihypertenseur","Stéroïdes sexuels","Particularités"];
+  $("#treatTable").innerHTML=`<thead><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>`+TREAT.map(r=>`<tr>${r.map((c,i)=>`<td class="${i>0&&i<5?(/^Non$/.test(c)?"no":/^Oui/.test(c)?"yes":""):""}">${esc(c)}</td>`).join("")}</tr>`).join("")+`</tbody>`;
+  $("#treatTable").closest(".tablebox").querySelector("table").style.minWidth="820px";
+}
+function buildDiffs(){
+  $("#diffCards").innerHTML=DIFFS.map(d=>`<div class="card"><h4><span class="dot" style="background:${d.c}"></span>${esc(d.t)}</h4>
+  <div style="display:grid;gap:8px">${d.rows.map(r=>`<div style="display:grid;gap:1px;padding-bottom:8px;border-bottom:1px solid var(--line)"><b style="font-size:.9rem">${esc(r[0])}</b><span class="note" style="font-size:.86rem">${esc(r[1])}</span></div>`).join("")}</div>
+  <p class="note">${esc(d.n)}</p></div>`).join("");
+}
+function buildRefs(){
+  $("#refList").innerHTML=Object.values(REFS).map(r=>`<li><a href="${r.u}" target="_blank" rel="noopener">${esc(r.t)}</a></li>`).join("");
+}
+
+/* ---------- nav active ---------- */
+function navSpy(){
+  const links=[...document.querySelectorAll(".nav a")];
+  const secs=links.map(a=>document.querySelector(a.getAttribute("href")));
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle("on",l.getAttribute("href")==="#"+e.target.id))}})},{rootMargin:"-40% 0px -55% 0px"});
+  secs.forEach(s=>s&&io.observe(s));
+}
+
+/* ---------- init ---------- */
+buildMap();buildPills();
+const sb=store.get("hsc-block"); setBlock(sb&&BLOCKS[sb]?sb:"cyp21");
+buildFreq();buildFicheTabs();
+const sf=store.get("hsc-fiche"); setFiche(sf&&FICHES[sf]?sf:"cyp21");
+buildOrient();buildRCCX();buildTreat();buildDiffs();buildRefs();
+["ohpUnit","ohpBase","ohpStim"].forEach(id=>$("#"+id).addEventListener("input",calcOHP));
+let lastUnit=$("#ohpUnit").value;
+$("#ohpUnit").addEventListener("change",()=>{const nu=$("#ohpUnit").value;["ohpBase","ohpStim"].forEach(id=>{const el=$("#"+id),v=parseFloat(el.value);if(isFinite(v)){const n=toNmol(v,lastUnit);const out=nu==="ngml"?n/3.03:nu==="ngdl"?n/0.0303:n;el.value=+out.toPrecision(3)}});lastUnit=nu;calcOHP()});
+calcOHP();navSpy();
+if(location.hash&&FICHES[location.hash.slice(1)]){setFiche(location.hash.slice(1));$("#fiches").scrollIntoView()}
+})();
+</script>
+</body>
+</html>
