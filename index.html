@@ -585,7 +585,7 @@ cyp21:{tab:"21-OH",name:"Déficit en 21-hydroxylase",gene:"CYP21A2",locus:"6p21.
   molec:"Sanger sur amplicon long spécifique, puis MLPA si 0 ou 1 allèle trouvé ou homozygotie apparente. Environ 70–80 % des allèles sont visibles en séquençage, 20–30 % ne le sont qu'en analyse de nombre de copies. Les 9 variants issus du pseudogène, avec les délétions et grandes conversions, représentent environ 95 % des allèles.",
   ma:"Maroc (Rabat, 20 patients à forme classique, Abid 2008) : c.293-13A/C>G sur 47 % des chromosomes, p.Gln319* (Q318X) 19,4 %, p.Ile173Asn 11 %. p.Gln319* était concentré chez les patients de la région de Fès (75 %). Les 4 anomalies les plus fréquentes (dont les grandes lésions) couvraient 94 % des allèles. Cohorte petite, formes classiques uniquement. Série DSD du CHU Hassan II de Fès : les 31 patients 46,XX étaient tous des HSC, 11 élevés en garçons.",
   vars:[
-    {lbl:"Délétion 30 kb / chimère",region:[1,3],hg:"—",p:"Gène chimère CYP21A1P/CYP21A2",ex:"Région 5′",act:"0 %",cls:"null",ph:"PS",fr:"≈ 20 % (délétions) ; 20–30 % avec conversions",sg:false,nt:"Jonction variable (chimères CH-1 à CH-9). Peut emporter TNXB → CAH-X."},
+    {lbl:"Délétion 30 kb / chimère",region:[1,3],ups:"Délétion 30 kb en amont (C4B, TNXA…) · jonction dans la zone ombrée : 5′ remplacé par CYP21A1P",hg:"—",p:"Gène chimère CYP21A1P/CYP21A2",ex:"Région 5′",act:"0 %",cls:"null",ph:"PS",fr:"≈ 20 % (délétions) ; 20–30 % avec conversions",sg:false,nt:"Jonction variable (chimères CH-1 à CH-9). Peut emporter TNXB → CAH-X."},
     {lbl:"I2G",intron:2,hg:"c.293-13A>G / C>G",p:"Épissage aberrant",ex:"Intron 2",act:"< 1 %",cls:"severe",ph:"PS (> 90 % des homozygotes) ; parfois VS",fr:"20–30 % ; Maroc 47 %",sg:true,nt:"Position −13 polymorphe A/C à l'état normal."},
     {lbl:"8 pb del",codon:111,hg:"c.332_339del",p:"p.Gly111Valfs*21",ex:"Exon 3",act:"0 %",cls:"null",ph:"PS",fr:"Rare",sg:true,nt:"Alias G110Δ8nt."},
     {lbl:"I172N",codon:173,hg:"c.518T>A",p:"p.Ile173Asn",ex:"Exon 4",act:"2–11 %",cls:"mod",ph:"VS (76 %) ; PS (23 %) avec un allèle sévère",fr:"≈ 10 % ; Maroc 11 %",sg:true,nt:"Allèle typique de la forme virilisante simple."},
@@ -998,6 +998,11 @@ function geneSVG(sym,vars){
   pins.forEach(p=>{
     const col=SEVC[p.v.cls]||"var(--muted)";
     if(p.kind==="region"){const y=18;
+      // délétion venant de l'amont : rien n'est perdu dans le gène lui-même, seul le 5′ (jusqu'à la jonction) devient CYP21A1P
+      if(p.v.ups){const x0=padL-14;
+        s+=`<rect x="${p.x1-4}" y="${lineY-20}" width="${p.x2-p.x1+8}" height="40" rx="4" fill="${col}" fill-opacity=".12" stroke="${col}" stroke-width="1" stroke-dasharray="3 3"/>
+        <path d="M${x0+8},${y+3} L${x0},${y+8} L${x0+8},${y+13} M${x0},${y+8} L${p.x2},${y+8} L${p.x2},${lineY-20}" fill="none" stroke="${col}" stroke-width="2" stroke-dasharray="5 4"/>
+        <text class="glbl" x="${x0+12}" y="${y+2}" fill="${col}">${esc(p.v.ups)} · non vu en Sanger</text>`;return}
       s+=`<path d="M${p.x1},${lineY-18} L${p.x1},${y+8} L${p.x2},${y+8} L${p.x2},${lineY-18}" fill="none" stroke="${col}" stroke-width="2" stroke-dasharray="5 4"/>
       <text class="glbl" x="${(p.x1+p.x2)/2}" y="${y+2}" text-anchor="middle" fill="${col}">${esc(p.v.lbl)} · non vu en Sanger</text>`;return}
     const ly=top+(nL-1-p.L)*24+10;
