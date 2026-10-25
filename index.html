@@ -168,8 +168,6 @@ details.more>summary::-webkit-details-marker{display:none}
 details.more>summary::after{content:"+";font-family:var(--f-mono);color:var(--muted)}
 details.more[open]>summary::after{content:"−"}
 details.more>.in{padding:0 12px 12px;display:grid;gap:8px;font-size:.88rem}
-.genebox{overflow-x:auto}
-.genebox svg{display:block;min-width:620px;width:100%;height:auto}
 .gtxt{font:500 10.5px var(--f-mono);fill:var(--muted)}
 .glbl{font:600 11px var(--f-body);fill:var(--ink)}
 .vtab{font-size:.82rem}
@@ -616,7 +614,7 @@ cyp11b1:{tab:"11β-OH",name:"Déficit en 11β-hydroxylase",gene:"CYP11B1",locus:
     {lbl:"Q356X",codon:356,hg:"—",p:"p.Gln356*",ex:"Exon 6",act:"0",cls:"null",ph:"Classique",fr:"Tunisie (effet fondateur)",sg:true,nt:""},
     {lbl:"G379V",codon:379,hg:"—",p:"p.Gly379Val",ex:"Exon 7",act:"—",cls:"severe",ph:"Classique",fr:"Tunisie",sg:true,nt:""},
     {lbl:"R448H",codon:448,hg:"—",p:"p.Arg448His",ex:"Exon 8",act:"Abolie",cls:"null",ph:"Classique",fr:"Juifs marocains ; aussi chez des Caucasiens",sg:true,nt:"Codon CGC→CAC dans le domaine de liaison de l'hème."},
-    {lbl:"R448C",codon:448,hg:"—",p:"p.Arg448Cys",ex:"Exon 8",act:"—",cls:"severe",ph:"Classique (avec R448H)",fr:"Privé (une famille)",sg:true,nt:"",hidePin:true}
+    {lbl:"R448C",codon:448,hg:"—",p:"p.Arg448Cys",ex:"Exon 8",act:"—",cls:"severe",ph:"Classique (avec R448H)",fr:"Privé (une famille)",sg:true,nt:""}
   ],
   tx:["Glucocorticoïdes (hydrocortisone chez l'enfant) : freinent l'ACTH, donc le DOC ; ils ont normalisé la kaliémie et amélioré la TA dans le cas fassi de 2026.","Antihypertenseur (spironolactone, inhibiteur calcique) si l'HTA persiste.","Pas de fludrocortisone.","Suivi : TA, rénine (remonte sous traitement), 11-désoxycortisol, androgènes, âge osseux."],
   gc:["Autosomique récessive, 25 % de risque pour la fratrie.","Porteurs asymptomatiques et biologiquement normaux : test moléculaire uniquement.","Antécédent familial juif marocain : rechercher R448H en premier."],
@@ -950,66 +948,6 @@ function buildFreq(){
 }
 
 /* =====================================================
-   SCHÉMA DE GÈNE
-   ===================================================== */
-const SEVC={null:"var(--sev-null)",severe:"var(--sev-severe)",mod:"var(--sev-mod)",mild:"var(--sev-mild)"};
-function geneSVG(sym,vars){
-  const G=GENE_STRUCT[sym]; if(!G)return "";
-  const n=G.ex.length;
-  const exW=G.ex.map(l=>Math.max(16,Math.sqrt(l)*2.0));
-  const inW=G.intr.map(l=>14+Math.log10(Math.max(l,10))*10);
-  const total=exW.reduce((a,b)=>a+b,0)+inW.reduce((a,b)=>a+b,0);
-  const W=900,padL=34,padR=34,avail=W-padL-padR,k=avail/total;
-  const i0=G.cds.findIndex(c=>c>0); let i1=-1; G.cds.forEach((c,i)=>{if(c>0)i1=i});
-  let x=padL; const ex=[]; let cum=0;
-  for(let i=0;i<n;i++){
-    const w=exW[i]*k,len=G.ex[i],cds=G.cds[i];
-    let utr5=0,utr3=0;
-    if(cds===0){utr5=len}else{ if(i===i0&&i!==i1)utr5=len-cds; else if(i===i1&&i!==i0)utr3=len-cds; else if(i===i0&&i===i1){utr5=Math.min(len-cds,30);utr3=len-cds-utr5} }
-    ex.push({x,w,len,cds,utr5,utr3,cumStart:cum}); cum+=cds; x+=w;
-    if(i<n-1){ex[i].intronEnd=x+inW[i]*k; x+=inW[i]*k}
-  }
-  // pins
-  const pins=[];
-  (vars||[]).forEach(v=>{
-    if(v.hidePin)return;
-    let px=null,kind="pt";
-    if(v.codon){const nt=(v.codon-1)*3+2;for(const e of ex){if(e.cds>0&&nt>e.cumStart&&nt<=e.cumStart+e.cds){const cw=e.w*(e.cds/e.len),uw=e.w*(e.utr5/e.len);px=e.x+uw+((nt-e.cumStart)/e.cds)*cw;break}}}
-    else if(v.intron){const e=ex[v.intron-1];px=e.intronEnd-5;kind="intron"}
-    else if(v.region){kind="region"}
-    if(kind==="region"){pins.push({v,kind,x1:ex[v.region[0]-1].x,x2:ex[v.region[1]-1].x+ex[v.region[1]-1].w});return}
-    if(px!=null)pins.push({v,kind,x:px});
-  });
-  const pts=pins.filter(p=>p.kind!=="region").sort((a,b)=>a.x-b.x);
-  const levels=[]; pts.forEach(p=>{const w=p.v.lbl.length*6.6+12;let L=0;while(levels[L]!==undefined&&levels[L]>p.x-w/2-4)L++;levels[L]=p.x+w/2;p.L=L;p.w=w});
-  const nL=Math.max(1,levels.length); const hasReg=pins.some(p=>p.kind==="region");
-  const top=18+(hasReg?26:0); const lineY=top+nL*24+26; const H=lineY+62;
-  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Structure du gène ${esc(sym)} et position des variants">`;
-  s+=`<line x1="${padL-14}" x2="${W-padR+14}" y1="${lineY}" y2="${lineY}" stroke="var(--muted)" stroke-width="1.5"/>`;
-  s+=`<text class="gtxt" x="${padL-18}" y="${lineY+4}" text-anchor="end">5′</text><text class="gtxt" x="${W-padR+18}" y="${lineY+4}">3′</text>`;
-  ex.forEach((e,i)=>{
-    const uw5=e.w*(e.utr5/e.len),uw3=e.w*(e.utr3/e.len),cw=e.w-uw5-uw3;
-    if(uw5>0)s+=`<rect x="${e.x}" y="${lineY-8}" width="${uw5}" height="16" fill="var(--surface)" stroke="var(--acc2)" stroke-width="1.2"/>`;
-    if(cw>0)s+=`<rect x="${e.x+uw5}" y="${lineY-14}" width="${cw}" height="28" fill="var(--acc2)" rx="2"/>`;
-    if(uw3>0)s+=`<rect x="${e.x+uw5+cw}" y="${lineY-8}" width="${uw3}" height="16" fill="var(--surface)" stroke="var(--acc2)" stroke-width="1.2"/>`;
-    s+=`<text class="gtxt" x="${e.x+e.w/2}" y="${lineY+30}" text-anchor="middle">${i+1}</text>`;
-  });
-  s+=`<text class="gtxt" x="${padL}" y="${lineY+50}">Exons (numérotation du transcrit ${esc(G.nm)}) · plein = codant, contour = UTR</text>`;
-  pins.forEach(p=>{
-    const col=SEVC[p.v.cls]||"var(--muted)";
-    if(p.kind==="region"){const y=18;
-      s+=`<path d="M${p.x1},${lineY-18} L${p.x1},${y+8} L${p.x2},${y+8} L${p.x2},${lineY-18}" fill="none" stroke="${col}" stroke-width="2" stroke-dasharray="5 4"/>
-      <text class="glbl" x="${(p.x1+p.x2)/2}" y="${y+2}" text-anchor="middle" fill="${col}">${esc(p.v.lbl)} · non vu en Sanger</text>`;return}
-    const ly=top+(nL-1-p.L)*24+10;
-    s+=`<line x1="${p.x}" x2="${p.x}" y1="${ly+8}" y2="${lineY-15}" stroke="${col}" stroke-width="1.6"/>
-    <circle cx="${p.x}" cy="${lineY-15}" r="3" fill="${col}"/>
-    <rect x="${p.x-p.w/2}" y="${ly-9}" width="${p.w}" height="18" rx="9" fill="var(--surface)" stroke="${col}" stroke-width="1.4"/>
-    <text class="glbl" x="${p.x}" y="${ly+4}" text-anchor="middle">${esc(p.v.lbl)}</text>`;
-  });
-  return s+`</svg>`;
-}
-
-/* =====================================================
    FICHES
    ===================================================== */
 let curFiche="cyp21";
@@ -1036,8 +974,6 @@ function setFiche(id){
     <div class="card"><h4>Pièges</h4>${ul(F.traps)}<h4>Traitement</h4>${ul(F.tx.map(esc))}</div>
   </div>
   <details class="more"><summary>Gène, variants fréquents</summary><div class="in">
-    ${G?`<div class="genebox">${geneSVG(F.gene.split(" ")[0],F.vars)}</div>`:""}
-    <div class="chips" style="font-size:.78rem;gap:10px"><span class="sev null"><i></i>Nul</span><span class="sev severe"><i></i>Sévère</span><span class="sev mod"><i></i>Modéré</span><span class="sev mild"><i></i>Léger (NC)</span></div>
     <p>${esc(F.molec)}</p>
     ${vt}
   </div></details>
