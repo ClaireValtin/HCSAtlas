@@ -4,99 +4,87 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>Atlas des blocs surrénaliens</title>
-<meta name="description" content="Aide au diagnostic des hyperplasies congénitales des surrénales et de leurs diagnostics différentiels">
+<title>HSC · aide-mémoire</title>
+<meta name="description" content="Aide-mémoire diagnostique des hyperplasies congénitales des surrénales et de leurs diagnostics différentiels">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout : atlas clinique — barre de navigation collante, carte de la stéroïdogenèse en ouverture, puis fiches et outils en sections pleine largeur sur une grille 12 col. */
 :root{
-  --paper:#F3F8FA; --surface:#FFFFFF; --surface-2:#EAF3F6; --ink:#0B2239; --muted:#56697A; --line:#D3E1E8;
-  --blue:#1E5BB8; --blue-soft:#DCE8F8; --teal:#0C9C97; --teal-soft:#D5F1EF; --green:#2C9A5A; --green-soft:#DCF2E4;
-  --up:#D9692A; --up-soft:#FBE6D9; --down:#93A3B1; --down-soft:#ECF1F4; --block:#CF3C57; --block-soft:#F9DDE3;
-  --sev-null:#B4233F; --sev-severe:#D9692A; --sev-mod:#C49A12; --sev-mild:#2C9A5A;
-  --shadow:0 1px 2px rgba(11,34,57,.06),0 6px 24px -12px rgba(11,34,57,.18);
-  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --paper:#F3F4F2; --surface:#FFFFFF; --surface-2:#E9EBE7; --ink:#1E2320; --muted:#5F6762; --line:#D5D9D3;
+  --acc:#2E6E48; --on-acc:#FFFFFF; --acc-soft:#DDEAE1; --acc2:#4A5650; --acc2-soft:#E3E7E4;
+  --up:#B0601E; --up-soft:#F5E6D6; --down:#8F9892; --down-soft:#ECEEEB; --block:#A8353A; --block-soft:#F3DCDD;
+  --sev-null:#A8353A; --sev-severe:#B0601E; --sev-mod:#A88912; --sev-mild:#2E6E48;
   --f-body:"IBM Plex Sans","Segoe UI",system-ui,-apple-system,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
-  --r:10px;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --paper:#071421; --surface:#0C1D2D; --surface-2:#10263A; --ink:#E4EEF4; --muted:#93A8B9; --line:#1D3449;
-  --blue:#76A8F2; --blue-soft:#15304F; --teal:#41CFC7; --teal-soft:#0F3536; --green:#5CCB8B; --green-soft:#12321F;
-  --up:#F39A5B; --up-soft:#3A2414; --down:#5B6E80; --down-soft:#142534; --block:#FF6E86; --block-soft:#3D1622;
-  --sev-null:#FF6E86; --sev-severe:#F39A5B; --sev-mod:#E5C04A; --sev-mild:#5CCB8B;
-  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 28px -14px rgba(0,0,0,.6); color-scheme:dark }}
+  --paper:#151816; --surface:#1C201E; --surface-2:#252A27; --ink:#E3E7E4; --muted:#9AA39D; --line:#323834;
+  --acc:#6DBB8A; --on-acc:#10201A; --acc-soft:#1E3326; --acc2:#A9B5AE; --acc2-soft:#2A302D;
+  --up:#E09A5C; --up-soft:#3A2817; --down:#69716C; --down-soft:#222624; --block:#E3787C; --block-soft:#3E1F21;
+  --sev-null:#E3787C; --sev-severe:#E09A5C; --sev-mod:#D6BD55; --sev-mild:#6DBB8A; color-scheme:dark }}
 :root[data-theme="dark"]{
-  --paper:#071421; --surface:#0C1D2D; --surface-2:#10263A; --ink:#E4EEF4; --muted:#93A8B9; --line:#1D3449;
-  --blue:#76A8F2; --blue-soft:#15304F; --teal:#41CFC7; --teal-soft:#0F3536; --green:#5CCB8B; --green-soft:#12321F;
-  --up:#F39A5B; --up-soft:#3A2414; --down:#5B6E80; --down-soft:#142534; --block:#FF6E86; --block-soft:#3D1622;
-  --sev-null:#FF6E86; --sev-severe:#F39A5B; --sev-mod:#E5C04A; --sev-mild:#5CCB8B;
-  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 28px -14px rgba(0,0,0,.6); color-scheme:dark }
+  --paper:#151816; --surface:#1C201E; --surface-2:#252A27; --ink:#E3E7E4; --muted:#9AA39D; --line:#323834;
+  --acc:#6DBB8A; --on-acc:#10201A; --acc-soft:#1E3326; --acc2:#A9B5AE; --acc2-soft:#2A302D;
+  --up:#E09A5C; --up-soft:#3A2817; --down:#69716C; --down-soft:#222624; --block:#E3787C; --block-soft:#3E1F21;
+  --sev-null:#E3787C; --sev-severe:#E09A5C; --sev-mod:#D6BD55; --sev-mild:#6DBB8A; color-scheme:dark }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
-body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:15.5px;line-height:1.58;-webkit-font-smoothing:antialiased}
-a{color:var(--blue);text-underline-offset:2px}
-a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:6px}
-h1,h2,h3,h4{font-family:var(--f-display);line-height:1.12;text-wrap:balance;margin:0;letter-spacing:-.01em}
-h2{font-size:clamp(1.6rem,3.2vw,2.25rem);font-weight:800}
-h3{font-size:1.22rem;font-weight:700}
-h4{font-size:1rem;font-weight:700}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
+a{color:var(--acc);text-underline-offset:2px}
+a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+h1,h2,h3,h4{margin:0;font-weight:600;line-height:1.2}
+h3{font-size:1.05rem}
+h4{font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
 p{margin:0}
-.mono{font-family:var(--f-mono);font-size:.88em}
+ul{margin:0;padding-left:16px;display:grid;gap:3px}
+.mono{font-family:var(--f-mono);font-size:.9em}
 .num{font-variant-numeric:tabular-nums}
-.muted{color:var(--muted)}
-.wrap{max-width:1200px;margin:0 auto;padding-inline:clamp(16px,3vw,32px)}
+.wrap{max-width:1280px;margin:0 auto;padding-inline:16px}
 
-/* top bar */
-.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.topbar .wrap{display:flex;align-items:center;gap:18px;height:58px}
-.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800;font-size:1.05rem;white-space:nowrap;color:var(--ink);text-decoration:none}
-.brand svg{flex:none}
-.nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;min-width:0;flex:1}
+/* barre */
+.topbar{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:stretch;gap:14px;height:44px}
+.brand{display:flex;align-items:center;font-weight:600;white-space:nowrap;color:var(--ink);text-decoration:none;font-size:.95rem}
+.brand span{color:var(--acc)}
+@media (max-width:600px){.brand{display:none}}
+.nav{display:flex;overflow-x:auto;scrollbar-width:none;min-width:0;flex:1}
 .nav::-webkit-scrollbar{display:none}
-.nav a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:.86rem;font-weight:500;padding:7px 10px;border-radius:999px}
-.nav a:hover,.nav a.on{color:var(--ink);background:var(--surface-2)}
-.themebtn{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;width:34px;height:34px;display:grid;place-items:center;cursor:pointer}
+.nav button{white-space:nowrap;border:0;background:none;color:var(--muted);font:500 .86rem var(--f-body);padding:0 12px;cursor:pointer;border-bottom:2px solid transparent}
+.nav button:hover{color:var(--ink)}
+.nav button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--acc)}
+.tools{display:flex;align-items:center;gap:6px}
+.tbtn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:4px;height:28px;padding:0 10px;font:500 .82rem var(--f-body);cursor:pointer;display:grid;place-items:center}
+.tbtn:hover{border-color:var(--acc)}
 
-section{padding-block:clamp(44px,7vw,84px);border-bottom:1px solid var(--line)}
-.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-weight:500}
-.sechead{display:grid;gap:10px;margin-bottom:28px;max-width:72ch}
-.sechead p{color:var(--muted)}
+main{padding-block:14px 24px}
+.view{display:grid;gap:12px}
+.hint{font-size:.8rem;color:var(--muted)}
 
-/* hero */
-.hero{padding-block:clamp(28px,4vw,48px) clamp(40px,6vw,72px)}
-.hero-top{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;align-items:end;margin-bottom:22px}
-.hero h1{font-size:clamp(2.1rem,5.4vw,3.9rem);font-weight:800;letter-spacing:-.025em}
-.hero h1 em{font-style:normal;color:var(--teal)}
-.hero .lede{color:var(--muted);max-width:60ch;font-size:1.02rem}
-@media (max-width:820px){.hero-top{grid-template-columns:1fr}}
+/* sélecteurs */
+.pills{display:flex;flex-wrap:wrap;gap:4px}
+.pill{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:500 .82rem var(--f-body);padding:4px 9px;border-radius:4px;cursor:pointer;display:inline-flex;gap:6px;align-items:baseline}
+.pill .g{font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.pill:hover{border-color:var(--acc)}
+.pill[aria-pressed="true"]{background:var(--acc);color:var(--on-acc);border-color:var(--acc)}
+.pill[aria-pressed="true"] .g{color:var(--on-acc);opacity:.75}
 
-.pills{display:flex;flex-wrap:wrap;gap:6px}
-.pill{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:500 .84rem var(--f-body);padding:7px 12px;border-radius:999px;cursor:pointer;display:inline-flex;gap:7px;align-items:center}
-.pill .g{font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
-.pill:hover{border-color:var(--teal)}
-.pill[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.pill[aria-pressed="true"] .g{color:color-mix(in srgb,var(--paper) 70%,transparent)}
-
-.mapgrid>*,.grid2>*,.grid3>*,.orient>*,.calc>*,.hero-top>*,.risk>*{min-width:0}
-.mapgrid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:18px;margin-top:16px}
+.mapgrid>*,.grid2>*,.grid3>*,.orient>*,.calc>*,.fgrid>*{min-width:0}
+.mapgrid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:12px;align-items:start}
 @media (max-width:980px){.mapgrid{grid-template-columns:1fr}}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
-.mapbox{padding:10px 8px 6px;overflow-x:auto}
-.mapbox svg{display:block;min-width:620px;width:100%;height:auto}
-.legend{display:flex;flex-wrap:wrap;gap:14px;padding:8px 14px 12px;font-size:.8rem;color:var(--muted)}
-.legend span{display:inline-flex;align-items:center;gap:6px}
-.sw{width:14px;height:10px;border-radius:3px;display:inline-block;border:1.5px solid}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:6px}
+.mapbox{padding:6px;overflow-x:auto}
+.mapbox svg{display:block;min-width:560px;width:100%;height:auto;max-height:calc(100vh - 170px)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;padding:6px 10px 8px;font-size:.76rem;color:var(--muted);border-top:1px solid var(--line)}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.sw{width:13px;height:9px;border-radius:2px;display:inline-block;border:1.5px solid}
 
-/* map svg */
-.zone-lbl{font:600 11px var(--f-mono);letter-spacing:.1em;text-transform:uppercase;fill:var(--muted)}
+/* carte svg */
+.zone-lbl{font:600 11px var(--f-body);letter-spacing:.06em;text-transform:uppercase;fill:var(--muted)}
 .zone-bg{fill:var(--surface-2)}
-.node rect{fill:var(--surface);stroke:var(--line);stroke-width:1.5;transition:fill .25s,stroke .25s,opacity .25s}
-.node text{font:600 13px var(--f-body);fill:var(--ink);transition:opacity .25s}
+.node rect{fill:var(--surface);stroke:var(--line);stroke-width:1.5;transition:fill .2s,stroke .2s}
+.node text{font:500 13px var(--f-body);fill:var(--ink)}
 .node .badge{font:700 13px var(--f-mono)}
 .node.up rect{fill:var(--up-soft);stroke:var(--up);stroke-width:2.2}
 .node.up .badge{fill:var(--up)}
@@ -106,417 +94,324 @@ section{padding-block:clamp(44px,7vw,84px);border-bottom:1px solid var(--line)}
 .node.var rect{fill:var(--surface);stroke:var(--up);stroke-dasharray:2 3;stroke-width:1.8}
 .node.var .badge{fill:var(--up)}
 .node{cursor:pointer}
-.node:hover rect{stroke:var(--teal)}
+.node:hover rect{stroke:var(--acc)}
 .edge{stroke:var(--muted);stroke-width:1.6;fill:none;opacity:.7}
 .edge.weak{stroke-dasharray:3 4}
 .edge.blocked{stroke:var(--block);opacity:1;stroke-width:2.2}
 .edge.partial{stroke:var(--block);opacity:.85;stroke-dasharray:6 4}
 .enz{cursor:pointer}
-.enz rect{fill:var(--paper);stroke:var(--teal);stroke-width:1.2}
-.enz text{font:500 10.5px var(--f-mono);fill:var(--teal)}
+.enz rect{fill:var(--paper);stroke:var(--acc);stroke-width:1.2}
+.enz text{font:500 10.5px var(--f-mono);fill:var(--acc)}
 .enz.blocked rect{fill:var(--block);stroke:var(--block)}
 .enz.blocked text{fill:#fff}
 .enz.partial rect{fill:var(--block-soft);stroke:var(--block)}
 .enz.partial text{fill:var(--block)}
-.xmark{stroke:var(--block);stroke-width:3;stroke-linecap:round}
 
-.conseq{padding:18px 18px 16px;display:grid;gap:14px;align-content:start}
-.conseq h3{font-size:1.35rem}
-.conseq .gene{font-family:var(--f-mono);font-size:.82rem;color:var(--teal)}
-.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.fact{background:var(--surface-2);border-radius:9px;padding:9px 11px;min-width:0}
-.fact b{display:block;font:600 .7rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
-.fact span{font-size:.9rem;font-weight:500}
-.chips{display:flex;flex-wrap:wrap;gap:5px}
-.chip{font:500 .78rem var(--f-body);padding:3px 9px;border-radius:999px;border:1px solid var(--line);background:var(--surface)}
+.conseq{padding:12px;display:grid;gap:10px;align-content:start}
+.conseq .gene{font-family:var(--f-mono);font-size:.78rem;color:var(--acc)}
+.conseq>p{font-size:.88rem;color:var(--muted)}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.fact{background:var(--surface);padding:6px 8px;min-width:0}
+.fact b{display:block;font:500 .68rem var(--f-body);letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.fact span{font-size:.86rem}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.chip{font:500 .76rem var(--f-body);padding:2px 7px;border-radius:3px;border:1px solid var(--line);background:var(--surface)}
 .chip.up{background:var(--up-soft);border-color:transparent;color:var(--up)}
 .chip.down{background:var(--down-soft);border-color:transparent;color:var(--muted)}
-.chip.ok{background:var(--green-soft);border-color:transparent;color:var(--green)}
-.chip.key{background:var(--teal-soft);border-color:transparent;color:var(--teal);font-weight:600}
-.btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--paper);border:0;border-radius:999px;padding:9px 16px;font:600 .86rem var(--f-body);cursor:pointer;text-decoration:none}
+.chip.ok{background:var(--acc-soft);border-color:transparent;color:var(--acc)}
+.chip.key{background:var(--acc-soft);border-color:transparent;color:var(--acc)}
+.btn{display:inline-flex;align-items:center;gap:6px;background:var(--acc);color:var(--on-acc);border:0;border-radius:4px;padding:6px 11px;font:500 .82rem var(--f-body);cursor:pointer;text-decoration:none;justify-self:start}
 .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.note{font-size:.82rem;color:var(--muted)}
-.flag{border-left:3px solid var(--up);background:var(--up-soft);padding:9px 12px;border-radius:0 8px 8px 0;font-size:.86rem}
+.note{font-size:.78rem;color:var(--muted)}
+.flag{border-left:3px solid var(--up);background:var(--up-soft);padding:6px 9px;font-size:.82rem}
 .flag b{color:var(--up)}
-.info{border-left:3px solid var(--teal);background:var(--teal-soft);padding:9px 12px;border-radius:0 8px 8px 0;font-size:.88rem}
+.info{border-left:3px solid var(--acc);background:var(--acc-soft);padding:6px 9px;font-size:.84rem}
 
-/* frequency table */
-.freq{width:100%;border-collapse:collapse;font-size:.92rem}
-.freq th{font:600 .72rem var(--f-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
-.freq td{padding:13px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+/* tableaux */
+.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:6px}
+table{width:100%;border-collapse:collapse}
+.freq,.tt{font-size:.86rem}
+.freq th,.tt th,.vtab th{font:600 .7rem var(--f-body);text-transform:uppercase;letter-spacing:.04em;color:var(--muted);text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);white-space:nowrap;background:var(--surface-2)}
+.freq td,.tt td{padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
 .freq tr:hover td{background:var(--surface-2)}
-.rank{font:800 1.4rem var(--f-display);color:var(--teal);width:44px}
-.bar{height:8px;border-radius:5px;background:var(--surface-2);overflow:hidden;width:140px;margin-top:6px}
-.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--teal))}
-.tablebox{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:14px}
-.tablebox table{min-width:760px}
+.freq{min-width:760px}
+.rank{font-weight:600;color:var(--acc);width:28px}
+.bar{height:5px;background:var(--surface-2);overflow:hidden;width:90px;margin-top:4px}
+.bar i{display:block;height:100%;background:var(--acc)}
 
 /* fiches */
-.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
-.fiche{display:grid;gap:18px}
-.fiche-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:start;padding:22px;border-radius:14px;background:linear-gradient(135deg,var(--blue-soft),var(--teal-soft));border:1px solid var(--line)}
-.fiche-head h3{font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:800}
-.fiche-head .sub{color:var(--muted);margin-top:6px;max-width:70ch}
-.idcard{display:grid;gap:3px;font-size:.82rem;text-align:right;font-family:var(--f-mono);color:var(--muted)}
-.idcard b{color:var(--ink);font-weight:500}
-@media (max-width:700px){.fiche-head{grid-template-columns:1fr}.idcard{text-align:left}}
-.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.fiche{display:grid;gap:10px}
+.fhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.fhead h3{font-size:1.1rem}
+.idline{font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
+.idline b{color:var(--ink);font-weight:500}
+.fgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:980px){.fgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:680px){.fgrid{grid-template-columns:1fr}}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 @media (max-width:900px){.grid3{grid-template-columns:1fr}}
 @media (max-width:760px){.grid2{grid-template-columns:1fr}}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;min-width:0;display:grid;gap:10px;align-content:start}
-.card h4{display:flex;align-items:center;gap:8px}
-.card h4 .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);flex:none}
-.card ul{margin:0;padding-left:18px;display:grid;gap:5px}
-.card li{padding-left:2px}
-.mk{display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;align-items:baseline;font-size:.92rem}
-.mk .ar{font:700 .95rem var(--f-mono);text-align:center}
-.mk.up .ar{color:var(--up)} .mk.down .ar{color:var(--down)} .mk.n .ar{color:var(--green)} .mk.var .ar{color:var(--sev-mod)}
-.mklist{display:grid;gap:6px}
-.check{display:grid;gap:7px;list-style:none;padding:0!important}
-.check li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:8px;padding:0!important}
-.check li::before{content:"";width:13px;height:13px;border:1.6px solid var(--teal);border-radius:4px;margin-top:4px}
-.genebox{overflow-x:auto;padding:6px 0}
-.genebox svg{display:block;min-width:640px;width:100%;height:auto}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:10px 12px;min-width:0;display:grid;gap:6px;align-content:start;font-size:.88rem}
+.card h4+ul,.card h4+.mklist{margin-top:-2px}
+.card h4:not(:first-child){margin-top:6px}
+.mk{display:grid;grid-template-columns:16px minmax(0,1fr);gap:6px;align-items:baseline}
+.mk .ar{font:700 .9rem var(--f-mono);text-align:center}
+.mk.up .ar{color:var(--up)} .mk.down .ar{color:var(--down)} .mk.n .ar{color:var(--acc)} .mk.var .ar{color:var(--sev-mod)}
+.mklist{display:grid;gap:3px}
+.check{list-style:none;padding:0}
+.check li{display:grid;grid-template-columns:14px minmax(0,1fr);gap:6px}
+.check li::before{content:"";width:10px;height:10px;border:1.5px solid var(--acc);margin-top:4px}
+details.more{background:var(--surface);border:1px solid var(--line);border-radius:6px}
+details.more>summary{cursor:pointer;padding:8px 12px;font-weight:500;font-size:.88rem;list-style:none;display:flex;justify-content:space-between}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::after{content:"+";font-family:var(--f-mono);color:var(--muted)}
+details.more[open]>summary::after{content:"−"}
+details.more>.in{padding:0 12px 12px;display:grid;gap:8px;font-size:.88rem}
+.genebox{overflow-x:auto}
+.genebox svg{display:block;min-width:620px;width:100%;height:auto}
 .gtxt{font:500 10.5px var(--f-mono);fill:var(--muted)}
 .glbl{font:600 11px var(--f-body);fill:var(--ink)}
-.vtab{width:100%;border-collapse:collapse;font-size:.86rem}
-.vtab th{font:600 .7rem var(--f-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
-.vtab td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.vtab{font-size:.82rem}
+.vtab td{padding:6px 9px;border-bottom:1px solid var(--line);vertical-align:top}
 .vtab td.mono{white-space:nowrap}
-.sev{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;font-weight:600;white-space:nowrap}
-.sev i{width:9px;height:9px;border-radius:50%}
+.sev{display:inline-flex;align-items:center;gap:5px;font-size:.78rem;font-weight:500;white-space:nowrap}
+.sev i{width:8px;height:8px;border-radius:50%}
 .sev.null i{background:var(--sev-null)} .sev.severe i{background:var(--sev-severe)} .sev.mod i{background:var(--sev-mod)} .sev.mild i{background:var(--sev-mild)}
-.sanger{font:600 .7rem var(--f-mono);padding:2px 7px;border-radius:5px;white-space:nowrap}
-.sanger.y{background:var(--green-soft);color:var(--green)} .sanger.n{background:var(--block-soft);color:var(--block)}
-.src{font-size:.8rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 12px}
+.sanger{font:500 .7rem var(--f-mono);padding:1px 6px;border-radius:3px;white-space:nowrap}
+.sanger.y{background:var(--acc-soft);color:var(--acc)} .sanger.n{background:var(--block-soft);color:var(--block)}
+.src{font-size:.78rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:3px 10px}
 .src a{color:var(--muted)}
 
 /* orientation */
-.orient{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+.orient{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:start}
 @media (max-width:900px){.orient{grid-template-columns:1fr}}
-.q{display:grid;gap:7px}
-.q > span{font:600 .74rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.seg{display:flex;flex-wrap:wrap;gap:5px}
-.seg button{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:500 .84rem var(--f-body);padding:6px 11px;border-radius:8px;cursor:pointer}
-.seg button[aria-pressed="true"]{background:var(--teal);border-color:var(--teal);color:#fff}
-.tog{display:flex;align-items:center;gap:9px;font-size:.9rem;cursor:pointer}
-.tog input{width:17px;height:17px;flex:none;accent-color:var(--teal)}
-.vtab td:first-child{min-width:150px}
-.result{display:grid;gap:10px}
-.res{border:1px solid var(--line);border-radius:11px;padding:13px 14px;display:grid;gap:7px;background:var(--surface)}
-.res.top{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
+.q{display:grid;grid-template-columns:150px minmax(0,1fr);gap:8px;align-items:center}
+@media (max-width:520px){.q{grid-template-columns:1fr;gap:4px}}
+.q > span{font-size:.8rem;color:var(--muted)}
+.seg{display:flex;flex-wrap:wrap;gap:3px}
+.seg button{border:1px solid var(--line);background:var(--surface);color:var(--ink);font:500 .8rem var(--f-body);padding:4px 8px;border-radius:4px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:var(--on-acc)}
+.tog{display:flex;align-items:center;gap:7px;font-size:.84rem;cursor:pointer}
+.tog input{width:15px;height:15px;flex:none;accent-color:var(--acc)}
+.result{display:grid;gap:6px}
+.res{border:1px solid var(--line);border-radius:6px;padding:8px 10px;display:grid;gap:4px;background:var(--surface)}
+.res.top{border-color:var(--acc);border-left-width:3px}
 .res-h{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
-.res-h b{font-family:var(--f-display);font-size:1.05rem}
-.meter{height:7px;border-radius:5px;background:var(--surface-2);overflow:hidden}
-.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--teal));transition:width .35s}
-.why{font-size:.84rem;color:var(--muted)}
+.meter{height:4px;background:var(--surface-2);overflow:hidden}
+.meter i{display:block;height:100%;background:var(--acc);transition:width .3s}
+.why{font-size:.8rem;color:var(--muted)}
 
 /* 17-OHP */
-.calc{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:18px}
+.calc{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:12px;align-items:start}
 @media (max-width:860px){.calc{grid-template-columns:1fr}}
-.field{display:grid;gap:5px}
-.field label{font:600 .74rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.field input,.field select{font:500 1rem var(--f-body);padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);width:100%}
-.verdict{font-family:var(--f-display);font-size:1.45rem;font-weight:800}
+.field{display:grid;gap:3px}
+.field label{font-size:.78rem;color:var(--muted)}
+.field input,.field select{font:500 .95rem var(--f-body);padding:6px 8px;border:1px solid var(--line);border-radius:4px;background:var(--surface);color:var(--ink);width:100%}
+.verdict{font-size:1.15rem;font-weight:600}
 .gauge svg{width:100%;height:auto;display:block}
-.gz{font:600 10.5px var(--f-mono)}
-.conv{width:100%;border-collapse:collapse;font-size:.88rem}
-.conv td,.conv th{padding:7px 9px;border-bottom:1px solid var(--line);text-align:right}
-.conv th{font:600 .7rem var(--f-mono);color:var(--muted);text-transform:uppercase}
+.gz{font:500 10.5px var(--f-mono)}
+.conv{font-size:.84rem}
+.conv td,.conv th{padding:5px 8px;border-bottom:1px solid var(--line);text-align:right}
+.conv th{font:600 .7rem var(--f-body);color:var(--muted);text-transform:uppercase}
 .conv td:first-child,.conv th:first-child{text-align:left}
 
-/* molecular */
-.flow{display:grid;gap:0;counter-reset:st}
-.step{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;position:relative;padding-bottom:20px}
-.step::before{counter-increment:st;content:counter(st);width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font:700 .95rem var(--f-display);z-index:1}
-.step::after{content:"";position:absolute;left:16px;top:34px;bottom:0;width:2px;background:var(--line)}
-.step:last-child::after{display:none}
-.step .body{display:grid;gap:6px;padding-top:5px}
-.step .body p{color:var(--muted);font-size:.93rem}
-.tag{font:600 .7rem var(--f-mono);padding:2px 8px;border-radius:5px;background:var(--blue-soft);color:var(--blue);justify-self:start}
-.rccx svg{width:100%;height:auto;display:block;min-width:620px}
-.rccx{overflow-x:auto}
-.pit{display:grid;gap:10px}
-.pit div{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:start;font-size:.92rem}
-.pit div::before{content:"!";width:24px;height:24px;border-radius:7px;background:var(--up-soft);color:var(--up);font:800 .9rem var(--f-display);display:grid;place-items:center}
-
-/* treatment table */
-.tt{width:100%;border-collapse:collapse;font-size:.88rem}
-.tt th{font:600 .7rem var(--f-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:bottom}
-.tt td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+/* traitement */
+.tt{min-width:820px}
 .tt td:first-child{font-weight:600;white-space:nowrap}
-.yes{color:var(--green);font-weight:600}.no{color:var(--muted)}
+.yes{color:var(--acc);font-weight:600}.no{color:var(--muted)}
 
-.risk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-@media (max-width:820px){.risk{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.rk{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:4px}
-.rk b{font:800 1.9rem var(--f-display);color:var(--blue);font-variant-numeric:tabular-nums}
-.rk span{font-size:.85rem;color:var(--muted)}
-
-.refs{columns:2 360px;column-gap:32px;font-size:.86rem;padding-left:20px;margin:0}
-.refs li{break-inside:avoid;margin-bottom:9px;color:var(--muted)}
-.refs li b{color:var(--ink);font-weight:600}
-footer{padding-block:34px 50px;color:var(--muted);font-size:.84rem}
-.tip{position:fixed;z-index:30;max-width:280px;background:var(--ink);color:var(--paper);font-size:.82rem;padding:9px 11px;border-radius:9px;pointer-events:none;box-shadow:var(--shadow)}
+/* FAQ */
+dialog.faq{border:0;padding:0;margin:0 0 0 auto;height:100%;max-height:100%;width:min(640px,100%);background:var(--paper);color:var(--ink);border-left:1px solid var(--line)}
+dialog.faq::backdrop{background:rgba(20,24,22,.45)}
+.faqhead{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:var(--surface);border-bottom:1px solid var(--line);z-index:1}
+.faqbody{padding:12px 16px 30px;display:grid;gap:6px}
+.faqbody details.more>.in p{color:var(--ink)}
+.rccx{overflow-x:auto}
+.rccx svg{width:100%;height:auto;display:block;min-width:560px}
+.steps{margin:0;padding-left:18px;display:grid;gap:5px}
+.risk{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.rk{border:1px solid var(--line);border-radius:4px;padding:6px 8px;display:grid;gap:1px;background:var(--surface)}
+.rk b{font-size:1.1rem;color:var(--acc);font-variant-numeric:tabular-nums}
+.rk span{font-size:.78rem;color:var(--muted)}
+.refs{font-size:.8rem;padding-left:18px;margin:0;display:grid;gap:5px}
+.refs a{color:var(--muted)}
+.tip{position:fixed;z-index:30;max-width:280px;background:var(--ink);color:var(--paper);font-size:.8rem;padding:7px 9px;border-radius:4px;pointer-events:none}
 </style>
 </head>
 <body>
 <header class="topbar">
   <div class="wrap">
-    <a class="brand" href="#carte" aria-label="Atlas des blocs surrénaliens, retour en haut">
-      <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><path d="M13 2c5 4 9 7 9 12a9 9 0 0 1-18 0c0-5 4-8 9-12z" fill="none" stroke="var(--teal)" stroke-width="2"/><path d="M8.5 15.5h9M13 11v9" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"/></svg>
-      Blocs surrénaliens
-    </a>
-    <nav class="nav" aria-label="Sections">
-      <a href="#carte">Stéroïdogenèse</a>
-      <a href="#frequences">Par fréquence</a>
-      <a href="#fiches">Fiches</a>
-      <a href="#orientation">Orientation</a>
-      <a href="#ohp">17-OHP</a>
-      <a href="#moleculaire">Sanger · MLPA</a>
-      <a href="#traitement">Traitement</a>
-      <a href="#conseil">Conseil génétique</a>
-      <a href="#differentiels">Hors HSC</a>
-      <a href="#references">Sources</a>
+    <a class="brand" href="#carte" data-view="carte">HSC<span>&nbsp;·&nbsp;</span>aide-mémoire</a>
+    <nav class="nav" role="tablist" aria-label="Rubriques">
+      <button type="button" role="tab" data-view="carte">Carte</button>
+      <button type="button" role="tab" data-view="fiches">Fiches</button>
+      <button type="button" role="tab" data-view="orientation">Orientation</button>
+      <button type="button" role="tab" data-view="ohp">17-OHP</button>
+      <button type="button" role="tab" data-view="frequences">Fréquences</button>
+      <button type="button" role="tab" data-view="traitement">Traitement</button>
+      <button type="button" role="tab" data-view="differentiels">Hors HSC</button>
     </nav>
-    <button class="themebtn" id="themeBtn" type="button" aria-label="Changer de thème">
-      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 2a7 7 0 0 1 0 14z" fill="currentColor"/></svg>
-    </button>
+    <div class="tools">
+      <button class="tbtn" id="faqBtn" type="button">FAQ</button>
+      <button class="tbtn" id="themeBtn" type="button" aria-label="Changer de thème">
+        <svg width="14" height="14" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 2a7 7 0 0 1 0 14z" fill="currentColor"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 
-<main>
-<!-- ============ HERO + CARTE ============ -->
-<section class="hero" id="carte">
-  <div class="wrap">
-    <div class="hero-top">
-      <div style="display:grid;gap:14px">
-        <span class="eyebrow">Hyperplasie congénitale des surrénales · aide au diagnostic</span>
-        <h1>Où se situe le <em>bloc</em>, et qu'est-ce qui s'accumule en amont&nbsp;?</h1>
+<main class="wrap">
+<!-- CARTE -->
+<section class="view" id="carte" role="tabpanel">
+  <div class="pills" id="blockPills" role="group" aria-label="Choisir un bloc enzymatique"></div>
+  <div class="mapgrid">
+    <div class="panel">
+      <div class="mapbox" id="mapBox"></div>
+      <div class="legend">
+        <span><i class="sw" style="background:var(--up-soft);border-color:var(--up)"></i>Accumulé</span>
+        <span><i class="sw" style="background:var(--down-soft);border-color:var(--down);border-style:dashed"></i>Diminué</span>
+        <span><i class="sw" style="background:var(--surface);border-color:var(--up);border-style:dotted"></i>Variable</span>
+        <span><i class="sw" style="background:var(--block);border-color:var(--block)"></i>Enzyme déficitaire</span>
+        <span><svg width="22" height="8" aria-hidden="true"><line x1="0" y1="4" x2="22" y2="4" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="3 4"/></svg>Voie faible</span>
       </div>
-      <p class="lede">Choisissez un déficit enzymatique&nbsp;: la carte montre les précurseurs qui s'accumulent, les hormones qui manquent et les conséquences cliniques. Cliquez sur une enzyme ou une hormone pour le détail. Les fiches plus bas reprennent clinique, biologie, gène, variants fréquents, stratégie moléculaire, traitement et conseil génétique.</p>
     </div>
-    <div class="pills" id="blockPills" role="group" aria-label="Choisir un bloc enzymatique"></div>
-    <div class="mapgrid">
-      <div class="panel">
-        <div class="mapbox" id="mapBox"></div>
-        <div class="legend">
-          <span><i class="sw" style="background:var(--up-soft);border-color:var(--up)"></i>Accumulé (amont du bloc)</span>
-          <span><i class="sw" style="background:var(--down-soft);border-color:var(--down);border-style:dashed"></i>Diminué / absent</span>
-          <span><i class="sw" style="background:var(--surface);border-color:var(--up);border-style:dotted"></i>Variable</span>
-          <span><i class="sw" style="background:var(--block);border-color:var(--block)"></i>Enzyme déficitaire</span>
-          <span><svg width="26" height="8" aria-hidden="true"><line x1="0" y1="4" x2="26" y2="4" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="3 4"/></svg>Voie faible chez l'humain</span>
-        </div>
-      </div>
-      <aside class="panel conseq" id="conseq" aria-live="polite"></aside>
-    </div>
+    <aside class="panel conseq" id="conseq" aria-live="polite"></aside>
   </div>
 </section>
 
-<!-- ============ FRÉQUENCES ============ -->
-<section id="frequences">
-  <div class="wrap">
-    <div class="sechead">
-      <span class="eyebrow">Classement</span>
-      <h2>Les blocs par ordre de fréquence</h2>
-      <p>Le séquençage Sanger de <span class="mono">CYP21A2</span> passe en premier parce que le déficit en 21-hydroxylase domine largement. Quand le profil hormonal ne colle pas (HTA, 17-OHP seulement modérée, Δ5-stéroïdes élevés, 46,XY sous-virilisé), on descend dans ce tableau.</p>
-    </div>
-    <div class="tablebox"><table class="freq" id="freqTable"></table></div>
-    <p class="note" style="margin-top:12px">Colonne Maroc&nbsp;: cohorte monocentrique de 184 enfants suivis à Casablanca (Bouarab 2024), diagnostic confirmé en biologie moléculaire selon les auteurs. La part du déficit en 3β-HSD2 (3,2&nbsp;%) y est nettement plus élevée que dans les séries internationales (&lt;0,5&nbsp;%)&nbsp;: biais de recrutement d'un centre de référence ou effet de la consanguinité (54,4&nbsp;% dans cette cohorte), on ne peut pas trancher avec ces seules données.</p>
+<!-- FICHES -->
+<section class="view" id="fiches" role="tabpanel" hidden>
+  <div class="pills" id="ficheTabs" aria-label="Choisir une fiche"></div>
+  <div id="fiche"></div>
+</section>
+
+<!-- ORIENTATION -->
+<section class="view" id="orientation" role="tabpanel" hidden>
+  <div class="orient">
+    <div class="panel" style="padding:12px;display:grid;gap:8px;align-content:start" id="orientForm"></div>
+    <div class="result" id="orientOut" aria-live="polite"></div>
   </div>
 </section>
 
-<!-- ============ FICHES ============ -->
-<section id="fiches">
-  <div class="wrap">
-    <div class="sechead">
-      <span class="eyebrow">Fiches diagnostiques</span>
-      <h2>Clinique, biologie, gène et variants</h2>
-      <p>Une fiche par déficit. Les schémas de gènes sont dessinés à partir de la structure exonique du transcrit canonique (Ensembl / RefSeq MANE)&nbsp;; la position des variants est placée par codon. Introns compressés (échelle log), exons à l'échelle racine carrée.</p>
-    </div>
-    <div class="tabs" id="ficheTabs" role="tablist" aria-label="Choisir une fiche"></div>
-    <div id="fiche"></div>
-  </div>
-</section>
-
-<!-- ============ ORIENTATION ============ -->
-<section id="orientation">
-  <div class="wrap">
-    <div class="sechead">
-      <span class="eyebrow">Outil</span>
-      <h2>Orientation à partir du profil du patient</h2>
-      <p>Renseignez ce que vous avez. L'outil classe les hypothèses par cohérence avec le profil et propose le dosage qui discrimine le mieux. C'est une aide au raisonnement à partir de signatures typiques, pas un diagnostic&nbsp;: les formes partielles et les formes non classiques s'en écartent souvent.</p>
-    </div>
-    <div class="orient">
-      <div class="panel" style="padding:18px;display:grid;gap:16px;align-content:start" id="orientForm"></div>
-      <div class="result" id="orientOut" aria-live="polite"></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 17-OHP ============ -->
-<section id="ohp">
-  <div class="wrap">
-    <div class="sechead">
-      <span class="eyebrow">Interprétation</span>
-      <h2>17-hydroxyprogestérone basale et après Synacthène</h2>
-      <p>Seuils de la recommandation Endocrine Society et de GeneReviews, valables après la période néonatale, prélèvement avant 8&nbsp;h et, chez la femme réglée, en phase folliculaire. Le nouveau-né a ses propres normes (âge gestationnel, poids, méthode). Préférez la LC-MS/MS&nbsp;: l'immunodosage surestime la 17-OHP, notamment par réaction croisée avec la 17-OH-prégnénolone sulfate.</p>
-    </div>
-    <div class="calc">
-      <div class="panel" style="padding:18px;display:grid;gap:14px;align-content:start">
+<!-- 17-OHP -->
+<section class="view" id="ohp" role="tabpanel" hidden>
+  <div class="calc">
+    <div class="panel" style="padding:12px;display:grid;gap:10px;align-content:start">
+      <div class="grid3" style="gap:8px;grid-template-columns:repeat(3,minmax(0,1fr))">
         <div class="field"><label for="ohpUnit">Unité</label>
           <select id="ohpUnit"><option value="ngml">ng/mL</option><option value="nmol">nmol/L</option><option value="ngdl">ng/dL</option></select></div>
-        <div class="grid2" style="gap:12px">
-          <div class="field"><label for="ohpBase">17-OHP basale (8 h)</label><input id="ohpBase" type="number" step="any" min="0" inputmode="decimal" value="4.2"></div>
-          <div class="field"><label for="ohpStim">À 60 min post-Synacthène</label><input id="ohpStim" type="number" step="any" min="0" inputmode="decimal" value="18"></div>
-        </div>
-        <p class="note">Valeurs pré-remplies à titre d'exemple. Synacthène (tétracosactide) 250&nbsp;µg IV, dosage à T0 et T60.</p>
-        <table class="conv num" aria-label="Seuils de 17-OHP dans les trois unités">
-          <thead><tr><th>Seuil</th><th>ng/dL</th><th>ng/mL</th><th>nmol/L</th></tr></thead>
-          <tbody>
-            <tr><td>Basale normale</td><td>&lt; 200</td><td>&lt; 2</td><td>&lt; 6</td></tr>
-            <tr><td>Stimulée, non atteint</td><td>&lt; 1 000</td><td>&lt; 10</td><td>&lt; 30</td></tr>
-            <tr><td>Forme non classique</td><td>1 000–10 000</td><td>10–100</td><td>30–300</td></tr>
-            <tr><td>Forme classique</td><td>&gt; 10 000</td><td>&gt; 100</td><td>&gt; 300</td></tr>
-          </tbody>
-        </table>
-        <p class="note">Conversion&nbsp;: 1&nbsp;ng/mL = 3,03&nbsp;nmol/L (masse molaire 330,5&nbsp;g/mol).</p>
+        <div class="field"><label for="ohpBase">Basale (8 h)</label><input id="ohpBase" type="number" step="any" min="0" inputmode="decimal" value="4.2"></div>
+        <div class="field"><label for="ohpStim">T60 Synacthène</label><input id="ohpStim" type="number" step="any" min="0" inputmode="decimal" value="18"></div>
       </div>
-      <div class="panel" style="padding:18px;display:grid;gap:14px;align-content:start" id="ohpOut"></div>
+      <table class="conv num" aria-label="Seuils de 17-OHP dans les trois unités">
+        <thead><tr><th>Seuil</th><th>ng/dL</th><th>ng/mL</th><th>nmol/L</th></tr></thead>
+        <tbody>
+          <tr><td>Basale normale</td><td>&lt; 200</td><td>&lt; 2</td><td>&lt; 6</td></tr>
+          <tr><td>Stimulée, non atteint</td><td>&lt; 1 000</td><td>&lt; 10</td><td>&lt; 30</td></tr>
+          <tr><td>Non classique</td><td>1 000–10 000</td><td>10–100</td><td>30–300</td></tr>
+          <tr><td>Classique</td><td>&gt; 10 000</td><td>&gt; 100</td><td>&gt; 300</td></tr>
+        </tbody>
+      </table>
+      <p class="note">Après la période néonatale. Prélèvement avant 8 h, phase folliculaire. LC-MS/MS de préférence. Synacthène 250 µg IV, T0 et T60. 1 ng/mL = 3,03 nmol/L.</p>
     </div>
+    <div class="panel" style="padding:12px;display:grid;gap:10px;align-content:start" id="ohpOut"></div>
   </div>
 </section>
 
-<!-- ============ MOLÉCULAIRE ============ -->
-<section id="moleculaire">
-  <div class="wrap">
-    <div class="sechead">
-      <span class="eyebrow">Biologie moléculaire de CYP21A2</span>
-      <h2>Pourquoi le Sanger seul ne suffit pas</h2>
-      <p><span class="mono">CYP21A2</span> se trouve dans le module RCCX (6p21.33) à environ 30&nbsp;kb de son pseudogène <span class="mono">CYP21A1P</span>, avec 98&nbsp;% d'identité dans les exons et 96&nbsp;% dans les introns. Environ 20 à 30&nbsp;% des allèles pathogènes sont des délétions ou des grandes conversions (gènes chimères) invisibles en séquençage. La recommandation EMQN associe séquençage locus-spécifique et MLPA.</p>
-    </div>
-    <div class="panel rccx" style="padding:14px" id="rccxBox"></div>
-    <div class="grid2" style="margin-top:18px">
-      <div class="card">
-        <h4><span class="dot"></span>Stratégie au laboratoire</h4>
-        <div class="flow">
-          <div class="step"><div class="body"><h4>Confirmer le profil hormonal</h4><p>17-OHP (± Synacthène), 21-désoxycortisol si disponible, Δ4-androstènedione, rénine, ionogramme. Un profil atypique oriente vers un autre gène avant tout séquençage.</p></div></div>
-          <div class="step"><div class="body"><h4>PCR longue locus-spécifique puis Sanger</h4><p>Amplicon long spécifique de <span class="mono">CYP21A2</span> (amorces dans les régions qui diffèrent du pseudogène), puis séquençage des 10 exons et jonctions introniques sur cet amplicon. Une PCR courte non spécifique co-amplifie <span class="mono">CYP21A1P</span> et produit de faux variants.</p><span class="tag">≈ 70–80 % des allèles</span></div></div>
-          <div class="step"><div class="body"><h4>MLPA si 0 ou 1 allèle trouvé, ou homozygotie apparente</h4><p>Délétion de 30&nbsp;kb, chimères <span class="mono">CYP21A1P/CYP21A2</span>, duplications. Une homozygotie apparente peut cacher une délétion sur l'autre allèle (hémizygotie).</p><span class="tag">≈ 20–30 % des allèles</span></div></div>
-          <div class="step"><div class="body"><h4>Ségrégation parentale</h4><p>Indispensable pour établir cis ou trans quand plusieurs variants sont trouvés (une conversion peut en apporter plusieurs sur le même allèle) et pour repérer un variant de novo (≈ 1–2&nbsp;% des allèles).</p></div></div>
-          <div class="step"><div class="body"><h4>Interpréter par le génotype le moins sévère</h4><p>Le phénotype suit l'allèle le plus fonctionnel. Corrélation génotype-phénotype directe dans environ la moitié des génotypes seulement (New 2013), surtout imprécise pour les formes virilisantes simples.</p></div></div>
-        </div>
-      </div>
-      <div class="card">
-        <h4><span class="dot" style="background:var(--up)"></span>Pièges d'interprétation</h4>
-        <div class="pit">
-          <div><span><b>Duplication avec p.Gln319*.</b> L'haplotype dupliqué le plus courant porte p.Gln319* sur une copie et un <span class="mono">CYP21A2</span> normal sur l'autre, en cis. Le porteur n'est pas hétérozygote au sens fonctionnel. Risque de faux diagnostic de porteur et d'erreur en diagnostic prénatal&nbsp;: vérifier le nombre de copies en MLPA. Dans une série (Parajes 2008), 7&nbsp;% des allèles étaient des duplications.</span></div>
-          <div><span><b>Plusieurs variants « pseudogéniques » ensemble.</b> P30L + c.293-13 + délétion de 8&nbsp;pb peuvent venir d'une seule conversion sur un allèle. Sans les parents, on peut conclure à tort à une hétérozygotie composite.</span></div>
-          <div><span><b>c.293-13A/C&gt;G.</b> La position −13 est polymorphe (A ou C) à l'état normal&nbsp;; c'est le G qui est pathogène. Certains tests par PCR spécifique d'allèle ont rendu des homozygotes là où le Sanger montrait une hétérozygotie&nbsp;: privilégier le séquençage.</span></div>
-          <div><span><b>CAH-X.</b> Si la délétion s'étend à <span class="mono">TNXB</span> (chimère <span class="mono">TNXA/TNXB</span>), le patient peut avoir un syndrome d'Ehlers-Danlos hypermobile associé. Environ 15&nbsp;% des patients 21-OHD portent au moins une chimère TNXA/TNXB selon le NIH (Merke). La MLPA <span class="mono">CYP21A2</span> courante inclut des sondes <span class="mono">TNXB</span> selon le kit&nbsp;: à vérifier sur votre lot.</span></div>
-          <div><span><b>Pseudo-homozygotie.</b> Variant « homozygote » + parent non porteur = délétion, de novo ou erreur d'échantillon. MLPA en trio.</span></div>
-          <div><span><b>Nomenclature.</b> Les noms historiques (I172N, V281L, Q318X…) ont un codon de moins que la nomenclature HGVS sur <span class="mono">NM_000500.9</span> (p.Ile173Asn, p.Val282Leu, p.Gln319*), parce que la séquence de référence actuelle inclut p.Leu9dup.</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
+<!-- FRÉQUENCES -->
+<section class="view" id="frequences" role="tabpanel" hidden>
+  <div class="tablebox"><table class="freq" id="freqTable"></table></div>
+  <p class="hint">Profil atypique (HTA, 17-OHP modérée, Δ5 ↑, 46,XY sous-virilisé) → descendre dans le tableau avant de séquencer <span class="mono">CYP21A2</span>.</p>
 </section>
 
-<!-- ============ TRAITEMENT ============ -->
-<section id="traitement">
-  <div class="wrap">
-    <div class="sechead">
-      <span class="eyebrow">Prise en charge</span>
-      <h2>Traitement à instaurer</h2>
-      <p>Repères issus de la recommandation Endocrine Society 2018 pour le déficit en 21-hydroxylase, et des séries publiées pour les formes rares. Les doses s'ajustent en équipe d'endocrinologie pédiatrique&nbsp;; la génétique n'est qu'un des intervenants.</p>
-    </div>
-    <div class="grid3">
-      <div class="card"><h4><span class="dot"></span>Glucocorticoïdes</h4>
-        <ul><li>Enfant en croissance&nbsp;: <b>hydrocortisone</b> comprimés, 10–15&nbsp;mg/m²/j en 3 prises. Éviter la suspension orale et les glucocorticoïdes puissants au long cours.</li>
-        <li>Adulte&nbsp;: hydrocortisone 15–25&nbsp;mg/j en 2–3 prises, ou prednisolone / dexaméthasone une fois la croissance terminée.</li>
-        <li>Au-delà de 20&nbsp;mg/m²/j chez le nourrisson ou 15–17&nbsp;mg/m²/j à l'adolescence, la taille finale baisse.</li>
-        <li>Objectif 21-OHD&nbsp;: une 17-OHP <i>normale</i> signe un surtraitement&nbsp;; on vise des androgènes adaptés à l'âge.</li></ul></div>
-      <div class="card"><h4><span class="dot" style="background:var(--blue)"></span>Minéralocorticoïdes et sel</h4>
-        <ul><li><b>Fludrocortisone</b> 0,05–0,2&nbsp;mg/j en 1–2 prises, chez <i>tous</i> les nourrissons à forme classique (perte de sel ou non).</li>
-        <li><b>NaCl</b> 1–2&nbsp;g/j chez le nourrisson, souvent arrêté après la première année.</li>
-        <li>Suivi par rénine (cible normale basse) et pression artérielle.</li>
-        <li>Pas de fludrocortisone dans les blocs hypertensifs (11β, 17α).</li></ul></div>
-      <div class="card"><h4><span class="dot" style="background:var(--block)"></span>Stress et urgence</h4>
-        <ul><li>Fièvre, vomissements, chirurgie, traumatisme&nbsp;: doubler ou tripler la dose orale&nbsp;; hydrocortisone IM/IV si la voie orale est impossible.</li>
-        <li>Carte d'urgence et kit injectable pour la famille.</li>
-        <li>Forme non classique&nbsp;: couverture de stress seulement si le cortisol sous Synacthène est insuffisant (&lt; 14–18&nbsp;µg/dL, soit &lt; 400–500&nbsp;nmol/L selon le dosage).</li></ul></div>
-    </div>
-    <div class="tablebox" style="margin-top:18px">
-      <table class="tt" id="treatTable"></table>
-    </div>
-    <div class="grid2" style="margin-top:18px">
-      <div class="card"><h4><span class="dot" style="background:var(--green)"></span>Nouveautés</h4>
-        <p><b>Crinécerfont</b> (antagoniste du récepteur CRF1)&nbsp;: approuvé par la FDA le 13 décembre 2024, en <i>complément</i> des glucocorticoïdes, pour contrôler les androgènes dans la forme classique du déficit en 21-hydroxylase, à partir de 4 ans. Il permet de réduire les doses de glucocorticoïdes&nbsp;; ce n'est pas un substitut.</p>
-        <p class="flag"><b>À vérifier&nbsp;:</b> je n'ai pas trouvé d'information sur sa disponibilité au Maroc ni sur un avis de l'EMA.</p></div>
-      <div class="card"><h4><span class="dot" style="background:var(--up)"></span>Dexaméthasone prénatale</h4>
-        <p>Destinée à limiter la virilisation d'un fœtus 46,XX atteint. GeneReviews et la recommandation Endocrine Society la considèrent comme <b>expérimentale</b>&nbsp;: uniquement dans un protocole de recherche approuvé. Le diagnostic prénatal non invasif sur ADN fœtal libre (sexe et haplotype) a été développé pour éviter de traiter inutilement garçons et filles non atteintes.</p></div>
-    </div>
+<!-- TRAITEMENT -->
+<section class="view" id="traitement" role="tabpanel" hidden>
+  <div class="grid3">
+    <div class="card"><h4>Glucocorticoïdes</h4>
+      <ul><li>Enfant : <b>hydrocortisone</b> cp 10–15 mg/m²/j en 3 prises.</li>
+      <li>Adulte : HC 15–25 mg/j en 2–3 prises, ou prednisolone / dexaméthasone après la croissance.</li>
+      <li>&gt; 20 mg/m²/j (nourrisson) ou &gt; 15–17 mg/m²/j (ado) : taille finale ↓.</li>
+      <li>21-OHD : 17-OHP <i>normale</i> = surtraitement. Viser des androgènes adaptés à l'âge.</li></ul></div>
+    <div class="card"><h4>Minéralocorticoïdes et sel</h4>
+      <ul><li><b>Fludrocortisone</b> 0,05–0,2 mg/j, tous les nourrissons à forme classique.</li>
+      <li><b>NaCl</b> 1–2 g/j chez le nourrisson, arrêt souvent après 1 an.</li>
+      <li>Suivi : rénine (normale basse), TA.</li>
+      <li>Pas de fludrocortisone si bloc hypertensif (11β, 17α).</li></ul></div>
+    <div class="card"><h4>Stress et urgence</h4>
+      <ul><li>Fièvre, vomissements, chirurgie : doubler ou tripler la dose ; HC IM/IV si voie orale impossible.</li>
+      <li>Carte d'urgence + kit injectable.</li>
+      <li>Non classique : couverture de stress si cortisol post-Synacthène &lt; 14–18 µg/dL (400–500 nmol/L).</li></ul></div>
   </div>
+  <div class="tablebox"><table class="tt" id="treatTable"></table></div>
 </section>
 
-<!-- ============ CONSEIL ============ -->
-<section id="conseil">
-  <div class="wrap">
-    <div class="sechead">
-      <span class="eyebrow">Conseil génétique</span>
-      <h2>Ce qu'il faut dire à la famille</h2>
-      <p>Toutes les HSC sont autosomiques récessives. L'hypoplasie surrénale congénitale (NR0B1), diagnostic différentiel majeur chez le garçon, est liée à l'X. Le contexte de consanguinité, fréquent au Maroc (54,4&nbsp;% à Casablanca, 46,5&nbsp;% dans la série DSD du CHU Hassan II de Fès), augmente la probabilité d'homozygotie.</p>
-    </div>
-    <div class="risk">
-      <div class="rk"><b>25 %</b><span>Risque d'enfant atteint pour un couple de deux porteurs, à chaque grossesse</span></div>
-      <div class="rk"><b>2,5 %</b><span>Enfant à forme classique né d'une mère 21-OHD non classique (4/162 naissances, IC 95&nbsp;% 0,7–6,2)</span></div>
-      <div class="rk"><b>≥ 14,8 %</b><span>Enfants de ces mères ayant eux-mêmes une forme non classique</span></div>
-      <div class="rk"><b>≈ 1/61</b><span>Porteurs d'allèle classique attendus si incidence 1/15&nbsp;000 et panmixie (Hardy-Weinberg)</span></div>
-    </div>
-    <div class="grid2" style="margin-top:18px">
-      <div class="card"><h4><span class="dot"></span>Points clés</h4>
-        <ul>
-          <li>Tester les deux parents&nbsp;: phase cis/trans, variant de novo (≈ 1&nbsp;% des probands n'ont qu'un parent porteur), et dépistage d'un parent lui-même atteint d'une forme non classique méconnue.</li>
-          <li>Fratrie&nbsp;: dosage de 17-OHP chez tout nouveau-né à risque, même avec un dépistage néonatal (il n'existe pas de dépistage national au Maroc).</li>
-          <li>Patient atteint ou femme à forme non classique&nbsp;: proposer le génotypage du conjoint. Si le conjoint est porteur, le risque d'enfant atteint passe à 50&nbsp;%.</li>
-          <li>Oncles et tantes du proband, frères et sœurs des parents porteurs&nbsp;: 50&nbsp;% de risque d'être porteurs.</li>
-          <li>Le dosage hormonal ne permet pas de détecter fiablement les hétérozygotes&nbsp;: le test de porteur est moléculaire et suppose les variants familiaux connus.</li>
-        </ul></div>
-      <div class="card"><h4><span class="dot" style="background:var(--blue)"></span>Options reproductives</h4>
-        <ul>
-          <li>Le bon moment pour préciser les statuts de porteur et discuter des options est <b>avant</b> la grossesse.</li>
-          <li>Diagnostic prénatal sur villosités choriales ou amniocentèse, et diagnostic préimplantatoire, une fois les deux variants familiaux identifiés.</li>
-          <li>Pour 21-OHD, contrôler le nombre de copies (MLPA) chez les parents avant tout DPN&nbsp;: une duplication méconnue a déjà conduit à un DPN erroné.</li>
-          <li>Prédire la sévérité chez un futur enfant est fiable quand le proband est une fille virilisée, moins quand le proband est un garçon.</li>
-          <li>Conserver l'ADN des patients sans diagnostic moléculaire.</li>
-        </ul></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ DIFFÉRENTIELS ============ -->
-<section id="differentiels">
-  <div class="wrap">
-    <div class="sechead">
-      <span class="eyebrow">Diagnostics proches</span>
-      <h2>Quand ce n'est pas une HSC</h2>
-      <p>Trois tableaux se confondent régulièrement avec un bloc&nbsp;: la perte de sel du nourrisson sans anomalie génitale, l'insuffisance surrénale du garçon, et l'hyperandrogénie de la fille ou de la femme.</p>
-    </div>
-    <div class="grid3" id="diffCards"></div>
-  </div>
-</section>
-
-<!-- ============ RÉFÉRENCES ============ -->
-<section id="references" style="border-bottom:0">
-  <div class="wrap">
-    <div class="sechead"><span class="eyebrow">Sources</span><h2>Références</h2>
-      <p>Chaque chiffre du site renvoie à l'une de ces sources. Les points non vérifiés sont signalés dans le texte par un encadré orange.</p></div>
-    <ol class="refs" id="refList"></ol>
-  </div>
+<!-- HORS HSC -->
+<section class="view" id="differentiels" role="tabpanel" hidden>
+  <div class="grid3" id="diffCards"></div>
 </section>
 </main>
-<footer><div class="wrap">Outil pédagogique d'aide au raisonnement, à destination des professionnels de santé. Il ne remplace ni l'avis d'un endocrinologue pédiatre ni la validation du laboratoire. Structures géniques&nbsp;: Ensembl REST (transcrits canoniques = RefSeq MANE Select), consulté le 3 octobre 2026.</div></footer>
+
+<!-- FAQ -->
+<dialog class="faq" id="faq" aria-labelledby="faqTitle">
+  <div class="faqhead"><h3 id="faqTitle">FAQ et sources</h3><button class="tbtn" type="button" id="faqClose">Fermer</button></div>
+  <div class="faqbody">
+    <details class="more"><summary>Comment lire la carte ?</summary><div class="in">
+      <p>Choisir un bloc : les précurseurs en amont s'accumulent (orange), l'aval baisse (gris pointillé). Un bloc sur la voie du cortisol lève le rétrocontrôle : l'ACTH monte et pousse les précurseurs vers les voies restées ouvertes, d'où l'hyperplasie. Survol = résumé, clic = détail dans le panneau. Cliquer une enzyme sélectionne le bloc correspondant.</p></div></details>
+    <details class="more"><summary>À quoi sert l'outil d'orientation ?</summary><div class="in">
+      <p>Il classe les hypothèses par cohérence avec des signatures typiques et propose le dosage le plus discriminant. Ce n'est pas une probabilité : les formes partielles et non classiques s'en écartent souvent. Sans donnée, le classement suit la fréquence.</p></div></details>
+    <details class="more"><summary>Seuils de 17-OHP : d'où viennent-ils ?</summary><div class="in">
+      <p>Endocrine Society 2018 et GeneReviews. Valables après la période néonatale ; le nouveau-né a ses propres normes (âge gestationnel, poids, méthode). L'immunodosage surestime la 17-OHP (réaction croisée avec la 17-OH-prégnénolone sulfate).</p>
+      <div class="flag"><b>Incohérence dans la source :</b> GeneReviews donne « &lt; 1 000 ng/dL ou 50 nmol/L » pour le stimulé normal ; 1 000 ng/dL = 30 nmol/L. La guideline 2018 écrit 33 nmol/L. Ici : 30 nmol/L.</div></div></details>
+    <details class="more"><summary>Pourquoi le Sanger seul ne suffit pas pour CYP21A2 ?</summary><div class="in">
+      <p><span class="mono">CYP21A2</span> est dans le module RCCX (6p21.33), à ~30 kb du pseudogène <span class="mono">CYP21A1P</span> (98 % d'identité exonique). 20–30 % des allèles pathogènes sont des délétions ou chimères invisibles en séquençage. EMQN : séquençage locus-spécifique + MLPA.</p>
+      <div class="panel rccx" style="padding:8px" id="rccxBox"></div>
+      <h4>Stratégie</h4>
+      <ol class="steps">
+        <li>Confirmer le profil hormonal (17-OHP ± Synacthène, 21-désoxycortisol, Δ4, rénine, iono). Profil atypique → autre gène.</li>
+        <li>PCR longue locus-spécifique puis Sanger des 10 exons (≈ 70–80 % des allèles). Une PCR courte co-amplifie le pseudogène.</li>
+        <li>MLPA si 0 ou 1 allèle, ou homozygotie apparente (≈ 20–30 % des allèles).</li>
+        <li>Ségrégation parentale : phase cis/trans, de novo (≈ 1–2 %).</li>
+        <li>Le phénotype suit l'allèle le moins sévère ; corrélation directe dans ~50 % des génotypes (New 2013).</li>
+      </ol>
+      <h4>Pièges</h4>
+      <ul>
+        <li><b>Duplication + p.Gln319*</b> en cis d'une copie normale : faux porteur, risque d'erreur de DPN. Vérifier le nombre de copies (7 % des allèles, Parajes 2008).</li>
+        <li><b>Plusieurs variants pseudogéniques</b> (P30L + c.293-13 + del 8 pb) peuvent venir d'une seule conversion : parents indispensables.</li>
+        <li><b>c.293-13A/C&gt;G</b> : A ou C normal, G pathogène. Préférer le séquençage aux tests allèle-spécifiques.</li>
+        <li><b>CAH-X</b> : délétion étendue à <span class="mono">TNXB</span> → Ehlers-Danlos hypermobile (~15 % des 21-OHD, NIH). Sondes TNXB selon le kit MLPA.</li>
+        <li><b>Pseudo-homozygotie</b> : « homozygote » + parent non porteur = délétion, de novo ou erreur. MLPA en trio.</li>
+        <li><b>Nomenclature</b> : noms historiques (I172N, V281L, Q318X) = HGVS −1 codon sur <span class="mono">NM_000500.9</span> (p.Ile173Asn, p.Val282Leu, p.Gln319*).</li>
+      </ul></div></details>
+    <details class="more"><summary>Conseil génétique : chiffres et points clés</summary><div class="in">
+      <div class="risk">
+        <div class="rk"><b>25 %</b><span>Enfant atteint, couple de deux porteurs</span></div>
+        <div class="rk"><b>2,5 %</b><span>Forme classique, mère 21-OHD non classique (4/162)</span></div>
+        <div class="rk"><b>≥ 14,8 %</b><span>Forme non classique chez ces enfants</span></div>
+        <div class="rk"><b>≈ 1/61</b><span>Porteurs si incidence 1/15 000 (Hardy-Weinberg)</span></div>
+      </div>
+      <ul>
+        <li>Toutes les HSC sont AR ; NR0B1 (AHC) est liée à l'X.</li>
+        <li>Tester les deux parents (phase, de novo, forme NC méconnue chez un parent).</li>
+        <li>Fratrie : 17-OHP chez tout nouveau-né à risque (pas de dépistage néonatal national au Maroc).</li>
+        <li>Patient atteint ou femme NC : génotyper le conjoint (50 % si porteur).</li>
+        <li>Oncles/tantes : 50 % de risque d'être porteurs. Le dosage hormonal ne détecte pas les hétérozygotes.</li>
+        <li>DPN (villosités, amniocentèse) ou DPI une fois les deux variants connus ; pour 21-OHD, MLPA parentale avant tout DPN.</li>
+        <li>Consanguinité fréquente au Maroc (54,4 % à Casablanca, 46,5 % série DSD de Fès).</li>
+        <li>Conserver l'ADN des patients sans diagnostic moléculaire.</li>
+      </ul></div></details>
+    <details class="more"><summary>Crinécerfont, dexaméthasone prénatale</summary><div class="in">
+      <p><b>Crinécerfont</b> (antagoniste CRF1) : FDA 13/12/2024, en complément des glucocorticoïdes, 21-OHD classique, ≥ 4 ans. Permet de baisser les doses ; pas un substitut. Disponibilité au Maroc et avis EMA non vérifiés.</p>
+      <p><b>Dexaméthasone prénatale</b> : expérimentale (GeneReviews, Endocrine Society), uniquement en protocole de recherche. Le DPN non invasif sur ADN fœtal libre évite de traiter inutilement.</p></div></details>
+    <details class="more"><summary>Données marocaines (Casablanca)</summary><div class="in">
+      <p>Cohorte monocentrique de 184 enfants (Bouarab 2024), diagnostic confirmé en biologie moléculaire selon les auteurs. 3β-HSD2 à 3,2 % contre &lt; 0,5 % dans les séries internationales : biais de recrutement ou consanguinité (54,4 %), non tranchable.</p></div></details>
+    <details class="more"><summary>Schémas de gènes</summary><div class="in">
+      <p>Structure exonique du transcrit canonique (Ensembl REST, RefSeq MANE Select, consulté le 3 octobre 2026). Variants placés par codon. Introns compressés (log), exons en racine carrée.</p></div></details>
+    <details class="more"><summary>Limites</summary><div class="in">
+      <p>Outil pédagogique pour professionnels de santé. Ne remplace ni l'avis d'un endocrinologue pédiatre ni la validation du laboratoire. Les points non vérifiés sont signalés par un encadré orange.</p></div></details>
+    <details class="more"><summary>Références</summary><div class="in"><ol class="refs" id="refList"></ol></div></details>
+  </div>
+</dialog>
 <div class="tip" id="tip" hidden></div>
 <script>
 const GENE_STRUCT={"CYP21A2":{"nm":"NM_000500.9","enst":"ENST00000644719","aa":495,"ex":[210,90,155,102,102,87,201,179,104,776],"intr":[97,282,107,88,101,169,200,83,97],"cds":[202,90,155,102,102,87,201,179,104,266]},"CYP11B1":{"nm":"NM_000497.4","enst":"ENST00000292427","aa":503,"ex":[251,156,200,204,155,167,79,198,2130],"intr":[387,1809,137,286,362,399,79,470],"cds":[239,156,200,204,155,167,79,198,114]},"HSD3B2":{"nm":"NM_000198.4","enst":"ENST00000369416","aa":372,"ex":[53,231,165,1226],"intr":[128,3856,2226],"cds":[0,142,165,812]},"CYP17A1":{"nm":"NM_000102.4","enst":"ENST00000369887","aa":508,"ex":[349,139,230,87,216,170,104,455],"intr":[1672,239,662,827,312,899,522],"cds":[297,139,230,87,216,170,104,284]},"POR":{"nm":"NM_001382655.3","enst":"ENST00000461988","aa":677,"ex":[25,192,49,129,150,125,90,99,117,119,182,150,271,146,83,519],"intr":[38809,18232,6989,759,559,344,617,1197,101,920,99,371,73,90,95],"cds":[0,179,49,129,150,125,90,99,117,119,182,150,271,146,83,145]},"STAR":{"nm":"NM_000349.3","enst":"ENST00000276449","aa":285,"ex":[198,114,128,159,185,94,1687],"intr":[2000,313,1752,141,647,835],"cds":[64,114,128,159,185,94,114]},"CYP11A1":{"nm":"NM_000781.3","enst":"ENST00000268053","aa":521,"ex":[330,156,200,204,161,167,79,198,342],"intr":[19261,2656,1051,651,3223,271,468,467],"cds":[269,156,200,204,161,167,79,198,132]},"CYP11B2":{"nm":"NM_000498.3","enst":"ENST00000323110","aa":503,"ex":[242,156,200,204,155,167,79,198,1535],"intr":[387,1813,137,286,812,399,79,436],"cds":[239,156,200,204,155,167,79,198,114]},"NR0B1":{"nm":"NM_000475.5","enst":"ENST00000378970","aa":470,"ex":[1195,618],"intr":[3372],"cds":[1168,245]}};
@@ -681,14 +576,14 @@ const FREQ = [
 const FICHES = {
 cyp21:{tab:"21-OH",name:"Déficit en 21-hydroxylase",gene:"CYP21A2",locus:"6p21.33 (module RCCX)",omim:"201910",inh:"Autosomique récessive",
   sum:"Plus de 90 % des HSC. Incidence de la forme classique ≈ 1/15 000 naissances (6,5 millions de nouveau-nés dépistés) ; 1/5 000 en Arabie saoudite. La forme classique se divise en perte de sel (≥ 75 %) et virilisante simple (≈ 25 %). La forme non classique est bien plus fréquente : ≈ 1/100 dans la population de New York, 1/27 chez les Juifs ashkénazes.",
-  xx:["<b>Classique</b> : virilisation prénatale (hypertrophie clitoridienne, fusion des bourrelets, sinus urogénital). Utérus et ovaires normaux.","<b>Non classique</b> : OGE normaux. Hirsutisme seul chez ≈ 60 % des femmes, hirsutisme + troubles des règles ≈ 10 %, troubles des règles seuls ≈ 10 %. Retrouvée chez 2,2 à 10 % des femmes hyperandrogéniques.","Dans la série DSD du CHU Hassan II de Fès, les 31 patients 46,XX étaient tous des HSC, et 11 étaient élevés en garçons."],
+  xx:["<b>Classique</b> : virilisation prénatale (hypertrophie clitoridienne, fusion des bourrelets, sinus urogénital). Utérus et ovaires normaux.","<b>Non classique</b> : OGE normaux. Hirsutisme seul chez ≈ 60 % des femmes, hirsutisme + troubles des règles ≈ 10 %, troubles des règles seuls ≈ 10 %. Retrouvée chez 2,2 à 10 % des femmes hyperandrogéniques."],
   xy:["OGE normaux : sans dépistage, le diagnostic est souvent manqué jusqu'à la crise de perte de sel, entre 1 et 4 semaines de vie.","Plus tard : pseudo-puberté précoce, verge développée avec petits testicules.","Inclusions surrénaliennes testiculaires (TART) : principale cause d'hypofertilité. Échographie testiculaire après la puberté, tous les 3 à 5 ans."],
   gen:["Crise de perte de sel : mauvaise prise alimentaire, vomissements, déshydratation, hyponatrémie, hyperkaliémie, acidose, choc.","Croissance accélérée et âge osseux avancé, puis petite taille finale par soudure épiphysaire précoce.","Une puberté précoce centrale peut se déclencher à l'instauration du traitement."],
   bio:[["up","<b>17-OHP</b> ↑↑↑ : forme classique > 300 nmol/L (> 10 000 ng/dL)"],["up","<b>21-désoxycortisol</b> ↑ : marqueur spécifique, 2e intention au dépistage (LC-MS/MS)"],["up","Δ4-androstènedione, testostérone (fille, garçon prépubère), progestérone"],["up","ACTH ; rénine dans la perte de sel"],["down","Cortisol bas ou inadapté"],["down","Aldostérone basse pour la rénine (rapport aldo/rénine ↓ = perte de sel)"],["down","DOC, 11-désoxycortisol"],["var","Androgènes 11-oxygénés (11-cétotestostérone) : décrits comme dominants dans la forme classique, marqueurs de suivi émergents"]],
   bilan:["17-OHP à 8 h (LC-MS/MS), ± test au Synacthène 250 µg (T0, T60)","Ionogramme, rénine, aldostérone, cortisol, ACTH","Δ4-androstènedione, testostérone ; 21-désoxycortisol si disponible","OGE atypiques : caryotype ou FISH SRY, échographie pelvienne (utérus)","Âge osseux après la petite enfance","CYP21A2 : PCR longue spécifique + Sanger, MLPA, puis les deux parents"],
   traps:["Prélèvement avant 24 h de vie, prématurité ou petit poids : faux positifs. Dexaméthasone néonatale : faux négatifs.","Une 17-OHP aléatoire peut être normale dans la forme non classique : prélever le matin, en phase folliculaire.","17-OHP modérément élevée + HTA ou hypokaliémie : doser le 11-désoxycortisol avant de séquencer CYP21A2.","Chez le garçon d'apparence normale avec cryptorchidie bilatérale : caryotype."],
   molec:"Sanger sur amplicon long spécifique, puis MLPA si 0 ou 1 allèle trouvé ou homozygotie apparente. Environ 70–80 % des allèles sont visibles en séquençage, 20–30 % ne le sont qu'en analyse de nombre de copies. Les 9 variants issus du pseudogène, avec les délétions et grandes conversions, représentent environ 95 % des allèles.",
-  ma:"Maroc (Rabat, 20 patients à forme classique, Abid 2008) : c.293-13A/C>G sur 47 % des chromosomes, p.Gln319* (Q318X) 19,4 %, p.Ile173Asn 11 %. p.Gln319* était concentré chez les patients de la région de Fès (75 %). Les 4 anomalies les plus fréquentes (dont les grandes lésions) couvraient 94 % des allèles. Cohorte petite, formes classiques uniquement.",
+  ma:"Maroc (Rabat, 20 patients à forme classique, Abid 2008) : c.293-13A/C>G sur 47 % des chromosomes, p.Gln319* (Q318X) 19,4 %, p.Ile173Asn 11 %. p.Gln319* était concentré chez les patients de la région de Fès (75 %). Les 4 anomalies les plus fréquentes (dont les grandes lésions) couvraient 94 % des allèles. Cohorte petite, formes classiques uniquement. Série DSD du CHU Hassan II de Fès : les 31 patients 46,XX étaient tous des HSC, 11 élevés en garçons.",
   vars:[
     {lbl:"Délétion 30 kb / chimère",region:[1,3],hg:"—",p:"Gène chimère CYP21A1P/CYP21A2",ex:"Région 5′",act:"0 %",cls:"null",ph:"PS",fr:"≈ 20 % (délétions) ; 20–30 % avec conversions",sg:false,nt:"Jonction variable (chimères CH-1 à CH-9). Peut emporter TNXB → CAH-X."},
     {lbl:"I2G",intron:2,hg:"c.293-13A>G / C>G",p:"Épissage aberrant",ex:"Intron 2",act:"< 1 %",cls:"severe",ph:"PS (> 90 % des homozygotes) ; parfois VS",fr:"20–30 % ; Maroc 47 %",sg:true,nt:"Position −13 polymorphe A/C à l'état normal."},
@@ -709,14 +604,14 @@ cyp21:{tab:"21-OH",name:"Déficit en 21-hydroxylase",gene:"CYP21A2",locus:"6p21.
 
 cyp11b1:{tab:"11β-OH",name:"Déficit en 11β-hydroxylase",gene:"CYP11B1",locus:"8q24.3 (en tandem avec CYP11B2)",omim:"202010",inh:"Autosomique récessive",
   sum:"Deuxième cause d'HSC : ≈ 5 % des cas (0,2–8 % selon les séries), ≈ 1/100 000 naissances. Fréquence élevée chez les Juifs d'origine marocaine (1/5 000 à 1/7 000, Israël). 4,9 % des HSC dans la cohorte de Casablanca.",
-  xx:["Virilisation des OGE comparable au 21-OHD, jusqu'à Prader 5.","Fès 2026 : patient 46,XX élevé en garçon, découvert à 35 ans par des myélolipomes surrénaliens géants et un utérus en IRM (DOC ≈ 140 × la normale)."],
+  xx:["Virilisation des OGE comparable au 21-OHD, jusqu'à Prader 5."],
   xy:["OGE normaux à la naissance.","Pseudo-puberté précoce périphérique, avance staturale et osseuse."],
-  gen:["HTA dans environ deux tiers des formes classiques ; sa sévérité ne suit pas le taux de DOC.","Hypokaliémie inconstante.","Crise surrénale rare (le DOC assure l'effet minéralocorticoïde).","Oujda 2024 : garçon de 5 ans révélé par un œdème aigu du poumon sur HTA sévère, avec DSD."],
+  gen:["HTA dans environ deux tiers des formes classiques ; sa sévérité ne suit pas le taux de DOC.","Hypokaliémie inconstante.","Crise surrénale rare (le DOC assure l'effet minéralocorticoïde)."],
   bio:[["up","<b>11-désoxycortisol</b> (composé S) ↑↑ : marqueur clé"],["up","<b>DOC</b> ↑"],["up","17-OHP ↑ modérée : peut positiver le dépistage du 21-OHD"],["up","Δ4-androstènedione, testostérone, ACTH"],["down","Cortisol, corticostérone"],["down","Rénine supprimée, aldostérone basse"],["var","Kaliémie basse ou normale"]],
   bilan:["11-désoxycortisol et DOC (± Synacthène), 17-OHP en LC-MS/MS","Rénine, aldostérone, kaliémie","Pression artérielle avec brassard adapté à l'âge, à chaque consultation","Androgènes, âge osseux","Profil stéroïdien urinaire (métabolites du 11-désoxycortisol) si disponible","CYP11B1 : Sanger avec amorces spécifiques (ne pas co-amplifier CYP11B2)"],
   traps:["Diagnostic de 21-OHD posé sur la seule 17-OHP, Sanger CYP21A2 négatif : revenir au 11-désoxycortisol.","HTA souvent absente chez le nourrisson ou non mesurée : prendre la tension chez tout enfant virilisé.","Forte homologie CYP11B1/CYP11B2 : les amorces doivent être spécifiques (c'est ainsi que R448H a été identifié)."],
   molec:"Séquençage des 9 exons de CYP11B1 avec amorces spécifiques. Pas de pseudogène, mais le gène voisin CYP11B2 est très homologue. Les hétérozygotes R448H n'ont aucune anomalie hormonale sous ACTH : le dépistage des porteurs est moléculaire.",
-  ma:"p.Arg448His a été décrit comme fondateur chez les Juifs d'origine marocaine (11 allèles sur 12 dans six familles). Un dépistage de 236 sujets sains n'a trouvé que 2 porteurs : R448H n'explique qu'en partie la fréquence dans cette population. Des variants nouveaux ont aussi été rapportés chez des patients marocains (Chabraoui et al.), non détaillés ici.",
+  ma:"p.Arg448His a été décrit comme fondateur chez les Juifs d'origine marocaine (11 allèles sur 12 dans six familles). Un dépistage de 236 sujets sains n'a trouvé que 2 porteurs : R448H n'explique qu'en partie la fréquence dans cette population. Des variants nouveaux ont aussi été rapportés chez des patients marocains (Chabraoui et al.), non détaillés ici. Fès 2026 : 46,XX élevé en garçon, découvert à 35 ans (myélolipomes géants, utérus en IRM, DOC ≈ 140 × N). Oujda 2024 : garçon de 5 ans révélé par un OAP sur HTA sévère, avec DSD.",
   vars:[
     {lbl:"Q356X",codon:356,hg:"—",p:"p.Gln356*",ex:"Exon 6",act:"0",cls:"null",ph:"Classique",fr:"Tunisie (effet fondateur)",sg:true,nt:""},
     {lbl:"G379V",codon:379,hg:"—",p:"p.Gly379Val",ex:"Exon 7",act:"—",cls:"severe",ph:"Classique",fr:"Tunisie",sg:true,nt:""},
@@ -868,13 +763,13 @@ const TREAT = [
 
 /* ===================== HORS HSC ===================== */
 const DIFFS = [
-  {t:"Perte de sel du nourrisson",c:"var(--blue)",rows:[
+  {t:"Perte de sel du nourrisson",c:"var(--acc2)",rows:[
     ["21-OH (garçon)","17-OHP ↑↑↑, cortisol ↓"],["3β-HSD2","17-OH-Preg ↑↑ ; garçon sous-virilisé"],["StAR / P450scc","Tous stéroïdes ↓↓"],["NR0B1 (AHC)","17-OHP normale, cortisol ↓, surrénales petites"],["Aldostérone synthase","Cortisol normal, aldo ↓, rénine ↑↑"],["Pseudo-hypoaldostéronisme 1","Aldostérone ↑↑ et rénine ↑↑ : résistance, pas déficit"]],
     n:"La 17-OHP, le cortisol et l'aldostérone rapportée à la rénine trient ces six situations."},
-  {t:"Hyperandrogénie de la fille ou de la femme",c:"var(--teal)",rows:[
+  {t:"Hyperandrogénie de la fille ou de la femme",c:"var(--acc)",rows:[
     ["21-OH non classique","17-OHP à 8 h en phase folliculaire, Synacthène si > 6 nmol/L"],["SOPK","17-OHP normale ; diagnostic d'exclusion. Beaucoup de femmes NC ont des ovaires polykystiques"],["Adrénarche prématurée","DHEAS ↑ modéré, 17-OHP stimulée normale"],["Tumeur surrénalienne ou ovarienne","Androgènes très élevés, évolution rapide : imagerie"],["11β-OH non classique","11-désoxycortisol stimulé"]],
     n:"La forme non classique est retrouvée chez 1 à 10 % des femmes hyperandrogéniques selon les séries."},
-  {t:"DSD sans HSC",c:"var(--green)",rows:[
+  {t:"DSD sans HSC",c:"var(--acc)",rows:[
     ["46,XX + virilisation maternelle","Déficit en aromatase (CYP19A1), POR"],["46,XX virilisée, 17-OHP normale","Exposition androgénique maternelle, DSD ovotesticulaire"],["46,XY sous-virilisé, surrénales normales","17β-HSD3, 5α-réductase 2, insensibilité aux androgènes, dysgénésie gonadique (NR5A1)"],["46,XY + insuffisance surrénale","StAR, CYP11A1, 3β-HSD2, POR, NR5A1"]],
     n:"Orientation seulement : ces entités ne sont pas détaillées dans ce site."}
 ];
@@ -1019,20 +914,20 @@ function setBlock(id){
 }
 function renderConseq(){
   const B=BLOCKS[curBlock];
-  let h=`<div style="display:grid;gap:4px"><span class="gene">${esc(B.gene||"Vue d'ensemble")}</span><h3>${esc(B.title)}</h3></div><p>${esc(B.text)}</p>
+  let h=`<div style="display:grid;gap:2px"><span class="gene">${esc(B.gene||"Vue d'ensemble")}</span><h3>${esc(B.title)}</h3></div><p>${esc(B.text)}</p>
   <div class="facts">${B.facts.map(f=>`<div class="fact"><b>${esc(f[0])}</b><span>${esc(f[1])}</span></div>`).join("")}</div>`;
   if(B.key)h+=`<div class="chips">${B.key.map(k=>`<span class="chip ${/↓/.test(k)?"down":/↑/.test(k)?"up":"key"}">${esc(k)}</span>`).join("")}</div>`;
-  if(B.fiche)h+=`<div style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn" href="#fiches" data-open="${B.fiche}">Ouvrir la fiche complète →</a></div>`;
+  if(B.fiche)h+=`<a class="btn" href="#fiches" data-open="${B.fiche}">Fiche →</a>`;
   h+=`<div id="nodeDetail"></div>`;
   $("#conseq").innerHTML=h;
-  const a=$("#conseq [data-open]"); if(a)a.addEventListener("click",()=>setFiche(a.dataset.open));
+  bindOpen("#conseq");
   if(lastNode)showNodeDetail(lastNode,true);
 }
 function showNodeDetail(id,quiet){
   lastNode=id; const st=BLOCKS[curBlock].nodes[id]||"n";
   const lab={up:"accumulé",down:"diminué",var:"variable",n:"non modifié"}[st];
   const box=$("#nodeDetail"); if(!box)return;
-  box.innerHTML=`<div class="info"><b>${esc(NODES[id].l)}</b> · <span class="chip ${st==="n"?"ok":st}">${lab} dans ce bloc</span><p style="margin-top:6px">${esc(NODES[id].d)}</p></div>`;
+  box.innerHTML=`<div class="info"><b>${esc(NODES[id].l)}</b> · <span class="chip ${st==="n"?"ok":st}">${lab}</span><p style="margin-top:4px">${esc(NODES[id].d)}</p></div>`;
 }
 function buildPills(){
   $("#blockPills").innerHTML=Object.entries(BLOCKS).map(([k,b])=>`<button type="button" class="pill" data-b="${k}" aria-pressed="false">${esc(b.tab)}${b.g?` <span class="g">${esc(b.g)}</span>`:""}</button>`).join("");
@@ -1043,15 +938,15 @@ function buildPills(){
    FRÉQUENCES
    ===================================================== */
 function buildFreq(){
-  let h=`<thead><tr><th>#</th><th>Bloc</th><th>Part des HSC</th><th>Maroc (Casablanca)</th><th>Signature hormonale</th><th>Contexte évocateur</th><th></th></tr></thead><tbody>`;
+  let h=`<thead><tr><th>#</th><th>Bloc</th><th>Part des HSC</th><th>Casablanca</th><th>Signature hormonale</th><th>Contexte évocateur</th><th></th></tr></thead><tbody>`;
   FREQ.forEach(r=>{
-    h+=`<tr><td class="rank num">${r.r}</td><td><b>${esc(r.n)}</b><br><span class="mono" style="color:var(--teal)">${esc(r.g)}</span></td>
+    h+=`<tr><td class="rank num">${r.r}</td><td><b>${esc(r.n)}</b><br><span class="mono" style="color:var(--muted)">${esc(r.g)}</span></td>
     <td><b class="num">${esc(r.glob)}</b><br><span class="note">${esc(r.glNote)}</span></td>
-    <td>${r.ma!=null?`<b class="num">${String(r.ma).replace(".",",")} %</b><div class="bar"><i style="width:${Math.max(2,r.ma)}%"></i></div>`:`<span class="note">non rapporté</span>`}</td>
+    <td>${r.ma!=null?`<b class="num">${String(r.ma).replace(".",",")} %</b><div class="bar"><i style="width:${Math.max(2,r.ma)}%"></i></div>`:`<span class="note">—</span>`}</td>
     <td>${esc(r.sig)}</td><td>${esc(r.clue)}</td><td><a href="#fiches" data-open="${r.id}">Fiche</a></td></tr>`;
   });
   $("#freqTable").innerHTML=h+"</tbody>";
-  document.querySelectorAll("#freqTable [data-open]").forEach(a=>a.addEventListener("click",()=>setFiche(a.dataset.open)));
+  bindOpen("#freqTable");
 }
 
 /* =====================================================
@@ -1094,9 +989,9 @@ function geneSVG(sym,vars){
   s+=`<text class="gtxt" x="${padL-18}" y="${lineY+4}" text-anchor="end">5′</text><text class="gtxt" x="${W-padR+18}" y="${lineY+4}">3′</text>`;
   ex.forEach((e,i)=>{
     const uw5=e.w*(e.utr5/e.len),uw3=e.w*(e.utr3/e.len),cw=e.w-uw5-uw3;
-    if(uw5>0)s+=`<rect x="${e.x}" y="${lineY-8}" width="${uw5}" height="16" fill="var(--surface)" stroke="var(--blue)" stroke-width="1.2"/>`;
-    if(cw>0)s+=`<rect x="${e.x+uw5}" y="${lineY-14}" width="${cw}" height="28" fill="var(--blue)" rx="2"/>`;
-    if(uw3>0)s+=`<rect x="${e.x+uw5+cw}" y="${lineY-8}" width="${uw3}" height="16" fill="var(--surface)" stroke="var(--blue)" stroke-width="1.2"/>`;
+    if(uw5>0)s+=`<rect x="${e.x}" y="${lineY-8}" width="${uw5}" height="16" fill="var(--surface)" stroke="var(--acc2)" stroke-width="1.2"/>`;
+    if(cw>0)s+=`<rect x="${e.x+uw5}" y="${lineY-14}" width="${cw}" height="28" fill="var(--acc2)" rx="2"/>`;
+    if(uw3>0)s+=`<rect x="${e.x+uw5+cw}" y="${lineY-8}" width="${uw3}" height="16" fill="var(--surface)" stroke="var(--acc2)" stroke-width="1.2"/>`;
     s+=`<text class="gtxt" x="${e.x+e.w/2}" y="${lineY+30}" text-anchor="middle">${i+1}</text>`;
   });
   s+=`<text class="gtxt" x="${padL}" y="${lineY+50}">Exons (numérotation du transcrit ${esc(G.nm)}) · plein = codant, contour = UTR</text>`;
@@ -1128,35 +1023,30 @@ function setFiche(id){
   let vt="";
   if(F.vars.length){
     vt=`<div class="tablebox" style="border-radius:10px"><table class="vtab"><thead><tr><th>Nom usuel</th><th>HGVS c.</th><th>HGVS p.</th><th>Région</th><th>Activité</th><th>Sévérité</th><th>Phénotype</th><th>Fréquence / population</th><th>Sanger</th></tr></thead><tbody>`+
-    F.vars.map(v=>`<tr><td><b>${esc(v.lbl)}</b>${v.nt?`<div class="note" style="margin-top:3px;max-width:34ch">${esc(v.nt)}</div>`:""}</td><td class="mono">${esc(v.hg)}</td><td class="mono">${esc(v.p)}</td><td>${esc(v.ex)}</td><td class="num">${esc(v.act)}</td>
+    F.vars.map(v=>`<tr><td><b>${esc(v.lbl)}</b>${v.nt?`<div class="note" style="margin-top:2px;max-width:34ch">${esc(v.nt)}</div>`:""}</td><td class="mono">${esc(v.hg)}</td><td class="mono">${esc(v.p)}</td><td>${esc(v.ex)}</td><td class="num">${esc(v.act)}</td>
     <td><span class="sev ${v.cls}"><i></i>${SEVL[v.cls]}</span></td><td>${esc(v.ph)}</td><td>${esc(v.fr)}</td><td><span class="sanger ${v.sg?"y":"n"}">${v.sg?"visible":"MLPA"}</span></td></tr>`).join("")+`</tbody></table></div>
     <p class="note">PS = perte de sel, VS = virilisante simple, NC = non classique. HGVS c. affiché seulement quand il est donné par la source ; « — » sinon. Activité résiduelle in vitro.</p>`;
   }
   const html=`<div class="fiche">
-  <div class="fiche-head"><div><span class="eyebrow">${esc(F.inh)}</span><h3 style="margin-top:6px">${esc(F.name)}</h3><p class="sub">${esc(F.sum)}</p></div>
-    <div class="idcard"><span>Gène <b>${esc(F.gene)}</b></span><span>Locus <b>${esc(F.locus)}</b></span>${G?`<span>Transcrit <b>${esc(G.nm)}</b></span><span><b>${G.ex.length}</b> exons · <b>${G.aa}</b> aa</span>`:""}<span>OMIM <b>${esc(F.omim)}</b></span></div></div>
-  <div class="grid3">
-    <div class="card"><h4><span class="dot" style="background:var(--up)"></span>46,XX</h4>${ul(F.xx)}</div>
-    <div class="card"><h4><span class="dot" style="background:var(--blue)"></span>46,XY</h4>${ul(F.xy)}</div>
-    <div class="card"><h4><span class="dot"></span>Commun aux deux sexes</h4>${ul(F.gen)}</div>
+  <div class="fhead"><h3>${esc(F.name)}</h3>
+    <span class="idline"><b>${esc(F.gene)}</b> · ${esc(F.locus)} · ${esc(F.inh)}${G?` · ${esc(G.nm)} · ${G.ex.length} ex · ${G.aa} aa`:""} · OMIM ${esc(F.omim)}</span></div>
+  <div class="fgrid">
+    <div class="card"><h4>Clinique · 46,XX</h4>${ul(F.xx)}<h4>46,XY</h4>${ul(F.xy)}<h4>Les deux sexes</h4>${ul(F.gen)}</div>
+    <div class="card"><h4>Biologie attendue</h4><div class="mklist">${F.bio.map(mk).join("")}</div><h4>Bilan à demander</h4><ul class="check">${F.bilan.map(x=>`<li><span>${x}</span></li>`).join("")}</ul></div>
+    <div class="card"><h4>Pièges</h4>${ul(F.traps)}<h4>Traitement</h4>${ul(F.tx.map(esc))}</div>
   </div>
-  <div class="grid2">
-    <div class="card"><h4><span class="dot" style="background:var(--up)"></span>Biologie attendue</h4><div class="mklist">${F.bio.map(mk).join("")}</div></div>
-    <div class="card"><h4><span class="dot" style="background:var(--green)"></span>Bilan à demander</h4><ul class="check">${F.bilan.map(x=>`<li><span>${x}</span></li>`).join("")}</ul>
-      <h4 style="margin-top:8px"><span class="dot" style="background:var(--block)"></span>Pièges</h4>${ul(F.traps)}</div>
-  </div>
-  <div class="card"><h4><span class="dot" style="background:var(--blue)"></span>Gène ${esc(F.gene)} et variants fréquents</h4>
+  <details class="more"><summary>Gène, variants fréquents</summary><div class="in">
     ${G?`<div class="genebox">${geneSVG(F.gene.split(" ")[0],F.vars)}</div>`:""}
-    <div class="chips" style="font-size:.8rem"><span class="sev null"><i></i>Nul</span><span class="sev severe"><i></i>Sévère</span><span class="sev mod"><i></i>Modéré</span><span class="sev mild"><i></i>Léger (forme non classique)</span></div>
+    <div class="chips" style="font-size:.78rem;gap:10px"><span class="sev null"><i></i>Nul</span><span class="sev severe"><i></i>Sévère</span><span class="sev mod"><i></i>Modéré</span><span class="sev mild"><i></i>Léger (NC)</span></div>
     <p>${esc(F.molec)}</p>
-    ${F.ma?`<div class="info"><b>Données marocaines et régionales.</b> ${esc(F.ma)}</div>`:""}
     ${vt}
-  </div>
-  <div class="grid2">
-    <div class="card"><h4><span class="dot" style="background:var(--green)"></span>Traitement</h4>${ul(F.tx.map(esc))}</div>
-    <div class="card"><h4><span class="dot"></span>Conseil génétique</h4>${ul(F.gc.map(esc))}</div>
-  </div>
-  <div class="src"><span>Sources&nbsp;:</span>${F.refs.map(r=>`<a href="${REFS[r].u}" target="_blank" rel="noopener">${esc(REFS[r].t.split(".")[0])}</a>`).join("")}</div>
+  </div></details>
+  <details class="more"><summary>Épidémiologie, données marocaines, conseil génétique</summary><div class="in">
+    <p>${esc(F.sum)}</p>
+    ${F.ma?`<div class="info"><b>Maroc / région.</b> ${esc(F.ma)}</div>`:""}
+    <h4>Conseil génétique</h4>${ul(F.gc.map(esc))}
+    <div class="src"><span>Sources :</span>${F.refs.map(r=>`<a href="${REFS[r].u}" target="_blank" rel="noopener">${esc(REFS[r].t.split(".")[0])}</a>`).join("")}</div>
+  </div></details>
   </div>`;
   $("#fiche").innerHTML=html; store.set("hsc-fiche",id);
 }
@@ -1170,9 +1060,9 @@ function buildFicheTabs(){
    ===================================================== */
 const answers={k:"xx",g:"vir",bp:"low",na:"yes",kal:"hi",ohp:"vh"}; const extras={};
 function buildOrient(){
-  let h=`<div class="note" style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><span>Profil pré-rempli à titre d'exemple : nouveau-né 46,XX virilisé en perte de sel.</span><button type="button" class="btn ghost" id="orReset" style="padding:5px 12px">Tout effacer</button></div>`;
+  let h=`<div class="note" style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span>Exemple : nouveau-né 46,XX virilisé en perte de sel.</span><button type="button" class="btn ghost" id="orReset" style="padding:3px 9px">Effacer</button></div>`;
   QUESTIONS.forEach(q=>{h+=`<div class="q"><span>${esc(q.l)}</span><div class="seg" data-q="${q.id}">${q.o.map(o=>`<button type="button" data-v="${o[0]}" aria-pressed="false">${esc(o[1])}</button>`).join("")}</div></div>`});
-  h+=`<div class="q"><span>Éléments associés</span>${EXTRAS.map(x=>`<label class="tog"><input type="checkbox" id="ex-${x.id}" data-x="${x.id}"> ${esc(x.l)}</label>`).join("")}</div>`;
+  h+=`<div class="q" style="align-items:start"><span>Éléments associés</span><div style="display:grid;gap:4px">${EXTRAS.map(x=>`<label class="tog"><input type="checkbox" id="ex-${x.id}" data-x="${x.id}"> ${esc(x.l)}</label>`).join("")}</div></div>`;
   $("#orientForm").innerHTML=h;
   document.querySelectorAll("#orientForm .seg").forEach(sg=>{
     sg.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{const q=sg.dataset.q;answers[q]=answers[q]===b.dataset.v?undefined:b.dataset.v;syncOrient()}));
@@ -1191,18 +1081,18 @@ function syncOrient(){
   EXTRAS.forEach(x=>{if(!extras[x.id])return;filled++;Object.keys(DX).forEach(d=>{const v=x.s[d]||0;score[d]+=v;if(v>=2)pro[d].push(x.l.split(" (")[0]);if(v<=-2)con[d].push(x.l.split(" (")[0])})});
   const ranked=Object.keys(DX).sort((a,b)=>score[b]-score[a]);
   const top=score[ranked[0]],bottom=Math.min(...ranked.map(d=>score[d]));
-  let h=`<div class="sechead" style="margin:0"><h3>Hypothèses classées</h3><p class="note">${filled?`${filled} élément${filled>1?"s":""} renseigné${filled>1?"s":""}. Barre = cohérence relative avec le profil, pas une probabilité.`:"Aucun élément renseigné : classement par fréquence seule."}</p></div>`;
+  let h=`<p class="note">${filled?`${filled} élément${filled>1?"s":""} · barre = cohérence relative, pas une probabilité`:"Aucun élément : classement par fréquence"}</p>`;
   ranked.slice(0,4).forEach((d,i)=>{
     const pct=top===bottom?100:Math.round(100*(score[d]-bottom)/(top-bottom));
-    h+=`<div class="res ${i===0?"top":""}"><div class="res-h"><b>${esc(DX[d].n)}</b><a href="#fiches" data-open="${DX[d].f}" style="font-size:.84rem">Fiche</a></div>
+    h+=`<div class="res ${i===0?"top":""}"><div class="res-h"><b>${esc(DX[d].n)}</b><a href="#fiches" data-open="${DX[d].f}" style="font-size:.8rem">Fiche</a></div>
     <div class="meter"><i style="width:${Math.max(4,pct)}%"></i></div>
-    ${pro[d].length?`<div class="why"><span style="color:var(--green)">Concorde :</span> ${esc(pro[d].slice(0,3).join(" · "))}</div>`:""}
-    ${con[d].length?`<div class="why"><span style="color:var(--block)">Discorde :</span> ${esc(con[d].slice(0,3).join(" · "))}</div>`:""}
-    <div class="why"><b style="color:var(--ink)">Dosage discriminant :</b> ${esc(DX[d].next)}</div></div>`;
+    ${pro[d].length?`<div class="why"><span style="color:var(--acc)">+</span> ${esc(pro[d].slice(0,3).join(" · "))}</div>`:""}
+    ${con[d].length?`<div class="why"><span style="color:var(--block)">−</span> ${esc(con[d].slice(0,3).join(" · "))}</div>`:""}
+    <div class="why"><b style="color:var(--ink)">Doser :</b> ${esc(DX[d].next)}</div></div>`;
   });
-  if(answers.ohp==="mod"||answers.ohp==="vh")h+=`<div class="flag"><b>Rappel :</b> une 17-OHP élevée ne suffit pas à affirmer un 21-OHD. 11β, 3β (immunodosage) et POR l'élèvent aussi.</div>`;
+  if(answers.ohp==="mod"||answers.ohp==="vh")h+=`<div class="flag">17-OHP ↑ ≠ 21-OHD : 11β, 3β (immunodosage) et POR l'élèvent aussi.</div>`;
   $("#orientOut").innerHTML=h;
-  document.querySelectorAll("#orientOut [data-open]").forEach(a=>a.addEventListener("click",()=>setFiche(a.dataset.open)));
+  bindOpen("#orientOut");
 }
 
 /* =====================================================
@@ -1217,30 +1107,29 @@ function calcOHP(){
   if(sn!=null){
     if(sn>300){verdict="Compatible avec une forme classique";col="var(--block)";exp="17-OHP stimulée > 300 nmol/L (> 10 000 ng/dL)."}
     else if(sn>=30){verdict="Compatible avec une forme non classique";col="var(--up)";exp="17-OHP stimulée entre 30 et 300 nmol/L (1 000–10 000 ng/dL). Génotyper CYP21A2 pour confirmer : d'autres blocs peuvent produire ce profil."}
-    else{verdict="21-OHD peu probable";col="var(--green)";exp="17-OHP stimulée < 30 nmol/L. Les hétérozygotes ont parfois une réponse un peu plus haute que les non-porteurs, avec chevauchement : le dosage ne permet pas de dépister les porteurs."}
+    else{verdict="21-OHD peu probable";col="var(--acc)";exp="17-OHP stimulée < 30 nmol/L. Les hétérozygotes ont parfois une réponse un peu plus haute que les non-porteurs, avec chevauchement : le dosage ne permet pas de dépister les porteurs."}
   }else if(bn!=null){
     if(bn>300){verdict="Évocateur d'une forme classique";col="var(--block)";exp="17-OHP basale > 300 nmol/L."}
     else if(bn>=6){verdict="Zone intermédiaire : faire un Synacthène";col="var(--up)";exp="17-OHP basale entre 6 et 300 nmol/L : compatible avec une forme non classique, à confirmer par le test au Synacthène. Le seuil basal varie de 200 à 400 ng/dL (6–12 nmol/L) selon la méthode."}
-    else{verdict="Basale normale";col="var(--green)";exp="< 6 nmol/L le matin rend une forme non classique peu probable, sans l'exclure si le prélèvement n'était pas à 8 h ou en phase folliculaire."}
+    else{verdict="Basale normale";col="var(--acc)";exp="< 6 nmol/L le matin rend une forme non classique peu probable, sans l'exclure si le prélèvement n'était pas à 8 h ou en phase folliculaire."}
   }
   // gauge (log)
   const W=600,H=96,x0=20,x1=W-20,lo=Math.log10(0.5),hi=Math.log10(3000);
   const X=v=>x0+(Math.log10(Math.max(0.5,Math.min(3000,v)))-lo)/(hi-lo)*(x1-x0);
-  const zones=[[0.5,30,"var(--green-soft)","non atteint (stimulé)"],[30,300,"var(--up-soft)","non classique"],[300,3000,"var(--block-soft)","classique"]];
+  const zones=[[0.5,30,"var(--acc-soft)","non atteint (stimulé)"],[30,300,"var(--up-soft)","non classique"],[300,3000,"var(--block-soft)","classique"]];
   let g=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Position des valeurs sur l'échelle des seuils, en nmol/L">`;
   zones.forEach(z=>{g+=`<rect x="${X(z[0])}" y="30" width="${X(z[1])-X(z[0])}" height="22" fill="${z[2]}"/><text class="gz" x="${(X(z[0])+X(z[1]))/2}" y="44.5" text-anchor="middle" fill="var(--muted)">${z[3]}</text>`});
   [1,6,30,300,3000].forEach(t=>{g+=`<line x1="${X(t)}" x2="${X(t)}" y1="52" y2="58" stroke="var(--muted)"/><text class="gz" x="${X(t)}" y="70" text-anchor="middle" fill="var(--muted)">${t}</text>`});
   g+=`<text class="gz" x="${x1}" y="88" text-anchor="end" fill="var(--muted)">nmol/L, échelle log</text>`;
   g+=`<line x1="${X(6)}" x2="${X(6)}" y1="26" y2="56" stroke="var(--muted)" stroke-dasharray="2 3"/><text class="gz" x="${X(6)+4}" y="24" fill="var(--muted)">seuil basal 6</text>`;
-  if(bn!=null)g+=`<g><circle cx="${X(bn)}" cy="41" r="7" fill="var(--blue)" stroke="var(--surface)" stroke-width="2"/><text class="gz" x="${X(bn)}" y="88" text-anchor="middle" fill="var(--blue)">T0</text></g>`;
-  if(sn!=null)g+=`<g><circle cx="${X(sn)}" cy="41" r="7" fill="var(--teal)" stroke="var(--surface)" stroke-width="2"/><text class="gz" x="${X(sn)}" y="18" text-anchor="middle" fill="var(--teal)">T60</text></g>`;
+  if(bn!=null)g+=`<g><circle cx="${X(bn)}" cy="41" r="7" fill="var(--acc2)" stroke="var(--surface)" stroke-width="2"/><text class="gz" x="${X(bn)}" y="88" text-anchor="middle" fill="var(--acc2)">T0</text></g>`;
+  if(sn!=null)g+=`<g><circle cx="${X(sn)}" cy="41" r="7" fill="var(--acc)" stroke="var(--surface)" stroke-width="2"/><text class="gz" x="${X(sn)}" y="18" text-anchor="middle" fill="var(--acc)">T60</text></g>`;
   g+=`</svg>`;
   const row=(lbl,v)=>v==null?"":`<tr><td>${lbl}</td><td class="num">${fmt(v/0.0303,0)}</td><td class="num">${fmt(v/3.03,2)}</td><td class="num">${fmt(v,1)}</td></tr>`;
-  $("#ohpOut").innerHTML=`<span class="eyebrow">Lecture</span><div class="verdict" style="color:${col}">${esc(verdict)}</div><p>${esc(exp)}</p>
+  $("#ohpOut").innerHTML=`<div class="verdict" style="color:${col}">${esc(verdict)}</div><p>${esc(exp)}</p>
   <div class="gauge">${g}</div>
   <table class="conv"><thead><tr><th>Valeur saisie</th><th>ng/dL</th><th>ng/mL</th><th>nmol/L</th></tr></thead><tbody>${row("Basale",bn)}${row("Stimulée",sn)}</tbody></table>
-  <div class="flag"><b>Incohérence dans la source :</b> le tableau de GeneReviews donne « &lt; 1 000 ng/dL ou 50 nmol/L » pour le stimulé normal ; 1 000 ng/dL font 30 nmol/L. La guideline 2018 écrit 33 nmol/L pour 1 000 ng/dL. Ici, 30 nmol/L.</div>
-  <p class="note">Ces seuils concernent le 21-OHD. Une 17-OHP modérée avec HTA, hypokaliémie, sous-virilisation ou malformations oriente vers un autre bloc.</p>`;
+  <p class="note">Seuils du 21-OHD. 17-OHP modérée + HTA, hypokaliémie, sous-virilisation ou malformations → autre bloc.</p>`;
 }
 
 /* =====================================================
@@ -1249,9 +1138,9 @@ function calcOHP(){
 function buildRCCX(){
   const W=920;
   const G={RP:{c:"var(--surface-2)",s:"var(--muted)",t:"var(--ink)"},C4:{c:"var(--surface-2)",s:"var(--muted)",t:"var(--ink)"},
-    CYP:{c:"var(--blue)",s:"var(--blue)",t:"#fff"},PSE:{c:"var(--down-soft)",s:"var(--down)",t:"var(--muted)",d:"4 3"},
-    TNX:{c:"var(--teal)",s:"var(--teal)",t:"#fff"},TNXA:{c:"var(--down-soft)",s:"var(--down)",t:"var(--muted)",d:"4 3"},
-    CHI:{c:"url(#chi)",s:"var(--block)",t:"var(--ink)"},CHT:{c:"url(#cht)",s:"var(--block)",t:"var(--ink)"},MUT:{c:"var(--blue)",s:"var(--block)",t:"#fff"}};
+    CYP:{c:"var(--acc2)",s:"var(--acc2)",t:"#fff"},PSE:{c:"var(--down-soft)",s:"var(--down)",t:"var(--muted)",d:"4 3"},
+    TNX:{c:"var(--acc)",s:"var(--acc)",t:"#fff"},TNXA:{c:"var(--down-soft)",s:"var(--down)",t:"var(--muted)",d:"4 3"},
+    CHI:{c:"url(#chi)",s:"var(--block)",t:"var(--ink)"},CHT:{c:"url(#cht)",s:"var(--block)",t:"var(--ink)"},MUT:{c:"var(--acc2)",s:"var(--block)",t:"#fff"}};
   const rows=[
     {y:46,lbl:"Haplotype normal (bimodulaire)",genes:[["RP1","RP",62],["C4A","C4",58],["CYP21A1P","PSE",96],["TNXA","TNXA",60],["RP2","RP",56],["C4B","C4",58],["CYP21A2","CYP",92],["TNXB","TNX",120]]},
     {y:136,lbl:"Délétion 30 kb : gène chimère CYP21A1P/CYP21A2 (non fonctionnel)",genes:[["RP1","RP",62],["C4A","C4",58],["CYP21A1P/A2","CHI",120],["TNXB","TNX",120]]},
@@ -1259,8 +1148,8 @@ function buildRCCX(){
     {y:316,lbl:"Duplication (trimodulaire) : p.Gln319* en cis d'une copie normale",genes:[["RP1","RP",62],["C4A","C4",58],["CYP21A1P","PSE",96],["TNXA","TNXA",60],["RP2","RP",56],["C4B","C4",58],["CYP21A2*","MUT",92],["TNXA","TNXA",60],["RP2","RP",56],["C4B","C4",58],["CYP21A2","CYP",92],["TNXB","TNX",120]]}
   ];
   let s=`<svg viewBox="0 0 ${W} 372" role="img" aria-label="Module RCCX et principales anomalies de structure du locus CYP21A2">
-  <defs><linearGradient id="chi" x1="0" x2="1"><stop offset=".5" stop-color="var(--down-soft)"/><stop offset=".5" stop-color="var(--blue-soft)"/></linearGradient>
-  <linearGradient id="cht" x1="0" x2="1"><stop offset=".5" stop-color="var(--down-soft)"/><stop offset=".5" stop-color="var(--teal-soft)"/></linearGradient></defs>`;
+  <defs><linearGradient id="chi" x1="0" x2="1"><stop offset=".5" stop-color="var(--down-soft)"/><stop offset=".5" stop-color="var(--acc2-soft)"/></linearGradient>
+  <linearGradient id="cht" x1="0" x2="1"><stop offset=".5" stop-color="var(--down-soft)"/><stop offset=".5" stop-color="var(--acc-soft)"/></linearGradient></defs>`;
   rows.forEach(r=>{
     s+=`<text class="glbl" x="10" y="${r.y-14}">${esc(r.lbl)}</text>`;
     let x=10; const tot=r.genes.reduce((a,g)=>a+g[2]+6,0); const k=Math.min(1,(W-20)/tot);
@@ -1279,24 +1168,32 @@ function buildRCCX(){
 function buildTreat(){
   const head=["Bloc","Glucocorticoïdes","Minéralocorticoïdes","Antihypertenseur","Stéroïdes sexuels","Particularités"];
   $("#treatTable").innerHTML=`<thead><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>`+TREAT.map(r=>`<tr>${r.map((c,i)=>`<td class="${i>0&&i<5?(/^Non$/.test(c)?"no":/^Oui/.test(c)?"yes":""):""}">${esc(c)}</td>`).join("")}</tr>`).join("")+`</tbody>`;
-  $("#treatTable").closest(".tablebox").querySelector("table").style.minWidth="820px";
 }
 function buildDiffs(){
-  $("#diffCards").innerHTML=DIFFS.map(d=>`<div class="card"><h4><span class="dot" style="background:${d.c}"></span>${esc(d.t)}</h4>
-  <div style="display:grid;gap:8px">${d.rows.map(r=>`<div style="display:grid;gap:1px;padding-bottom:8px;border-bottom:1px solid var(--line)"><b style="font-size:.9rem">${esc(r[0])}</b><span class="note" style="font-size:.86rem">${esc(r[1])}</span></div>`).join("")}</div>
+  $("#diffCards").innerHTML=DIFFS.map(d=>`<div class="card"><h4>${esc(d.t)}</h4>
+  <div style="display:grid;gap:5px">${d.rows.map(r=>`<div style="display:grid;gap:0;padding-bottom:5px;border-bottom:1px solid var(--line)"><b style="font-weight:500">${esc(r[0])}</b><span class="note" style="font-size:.82rem">${esc(r[1])}</span></div>`).join("")}</div>
   <p class="note">${esc(d.n)}</p></div>`).join("");
 }
 function buildRefs(){
   $("#refList").innerHTML=Object.values(REFS).map(r=>`<li><a href="${r.u}" target="_blank" rel="noopener">${esc(r.t)}</a></li>`).join("");
 }
 
-/* ---------- nav active ---------- */
-function navSpy(){
-  const links=[...document.querySelectorAll(".nav a")];
-  const secs=links.map(a=>document.querySelector(a.getAttribute("href")));
-  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle("on",l.getAttribute("href")==="#"+e.target.id))}})},{rootMargin:"-40% 0px -55% 0px"});
-  secs.forEach(s=>s&&io.observe(s));
+/* ---------- vues ---------- */
+const VIEWS=[...document.querySelectorAll("main > .view")].map(v=>v.id);
+function show(v){
+  if(!VIEWS.includes(v))v="carte";
+  VIEWS.forEach(id=>{$("#"+id).hidden=id!==v});
+  document.querySelectorAll(".nav [data-view]").forEach(b=>b.setAttribute("aria-selected",b.dataset.view===v?"true":"false"));
+  store.set("hsc-view",v); scrollTo(0,0);
 }
+function bindOpen(sel){
+  document.querySelectorAll(sel+" [data-open]").forEach(a=>a.addEventListener("click",ev=>{ev.preventDefault();setFiche(a.dataset.open);show("fiches")}));
+}
+document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",ev=>{ev.preventDefault();show(b.dataset.view)}));
+const faq=$("#faq");
+$("#faqBtn").addEventListener("click",()=>faq.showModal());
+$("#faqClose").addEventListener("click",()=>faq.close());
+faq.addEventListener("click",ev=>{if(ev.target===faq)faq.close()});
 
 /* ---------- init ---------- */
 buildMap();buildPills();
@@ -1307,8 +1204,9 @@ buildOrient();buildRCCX();buildTreat();buildDiffs();buildRefs();
 ["ohpUnit","ohpBase","ohpStim"].forEach(id=>$("#"+id).addEventListener("input",calcOHP));
 let lastUnit=$("#ohpUnit").value;
 $("#ohpUnit").addEventListener("change",()=>{const nu=$("#ohpUnit").value;["ohpBase","ohpStim"].forEach(id=>{const el=$("#"+id),v=parseFloat(el.value);if(isFinite(v)){const n=toNmol(v,lastUnit);const out=nu==="ngml"?n/3.03:nu==="ngdl"?n/0.0303:n;el.value=+out.toPrecision(3)}});lastUnit=nu;calcOHP()});
-calcOHP();navSpy();
-if(location.hash&&FICHES[location.hash.slice(1)]){setFiche(location.hash.slice(1));$("#fiches").scrollIntoView()}
+calcOHP();
+const h0=location.hash.slice(1);
+if(FICHES[h0]){setFiche(h0);show("fiches")}else show(VIEWS.includes(h0)?h0:store.get("hsc-view"));
 })();
 </script>
 </body>
